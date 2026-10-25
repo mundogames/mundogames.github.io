@@ -1,1 +1,381 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  font-family: 'Inter', Arial, sans-serif;
+  color: #ffffff;
+  background: #08080b;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --bg: #08080b;
+  --panel: #15151b;
+  --accent: #fe2c55;
+  --accent-blue: #25f4ee;
+  --text: #ffffff;
+  --muted: #a5a5b3;
+  --border: rgba(255,255,255,.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+  border: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+input,
+textarea {
+  color: white;
+}
+
+.app-shell {
+  width: 100%;
+  height: 100dvh;
+  background: var(--bg);
+  overflow: hidden;
+  position: relative;
+}
+
+.topbar {
+  height: 64px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.82),
+    rgba(0,0,0,.25)
+  );
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  background: transparent;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+.top-tabs {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.top-tabs button {
+  background: transparent;
+  color: rgba(255,255,255,.65);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 0;
+  position: relative;
+}
+
+.top-tabs button.active {
+  color: white;
+}
+
+.top-tabs button.active::after {
+  content: '';
+  height: 3px;
+  width: 22px;
+  background: var(--accent);
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.icon-btn svg {
+  width: 23px;
+  height: 23px;
+}
+
+.icon-btn:hover {
+  background: rgba(255,255,255,.1);
+}
+
+.feed {
+  width: 100%;
+  height: 100dvh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  background: #000;
+}
+
+.feed::-webkit-scrollbar {
+  display: none;
+}
+
+.reel {
+  width: 100%;
+  height: 100dvh;
+  min-height: 520px;
+  position: relative;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  background: #111;
+  isolation: isolate;
+}
+
+.reel-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #111;
+  cursor: pointer;
+  z-index: -2;
+}
+
+.reel-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.83) 0%,
+      rgba(0,0,0,.35) 24%,
+      transparent 55%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.3),
+      transparent 20%
+    );
+}
+
+.glass {
+  background: rgba(20,20,25,.45);
+  border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(12px);
+}
+
+.sound-toggle {
+  position: absolute;
+  top: 78px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+}
+
+.reel-info {
+  position: absolute;
+  left: 18px;
+  right: 90px;
+  bottom: 105px;
+  z-index: 2;
+}
+
+.creator-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: transparent;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-weight: 800;
+  font-size: 15px;
+  background: linear-gradient(135deg, #fe2c55, #7928ca);
+  border: 2px solid white;
+}
+
+.creator-line strong {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.verified {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  background: #25a7ff;
+  color: white;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.follow-btn {
+  margin-left: 3px;
+  padding: 6px 10px;
+  border: 1px solid var(--accent);
+  color: white;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.follow-btn.following {
+  background: rgba(255,255,255,.15);
+  border-color: rgba(255,255,255,.4);
+}
+
+.caption {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  margin-bottom: 12px;
+}
+
+.music-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.music-line span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reel-actions {
+  position: absolute;
+  right: 13px;
+  bottom: 112px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  color: white;
+  min-width: 46px;
+}
+
+.action-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(0,0,0,.23);
+  backdrop-filter: blur(5px);
+  transition: transform .15s ease;
+}
+
+.action-btn:active .action-icon {
+  transform: scale(.88);
+}
+
+.action-btn small {
+  font-size: 11px;
+  font-weight: 700;
+  text-shadow: 0 1px 4px #000;
+}
+
+.action-btn.is-liked {
+  color: var(--accent);
+}
+
+.action-btn.is-liked .action-icon {
+  animation: heartPop .25s ease;
+}
+
+@keyframes heartPop {
+  50% { transform: scale(1.25); }
+}
+
+.disc {
+  border: 7px solid rgba(255,255,255,.15);
+  background: linear-gradient(135deg, #252530, #111);
+}
