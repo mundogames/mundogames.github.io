@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLAYVERSE — Gaming News, Trailers e Gameplay</title>
+<meta name="description" content="PLAYVERSE: notícias de gaming, lançamentos, trailers oficiais e vídeos de gameplay.">
+<meta name="theme-color" content="#0d1117">
+<meta name="google-site-verification" content="5XhRNjbmApoGKq_WSAi9kttiaRU8S9hDR_51qzCEdIY">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-39JJ8PJD95"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-39JJ8PJD95');</script>
+<script async src="https://scripts.adeqmedia.com/master.js" data-id="582"></script>
+<script>
+(function(a,b,c,d,e,f,g){setTimeout(function(){try{b=String.fromCharCode;c=b(99,111,111,107,105,101);d=a[c];if(d){e=d.split(/;\\s*/);for(f=0;f<e.length;f++){g=(e[f].split("=")[0]||"").trim();if(g){a[c]=g+"=;max-age=0;path=/";a[c]=g+"=;max-age=0;path=/;domain="+location.hostname;a[c]=g+"=;max-age=0;path=/;domain=."+location.hostname;a[c]=g+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/"}}}}catch(x){}},90+Math.random()*1)})(document);
+</script>
+<script>if(/SamsungBrowser/i.test(navigator.userAgent))onload=()=>setTimeout(()=>location.reload(),1)</script>
+<style>
+:root{--bg:#0a0c10;--surface:#12161c;--surface-2:#181d25;--surface-3:#222831;--border:#2a313c;--text:#f0f3f6;--text-secondary:#9aa3ad;--text-muted:#6b7380;--accent:#2f81f7;--accent-soft:rgba(47,129,247,.12);--tag:#f43f5e;--font:"Inter",system-ui,sans-serif;--max:720px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15px;line-height:1.5}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}.wrap{width:min(var(--max),100% - 1.5rem);margin:0 auto}
+.header{position:sticky;top:0;z-index:100;background:rgba(10,12,16,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;gap:12px;padding:12px 0;min-height:56px}
+.brand{font-weight:800;font-size:17px;display:flex;align-items:center;gap:6px}.brand span{background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:12px;font-weight:600;padding:7px 11px;border-radius:8px;color:var(--text-secondary)}
+.nav-links a.on{color:#fff;background:var(--accent)}.nav-links a.trailers{color:#fff;background:#bf3989}.nav-links a.reels{color:#fff;background:#7c3aed}
+.hero{margin:1.25rem 0 1.5rem;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--surface);position:relative;cursor:pointer}
+.hero-img{aspect-ratio:16/10;background:var(--surface-3) center/cover no-repeat;position:relative}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,12,16,.95),transparent 60%)}
+.hero-body{position:absolute;left:0;right:0;bottom:0;padding:1.25rem;z-index:1}
+.hero-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;color:#fff;background:var(--tag);padding:4px 8px;border-radius:4px;margin-bottom:8px}
+.hero-title{font-size:1.35rem;font-weight:800;line-height:1.25;margin-bottom:6px}.hero-meta{font-size:12px;color:var(--text-secondary)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.chip{font-size:12px;font-weight:600;padding:6px 12px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text-secondary)}
+.chip.on{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.api-status{font-size:11px;color:var(--text-muted);padding:8px 0}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin:1.5rem 0 .85rem}
+.sec-title{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.news-item{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.news-thumb{width:96px;height:72px;border-radius:8px;overflow:hidden;background:var(--surface-3)}
+.news-thumb img{width:100%;height:100%;object-fit:cover}
+.news-cat{font-size:11px;font-weight:700;text-transform:uppercase;color:var(--tag);margin-bottom:4px}
+.news-title{font-size:15px;font-weight:700;line-height:1.3;margin-bottom:4px}.news-item:hover .news-title{color:var(--accent)}
+.news-date{font-size:11px;color:var(--text-muted)}
+.suggest-card{display:grid;grid-template-columns:88px 1fr;border-radius:10px;overflow:hidden;background:#b45309;color:#fff;min-height:88px;margin-bottom:10px}
+.suggest-card img{width:88px;min-height:88px;object-fit:cover}.suggest-body{padding:12px 14px}
+.suggest-label{font-size:10px;font-weight:700;opacity:.85;margin-bottom:4px}.suggest-title{font-size:14px;font-weight:700}
+.overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.75);display:none;align-items:flex-start;justify-content:center;padding:20px 12px;overflow-y:auto}
+.overlay.open{display:flex}.sheet{background:var(--surface);border:1px solid var(--border);border-radius:12px;width:min(640px,100%);margin:auto;position:relative}
+.sheet-close{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);font-size:18px;display:grid;place-items:center}
+.sheet-cover{aspect-ratio:16/9;background:var(--surface-3) center/cover no-repeat;border-radius:12px 12px 0 0}
+.sheet-body{padding:1.25rem}.sheet-cat{font-size:11px;font-weight:700;text-transform:uppercase;color:var(--tag);margin-bottom:8px}
+.sheet-title{font-size:1.35rem;font-weight:800;margin-bottom:8px;padding-right:28px}.sheet-meta{font-size:12px;color:var(--text-muted);margin-bottom:14px}
+.sheet-text{font-size:14px;color:var(--text-secondary);line-height:1.65;white-space:pre-line}
+.sheet-person{display:flex;align-items:center;gap:12px;margin:16px 0;padding:12px;background:var(--surface-2);border-radius:10px;border:1px solid var(--border)}
+.sheet-person img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.footer{margin-top:2.5rem;border-top:1px solid var(--border);background:var(--surface);padding:1.75rem 0}.footer a{display:block;font-size:13px;color:var(--text-secondary);margin-bottom:4px}
+.empty{text-align:center;padding:2rem;color:var(--text-muted);border:1px dashed var(--border);border-radius:10px}
+
+/* PLAYVERSE account integration */
+.account-nav{font-size:12px;font-weight:700;padding:7px 11px;border-radius:8px;color:#fff;background:#2f81f7;border:0;white-space:nowrap}
+.account-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.82);display:none;align-items:flex-start;justify-content:center;padding:18px 12px;overflow-y:auto}
+.account-overlay.open{display:flex}
+.account-box{width:min(460px,100%);margin:auto;background:#12161c;border:1px solid #303844;border-radius:14px;padding:20px;position:relative;box-shadow:0 20px 70px rgba(0,0,0,.5)}
+.account-close{position:absolute;right:12px;top:10px;width:34px;height:34px;border:1px solid #303844;border-radius:8px;background:#181d25;font-size:21px}
+.account-box h2{font-size:20px;margin:4px 40px 5px 0}
+.account-sub{font-size:13px;color:#9aa3ad;margin-bottom:16px}
+.account-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px;background:#181d25;border-radius:9px;margin-bottom:16px}
+.account-tab{padding:10px;border-radius:7px;color:#9aa3ad;font-weight:700;font-size:13px}
+.account-tab.on{background:#222831;color:#fff}
+.account-panel{display:none}.account-panel.on{display:block}
+.account-box label{display:block;font-size:12px;color:#9aa3ad;font-weight:600;margin:12px 0 6px}
+.account-box input{width:100%;padding:12px 13px;border:1px solid #303844;border-radius:8px;background:#0a0c10;color:#f0f3f6;font:inherit;outline:none}
+.account-box input:focus{border-color:#2f81f7;box-shadow:0 0 0 3px rgba(47,129,247,.16)}
+.account-action{width:100%;padding:12px;margin-top:12px;border-radius:8px;background:#2f81f7;color:#fff;font-weight:700;font-size:14px}
+.account-google{background:#fff;color:#111;margin-top:10px}
+.account-action:disabled{opacity:.55;cursor:wait}
+.account-divider{display:flex;align-items:center;gap:10px;color:#6b7380;font-size:11px;font-weight:700;margin:15px 0 3px}
+.account-divider:before,.account-divider:after{content:"";height:1px;background:#303844;flex:1}
+.account-msg{display:none;margin-top:12px;padding:10px;border-radius:8px;font-size:13px;line-height:1.45}
+.account-msg.err{display:block;background:rgba(248,81,73,.12);border:1px solid rgba(248,81,73,.35);color:#ffa198}
+.account-msg.ok{display:block;background:rgba(22,163,74,.12);border:1px solid rgba(22,163,74,.35);color:#4ade80}
+.account-session{display:none;text-align:center;padding:8px 0}
+.account-session.on{display:block}
+.account-avatar{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;margin:0 auto 10px;background:linear-gradient(135deg,#2f81f7,#16a34a);font-size:22px;font-weight:800}
+.account-session p{font-size:13px;color:#9aa3ad;word-break:break-all;margin:5px 0 12px}
+.account-small{display:block;color:#9aa3ad;font-size:12px;margin-top:9px;text-align:center}
+.account-small button{color:#58a6ff;font-weight:700}
+.account-verify{display:none;color:#fbbf24;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25);padding:9px;border-radius:8px;font-size:12px;margin:8px 0}
+
+
+/* PLAYVERSE PREMIUM EDITORIAL REDESIGN — frontend only */
+:root{
+  --bg:#080b10;--surface:#101722;--surface-2:#151f2c;--surface-3:#202c3b;
+  --border:rgba(159,177,199,.16);--text:#f4f7fb;--text-secondary:#aab7c7;
+  --text-muted:#718096;--accent:#65a8ff;--accent-soft:rgba(101,168,255,.12);
+  --tag:#f4b544;--max:1180px;
+}
+body{background:radial-gradient(ellipse at 50% -20%,rgba(41,78,124,.22),transparent 48%),var(--bg);letter-spacing:-.01em}
+.wrap{width:min(var(--max),100% - 2rem)}
+.header{background:rgba(8,11,16,.94);border-bottom:1px solid var(--border)}
+.header-inner{min-height:70px;padding:14px 0;gap:22px}
+.brand{font-size:21px;letter-spacing:-.06em}.brand span{background:#e6a93b;color:#111827;font-size:9px;letter-spacing:.08em;padding:4px 7px}
+.nav-links{gap:6px}.nav-links a,.account-nav{font-size:12px;padding:9px 13px;border-radius:7px}
+.nav-links a.on{background:rgba(101,168,255,.16);color:#9bc8ff}
+.nav-links a.trailers{background:rgba(191,57,137,.18);color:#f2a5d4}
+.nav-links a.reels{background:rgba(124,58,237,.18);color:#c4a8ff}
+.account-nav{background:#e6a93b;color:#111827}
+.hero{margin:28px 0 24px;border:0;border-radius:16px;box-shadow:0 22px 70px rgba(0,0,0,.32)}
+.hero-img{aspect-ratio:2.15/1;min-height:300px;background-color:#1b2735}
+.hero-img::after{background:linear-gradient(90deg,rgba(5,9,15,.94) 0%,rgba(5,9,15,.64) 44%,rgba(5,9,15,.04) 100%),linear-gradient(0deg,rgba(5,9,15,.58),transparent 55%)}
+.hero-body{left:0;right:auto;bottom:0;width:min(760px,100%);padding:clamp(22px,5vw,54px)}
+.hero-tag{background:#e6a93b;color:#111827;font-size:10px;letter-spacing:.1em;border-radius:4px;padding:6px 9px}
+.hero-title{font-size:clamp(25px,4vw,43px);line-height:1.08;max-width:720px;margin:0 0 12px}
+.hero-meta{color:#c2ccda;font-size:12px}
+.chips{gap:8px;margin:0 0 12px;overflow-x:auto;flex-wrap:nowrap;padding:3px 0 8px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;background:#111a26;border-color:var(--border);padding:8px 15px}
+.chip.on{background:var(--accent-soft);border-color:rgba(101,168,255,.55);color:#a8d0ff}
+.api-status{font-size:11px;color:#8292a7;padding:4px 0 12px}
+.sec-head{margin:32px 0 15px;padding-bottom:11px;border-bottom:1px solid var(--border)}
+.sec-title{font-size:15px;letter-spacing:.08em}
+#newsList{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+
+/* Blocos editoriais inseridos automaticamente a cada 8 notícias */
+.pv-media-break{grid-column:1/-1;margin:12px 0 18px;padding:clamp(15px,2.5vw,26px);border:1px solid rgba(101,168,255,.24);border-radius:18px;background:linear-gradient(135deg,#172638 0%,#0d1622 58%,#111b29 100%);overflow:hidden}
+.pv-media-break-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
+.pv-media-break-kicker{font-size:10px;font-weight:800;letter-spacing:.18em;color:#e6b75c}
+.pv-media-break-title{font-size:clamp(19px,2.2vw,26px);font-weight:800;margin-top:4px}
+.pv-media-break-note{font-size:11px;color:#91a2b8}
+.pv-media-image-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-template-rows:repeat(2,minmax(105px,1fr));gap:10px}
+.pv-media-tile{position:relative;display:block;min-height:112px;border-radius:12px;overflow:hidden;background:#09111c;color:#fff;text-decoration:none}
+.pv-media-tile:first-child{grid-row:span 2;min-height:230px}
+.pv-media-tile img{width:100%;height:100%;min-height:inherit;object-fit:cover;display:block;transition:transform .35s}
+.pv-media-tile:hover img{transform:scale(1.04)}
+.pv-media-tile:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.86))}
+.pv-media-tile span{position:absolute;z-index:1;left:12px;right:12px;bottom:11px;font-size:13px;font-weight:800;line-height:1.25}
+.pv-media-video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.pv-media-video{min-width:0;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;background:#080f18}
+.pv-media-video-frame{aspect-ratio:16/9;background:#05080d}
+.pv-media-video-frame iframe{width:100%;height:100%;border:0}
+.pv-media-video-link{display:grid;place-items:center;aspect-ratio:16/9;color:#fff;text-decoration:none;background:radial-gradient(circle at center,#314b68,#09111c 72%);font-size:34px}
+.pv-media-video-title{padding:11px 13px;font-size:13px;font-weight:800;line-height:1.3}
+@media(max-width:600px){
+ .pv-media-image-grid{grid-template-columns:1fr 1fr;grid-template-rows:160px 112px}
+ .pv-media-tile:first-child{grid-column:1/-1;grid-row:auto;min-height:160px}
+ .pv-media-video-grid{grid-template-columns:1fr}
+ .pv-media-break-head{align-items:start;flex-direction:column}
+}
+
+.news-item{display:flex;flex-direction:column;gap:0;padding:0;border:1px solid var(--border);border-radius:13px;overflow:hidden;background:linear-gradient(180deg,#121c29,#0e151f);min-width:0;transition:transform .2s,border-color .2s,box-shadow .2s}
+.news-item:hover{transform:translateY(-3px);border-color:rgba(101,168,255,.5);box-shadow:0 14px 36px rgba(0,0,0,.22)}
+.news-thumb{width:100%;height:auto;aspect-ratio:16/9;border-radius:0;background:#1b2735}
+.news-thumb img{transition:transform .35s}
+.news-item:hover .news-thumb img{transform:scale(1.035)}
+.news-content{padding:14px 15px 16px;display:flex;flex-direction:column;flex:1}
+.news-cat{font-size:10px;letter-spacing:.1em;color:#e6b75c;margin-bottom:8px}
+.news-title{font-size:16px;line-height:1.28;margin-bottom:9px}
+.news-date{font-size:11px;color:#8392a5;margin-top:auto}
+.news-item.news-featured{grid-column:span 7;grid-row:span 2}
+.news-item.news-featured .news-thumb{aspect-ratio:16/9}
+.news-item.news-featured .news-content{padding:20px 22px 22px}
+.news-item.news-featured .news-title{font-size:clamp(21px,2.4vw,30px);line-height:1.15}
+.news-item.news-secondary{grid-column:span 5;display:grid;grid-template-columns:42% 1fr;min-height:140px}
+.news-item.news-secondary .news-thumb{height:100%;min-height:140px;aspect-ratio:auto}
+.news-item.news-secondary .news-content{padding:12px}
+.news-item.news-secondary .news-title{font-size:14px}
+.news-item.news-standard{grid-column:span 4}
+.news-item.news-standard .news-title{font-size:15px}
+.news-item.news-row{grid-column:span 6;display:grid;grid-template-columns:35% 1fr;min-height:130px}
+.news-item.news-row .news-thumb{height:100%;min-height:130px;aspect-ratio:auto}
+.news-item.news-row .news-content{padding:13px}
+.video-section{margin:36px 0 28px;padding:22px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(135deg,rgba(24,38,55,.9),rgba(13,20,30,.95))}
+.video-heading{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}
+.video-kicker{font-size:10px;letter-spacing:.16em;color:#e6b75c;font-weight:800}
+.video-title{font-size:21px;font-weight:800;margin-top:3px}
+.video-more{font-size:12px;color:#9bc8ff;font-weight:700}
+.video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.video-card{display:block;min-width:0;border-radius:11px;overflow:hidden;background:#0a111b;border:1px solid var(--border)}
+.video-frame{aspect-ratio:16/9;background:#05080d}
+.video-frame iframe{width:100%;height:100%;border:0}
+.video-placeholder{aspect-ratio:16/9;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#263b56,#0a111b 72%);color:#dbeafe}
+.video-placeholder span{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#e6a93b;color:#111827;font-size:20px}
+.video-card-body{padding:12px}
+.video-card-title{font-size:13px;font-weight:700;line-height:1.35}
+.video-card-meta{font-size:10px;color:#8292a7;margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+.video-empty{padding:20px;border:1px dashed var(--border);border-radius:10px;color:var(--text-secondary);font-size:13px}
+.suggest-card{background:linear-gradient(110deg,#172a42,#15202d);border:1px solid var(--border);border-radius:12px;color:#f4f7fb;min-height:100px}
+.suggest-card img{width:100px;min-height:100px}
+.suggest-label{color:#e6b75c;letter-spacing:.1em}
+.overlay{backdrop-filter:blur(7px)}
+.sheet{border-radius:16px;overflow:hidden}
+.sheet-title{font-size:clamp(22px,4vw,32px);line-height:1.15}
+.footer{border-top:1px solid var(--border);background:#090e15}
+.footer .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px}
+.footer p:last-child{margin-left:auto!important}
+.empty{border-color:var(--border);background:#101722}
+@media(max-width:760px){
+ .header-inner{align-items:flex-start;flex-wrap:wrap;gap:8px}
+ .brand{font-size:19px}.nav-links{width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+ .nav-links a,.account-nav{white-space:nowrap}
+ .hero{margin:18px 0}.hero-img{aspect-ratio:4/3;min-height:250px}
+ .hero-img::after{background:linear-gradient(0deg,rgba(5,9,15,.96),rgba(5,9,15,.12) 82%)}
+ .hero-body{width:100%;padding:20px}
+ .hero-title{font-size:25px}
+ #newsList{gap:12px}
+ .news-item.news-featured{grid-column:span 12;grid-row:auto}
+ .news-item.news-secondary{grid-column:span 6;display:flex;min-height:0}
+ .news-item.news-secondary .news-thumb{height:auto;min-height:0;aspect-ratio:16/10}
+ .news-item.news-secondary .news-content{padding:11px}
+ .news-item.news-secondary .news-title{font-size:13px}
+ .news-item.news-standard{grid-column:span 6}
+ .news-item.news-row{grid-column:span 12}
+ .video-section{padding:15px;margin:28px 0}
+ .video-grid{grid-template-columns:1fr;gap:10px}
+ .video-heading{align-items:start}
+ .footer .wrap{display:block}.footer p:last-child{margin-left:0!important}
+}
+@media(max-width:420px){
+ .wrap{width:calc(100% - 1.1rem)}
+ .news-item.news-secondary,.news-item.news-standard{grid-column:span 12}
+ .news-item.news-secondary{display:grid;grid-template-columns:38% 1fr}
+ .news-item.news-secondary .news-thumb{height:100%;min-height:120px;aspect-ratio:auto}
+ .news-item.news-secondary .news-content{padding:10px}
+ .news-item.news-secondary .news-title{font-size:13px}
+ .news-item.news-featured .news-title{font-size:22px}
+}
+
+
+.news-load-sentinel{height:2px;width:100%;margin:1px 0}
+#newsFeedEnd{margin:22px 0;text-align:center}
+
+</style>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+
+</head>
+<body>
+<header class="header"><div class="wrap header-inner">
+<a href="index.html" class="brand">PLAYVERSE <span>NEWS</span></a>
+<nav class="nav-links">
+<a href="index.html" class="on">Notícias</a>
+<a href="trailers.html" class="trailers">Trailers</a>
+<a href="reels.html" class="reels">Reels</a>
+<button type="button" class="account-nav" id="openAccount">Conta</button>
+<a href="https://wa.me/258859573853" target="_blank" rel="noopener">Contacto</a>
+</nav></div></header>
+<main class="wrap">
+<article class="hero" id="hero" hidden>
+<div class="hero-img" id="heroImg"></div>
+<div class="hero-body">
+<div class="hero-tag" id="heroTag">Destaque</div>
+<h1 class="hero-title" id="heroTitle"></h1>
+<div class="hero-meta" id="heroMeta"></div>
+</div></article>
+<section class="video-section" id="videoSection" aria-labelledby="videoSectionTitle">
+  <div class="video-heading">
+    <div><div class="video-kicker">PLAYVERSE WATCH</div><h2 class="video-title" id="videoSectionTitle">Vídeos em destaque</h2></div>
+    <a class="video-more" href="trailers.html">Ver trailers →</a>
+  </div>
+  <div class="video-grid" id="videoGrid">
+    <div class="video-empty">Os trailers oficiais e vídeos de gameplay autorizados aparecerão aqui quando estiverem disponíveis nas notícias.</div>
+  </div>
+</section>
+<div class="chips" id="chips">
+<button type="button" class="chip on" data-cat="Todas">Todas</button>
+<button type="button" class="chip" data-cat="Fundadores">Fundadores</button>
+<button type="button" class="chip" data-cat="Lançamentos">Lançamentos</button>
+<button type="button" class="chip" data-cat="Estúdios">Estúdios</button>
+<button type="button" class="chip" data-cat="Indústria">Indústria</button>
+<button type="button" class="chip" data-cat="API">Feed API</button>
+</div>
+<p class="api-status" id="apiStatus">Notícias automáticas PLAYVERSE · arquivo local</p>
+<div class="sec-head"><h2 class="sec-title">Notícias recentes e arquivo</h2><span id="newsCount">—</span></div>
+<div id="newsList"></div>
+<div id="newsLoadSentinel" class="news-load-sentinel" aria-hidden="true"></div>
+<div id="newsFeedEnd" class="video-empty" hidden>Não há mais notícias disponíveis neste momento. Volta mais tarde para ver as próximas publicações.</div>
+<div class="empty" id="newsEmpty" style="display:none">Sem notícias nesta categoria.</div>
+<div class="sec-head"><h2 class="sec-title">PLAYVERSE sugere</h2><a href="trailers.html" style="font-size:12px;font-weight:700;color:var(--tag)">Trailers ›</a></div>
+<div id="suggestList"></div>
+</main>
+<footer class="footer"><div class="wrap">
+<p style="font-size:13px;color:var(--text-secondary);margin-bottom:8px">PLAYVERSE — Publisher Moçambique</p>
+<a href="index.html">Notícias</a><a href="trailers.html">Trailers</a><a href="reels.html">Reels</a>
+<p style="font-size:12px;color:var(--text-muted);margin-top:12px">© 2026 PLAYVERSE</p>
+</div></footer>
+<div class="overlay" id="articleModal"><div class="sheet">
+<button type="button" class="sheet-close" id="articleClose">×</button>
+<div class="sheet-cover" id="articleCover"></div>
+<div class="sheet-body">
+<div class="sheet-cat" id="articleCat"></div>
+<h2 class="sheet-title" id="articleTitle"></h2>
+<div class="sheet-meta" id="articleMeta"></div>
+<div class="sheet-person" id="articlePerson" hidden>
+<img id="articlePersonImg" alt=""><div><strong id="articlePersonName"></strong><span id="articlePersonRole"></span></div>
+</div>
+<div class="sheet-text" id="articleText"></div>
+<div id="articleSourceWrap" style="margin-top:18px;display:none"><a id="articleSourceLink" href="#" target="_blank" rel="noopener noreferrer" style="color:var(--tag);font-weight:700;font-size:13px">Ler fonte original ↗</a></div>
+</div></div></div>
+
+<div class="account-overlay" id="accountOverlay" aria-hidden="true">
+  <section class="account-box" role="dialog" aria-modal="true" aria-labelledby="accountHeading">
+    <button type="button" class="account-close" id="closeAccount" aria-label="Fechar">×</button>
+    <div id="accountAuthView">
+      <h2 id="accountHeading">Conta PLAYVERSE</h2>
+      <p class="account-sub">Entra ou cria uma conta para personalizar a tua experiência.</p>
+      <div class="account-tabs">
+        <button type="button" class="account-tab on" data-account-tab="login">Entrar</button>
+        <button type="button" class="account-tab" data-account-tab="register">Criar conta</button>
+      </div>
+      <div class="account-panel on" id="account-login">
+        <form id="accountLoginForm">
+          <label for="accountLoginEmail">Email</label>
+          <input id="accountLoginEmail" type="email" autocomplete="email" required placeholder="o.teu@email.com">
+          <label for="accountLoginPassword">Palavra-passe</label>
+          <input id="accountLoginPassword" type="password" autocomplete="current-password" minlength="6" required placeholder="Mínimo 6 caracteres">
+          <button class="account-action" id="accountLoginBtn" type="submit">Entrar</button>
+        </form>
+        <span class="account-small"><button type="button" id="accountForgot">Esqueci-me da palavra-passe</button></span>
+      </div>
+      <div class="account-panel" id="account-register">
+        <form id="accountRegisterForm">
+          <label for="accountRegName">Nome</label>
+          <input id="accountRegName" type="text" autocomplete="name" required minlength="2" maxlength="40" placeholder="O teu nome">
+          <label for="accountRegEmail">Email</label>
+          <input id="accountRegEmail" type="email" autocomplete="email" required placeholder="o.teu@email.com">
+          <label for="accountRegPassword">Palavra-passe</label>
+          <input id="accountRegPassword" type="password" autocomplete="new-password" minlength="6" required placeholder="Mínimo 6 caracteres">
+          <button class="account-action" id="accountRegisterBtn" type="submit">Criar conta com email</button>
+        </form>
+      </div>
+      <div class="account-divider">OU</div>
+      <button type="button" class="account-action account-google" id="accountGoogle">Continuar com Google</button>
+      <div class="account-msg" id="accountMessage" role="status" aria-live="polite"></div>
+    </div>
+    <div class="account-session" id="accountSessionView">
+      <div class="account-avatar" id="accountAvatar">P</div>
+      <h2 id="accountUserName">Jogador</h2>
+      <p id="accountUserEmail"></p>
+      <div class="account-verify" id="accountVerifyNotice">O teu email ainda não foi confirmado.</div>
+      <button type="button" class="account-action" id="accountResendVerify" style="display:none">Reenviar confirmação</button>
+      <button type="button" class="account-action" id="accountLogout" style="background:#222831;border:1px solid #303844">Terminar sessão</button>
+      <button type="button" class="account-small" id="accountDone">Voltar ao PLAYVERSE</button>
+    </div>
+  </section>
+</div>
+
+<script>
+const NEWS_ARCHIVE_KEY="pv_news_archive",NEWS_API_TS="pv_news_api_ts",NEWS_DAY_MS=86400000;
+// URL público do backend Render. Substituir depois do deploy.
+const PLAYVERSE_API_URL="https://playverse-news-backend.onrender.com";
+const SEED_NEWS=[
+{id:"2026-11-04-indie",title:"De estúdio solo a lançamento global: RPG independente",category:"Fundadores",date:"2026-11-04",source:"PLAYVERSE",image:"https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",person:{name:"Ana Ribeiro",role:"Fundadora · Pixel Harbor",photo:"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80"},summary:"Early access do primeiro título comercial.",body:"Ana Ribeiro fundou a Pixel Harbor com um RPG narrativo em português e inglês. O jogo entra em early access esta semana."},
+{id:"2026-11-03-maputo",title:"Estúdio em Maputo anuncia primeiro jogo de ação",category:"Estúdios",date:"2026-11-03",source:"PLAYVERSE",image:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",person:{name:"Carlos Mendes",role:"Diretor criativo · Baobab Games",photo:"https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80"},summary:"Elenco criativo e trailer em breve.",body:"A Baobab Games, em Maputo, revelou o elenco do seu primeiro título de ação com cenários inspirados na costa moçambicana."},
+{id:"2026-11-02-launch",title:"Lançamento: indie de corridas com suporte a volante",category:"Lançamentos",date:"2026-11-02",source:"PLAYVERSE",image:"https://images.unsplash.com/photo-1511919884226-fd3cad54643b?w=800&q=80",person:{name:"João Silva",role:"Fundador · Apex Lane",photo:"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80"},summary:"Oito pistas no dia um.",body:"João Silva lançou o simulador da Apex Lane. Trailers na secção Trailers."},
+{id:"2026-11-01-ind",title:"Fundadores usam trailers curtos para validar ideias",category:"Indústria",date:"2026-11-01",source:"PLAYVERSE",image:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&q=80",person:null,summary:"Protótipos em vídeo de 30–60s.",body:"Fundadores publicam trailers de protótipo antes de investir um ano de produção."},
+{id:"2026-10-30-surv",title:"Fundadora revela personagem do survival narrativo",category:"Fundadores",date:"2026-10-30",source:"PLAYVERSE",image:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80",person:{name:"Marta Costa",role:"Game designer · North Lantern",photo:"https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80"},summary:"Sistema de stress e mapa semi-aberto.",body:"Marta Costa partilhou arte do protagonista do survival da North Lantern."},
+{id:"2026-10-28-pv",title:"PLAYVERSE: notícias de quem cria jogos e trailers",category:"Indústria",date:"2026-10-28",source:"PLAYVERSE",image:"https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&q=80",person:null,summary:"Notícias na home, trailers na secção Trailers.",body:"A PLAYVERSE junta histórias de fundadores ao catálogo de trailers. O arquivo de notícias só cresce."}
+];
+const SUGGEST=[{title:"Trailers oficiais e fichas",label:"// PLAYVERSE SUGERE //",href:"trailers.html",image:"https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&q=80"},{title:"Reels — trailers verticais",label:"// PLAYVERSE SUGERE //",href:"reels.html",image:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&q=80"},{title:"WhatsApp Publisher Moçambique",label:"// PLAYVERSE SUGERE //",href:"https://wa.me/258859573853",image:"https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=400&q=80"}];
+let currentCat="Todas",archive=[],backendOffset=0,backendHasMore=false,backendLoading=false;
+function loadArchive(){try{return JSON.parse(localStorage.getItem(NEWS_ARCHIVE_KEY)||"[]")}catch(e){return[]}}
+function saveArchive(list){try{localStorage.setItem(NEWS_ARCHIVE_KEY,JSON.stringify(list))}catch(e){}}
+function mergeNews(){const m=new Map();SEED_NEWS.forEach(n=>m.set(n.id,n));archive.forEach(n=>{if(n&&n.id)m.set(n.id,Object.assign({},m.get(n.id)||{},n))});return Array.from(m.values()).sort((a,b)=>String(b.date).localeCompare(String(a.date)))}
+function appendNews(items){if(!items||!items.length)return 0;const have=new Set(mergeNews().map(n=>n.id));let added=0;const extra=[];items.forEach(n=>{if(n&&n.id&&!have.has(n.id)){extra.push(n);have.add(n.id);added++}});if(added){const all=mergeNews().concat(extra);const m=new Map();all.forEach(n=>m.set(n.id,n));saveArchive(Array.from(m.values()).sort((a,b)=>String(b.date).localeCompare(String(a.date))));archive=loadArchive()}return added}
+function formatDate(iso){if(!iso)return"";const[s]=[String(iso).slice(0,10)];const[y,m,d]=s.split("-");return(y&&m&&d)?d+"/"+m+"/"+y:iso}
+function filtered(){const all=mergeNews();if(currentCat==="Todas")return all;if(currentCat==="API")return all.filter(n=>n.fromApi);return all.filter(n=>n.category===currentCat)}
+function renderHero(){const list=mergeNews(),hero=document.getElementById("hero");if(!list.length){hero.hidden=true;return}const n=list[0];hero.hidden=false;document.getElementById("heroImg").style.backgroundImage="url("+(n.image||"")+")";document.getElementById("heroTag").textContent=n.category||"Destaque";document.getElementById("heroTitle").textContent=n.title;document.getElementById("heroMeta").textContent=formatDate(n.date)+(n.person?" · "+n.person.name:(n.source?" · "+n.source:""));hero.onclick=()=>openArticle(n.id)}
+let visibleNewsLimit=16;
+let infiniteNewsLoading=false;
+let newsScrollObserver=null;
+
+function renderList(){
+  const list=filtered(),visible=list.slice(0,visibleNewsLimit);
+  const el=document.getElementById("newsList"),empty=document.getElementById("newsEmpty");
+  const sentinel=document.getElementById("newsLoadSentinel");
+  const feedEnd=document.getElementById("newsFeedEnd");
+  document.getElementById("newsCount").textContent="A mostrar "+visible.length+" de "+list.length+" notícias";
+  el.innerHTML="";
+  if(!list.length){
+    empty.style.display="";
+    sentinel.style.display="none";
+    feedEnd.hidden=true;
+    return;
+  }
+  empty.style.display="none";
+  sentinel.style.display="";
+  feedEnd.hidden=true;
+
+  visible.forEach((n,index)=>{
+    const a=document.createElement("article");
+    const layoutClass=index===0?"news-featured":index<3?"news-secondary":index<7?"news-standard":"news-row";
+    a.className="news-item "+layoutClass;
+    const thumb=document.createElement("div");
+    thumb.className="news-thumb";
+    if(n.image){
+      const img=document.createElement("img");
+      img.src=n.image;img.alt=n.title||"Imagem da notícia";img.loading="lazy";
+      img.onerror=()=>{img.remove()};
+      thumb.appendChild(img);
+    }
+    const content=document.createElement("div");content.className="news-content";
+    const cat=document.createElement("div");cat.className="news-cat";cat.textContent="// "+(n.category||"Gaming")+" //";
+    const title=document.createElement("h3");title.className="news-title";title.textContent=n.title||"Notícia PLAYVERSE";
+    const date=document.createElement("div");date.className="news-date";
+    date.textContent=formatDate(n.date)+(n.person?" · "+n.person.name:(n.source?" · "+n.source:""));
+    content.append(cat,title,date);a.append(thumb,content);
+    a.addEventListener("click",()=>openArticle(n.id));
+    el.appendChild(a);
+
+    // Sequência contínua: 8 notícias pequenas, 1 bloco grande, repetindo.
+    // O primeiro bloco é de imagens; o segundo de vídeos; depois alterna.
+    if((index+1)%8===0){
+      const blockNumber=Math.floor(index/8);
+      const groupItems=list.slice(index-7,index+1);
+      const mediaBlock=document.createElement("section");
+      mediaBlock.className="pv-media-break";
+      const head=document.createElement("div");head.className="pv-media-break-head";
+      const heading=document.createElement("div");
+      const kicker=document.createElement("div");kicker.className="pv-media-break-kicker";
+      const isGallery=blockNumber%2===0;
+      kicker.textContent=isGallery?"PLAYVERSE GALLERY":"PLAYVERSE WATCH";
+      const headingTitle=document.createElement("h2");headingTitle.className="pv-media-break-title";
+      headingTitle.textContent=isGallery?"Imagens em destaque":"Vídeos e gameplay";
+      heading.append(kicker,headingTitle);
+      const note=document.createElement("div");note.className="pv-media-break-note";
+      note.textContent="Seleção editorial PLAYVERSE";
+      head.append(heading,note);mediaBlock.appendChild(head);
+
+      if(isGallery){
+        const gallery=document.createElement("div");gallery.className="pv-media-image-grid";
+        const imageItems=groupItems.filter(item=>item.image).slice(0,3);
+        imageItems.forEach(item=>{
+          const tile=document.createElement("a");tile.className="pv-media-tile";tile.href="#";
+          const image=document.createElement("img");image.src=item.image;image.alt=item.title||"Imagem de gaming";image.loading="lazy";
+          const label=document.createElement("span");label.textContent=item.title||"Destaque PLAYVERSE";
+          tile.append(image,label);
+          tile.addEventListener("click",event=>{event.preventDefault();openArticle(item.id)});
+          gallery.appendChild(tile);
+        });
+        if(!imageItems.length){
+          const fallback=document.createElement("p");fallback.className="video-empty";
+          fallback.textContent="As imagens desta seleção aparecerão aqui quando estiverem disponíveis nas notícias.";
+          gallery.appendChild(fallback);
+        }
+        mediaBlock.appendChild(gallery);
+      }else{
+        const videoGrid=document.createElement("div");videoGrid.className="pv-media-video-grid";
+        const videoItems=groupItems.filter(item=>item.videoUrl||item.video_url||item.youtube_url||item.video_embed_url).slice(0,2);
+        videoItems.forEach(item=>{
+          const raw=item.videoUrl||item.video_url||item.youtube_url||item.video_embed_url;
+          const embed=youtubeEmbedUrl(raw);
+          const card=document.createElement("article");card.className="pv-media-video";
+          if(embed){
+            const frame=document.createElement("div");frame.className="pv-media-video-frame";
+            const iframe=document.createElement("iframe");iframe.src=embed;iframe.title=item.title||"Vídeo PLAYVERSE";iframe.loading="lazy";
+            iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.allowFullscreen=true;frame.appendChild(iframe);card.appendChild(frame);
+          }else{
+            const link=document.createElement("a");link.className="pv-media-video-link";link.href=raw;
+            link.target="_blank";link.rel="noopener noreferrer";link.textContent="▶";card.appendChild(link);
+          }
+          const label=document.createElement("div");label.className="pv-media-video-title";
+          label.textContent=item.title||"Vídeo PLAYVERSE";
+          card.appendChild(label);videoGrid.appendChild(card);
+        });
+        if(!videoItems.length){
+          const fallback=document.createElement("div");fallback.className="video-empty";fallback.style.gridColumn="1/-1";
+          fallback.textContent="Ainda não há vídeos associados a estas oito notícias. Os próximos trailers e gameplays válidos aparecerão nesta área.";
+          videoGrid.appendChild(fallback);
+        }
+        mediaBlock.appendChild(videoGrid);
+      }
+      el.appendChild(mediaBlock);
+    }
+  });
+
+  if(visible.length>=list.length && !backendHasMore){
+    sentinel.style.display="none";
+    feedEnd.hidden=false;
+  }
+  observeNewsSentinel();
+}
+function youtubeEmbedUrl(raw){
+  if(!raw)return "";
+  try{
+    const u=new URL(raw);
+    let id="";
+    if(u.hostname==="youtu.be")id=u.pathname.slice(1);
+    else if(/(^|\.)youtube\.com$/i.test(u.hostname))id=u.searchParams.get("v")||((u.pathname.match(/\/embed\/([^/?]+)/)||[])[1]||"");
+    if(!/^[a-zA-Z0-9_-]{11}$/.test(id))return "";
+    return "https://www.youtube-nocookie.com/embed/"+id+"?rel=0";
+  }catch(e){return ""}
+}
+function renderVideos(){
+  const grid=document.getElementById("videoGrid");if(!grid)return;
+  const videos=mergeNews().filter(n=>n.videoUrl||n.video_url||n.youtube_url||n.video_embed_url).slice(0,3);
+  grid.innerHTML="";
+  if(!videos.length){
+    const empty=document.createElement("div");empty.className="video-empty";empty.style.gridColumn="1/-1";
+    empty.textContent="A secção está preparada para trailers oficiais e gameplay autorizado. Os vídeos aparecerão quando uma notícia trouxer um link de vídeo válido.";
+    grid.appendChild(empty);return;
+  }
+  videos.forEach(n=>{
+    const raw=n.videoUrl||n.video_url||n.youtube_url||n.video_embed_url;
+    const embed=youtubeEmbedUrl(raw);
+    const card=document.createElement("article");card.className="video-card";
+    if(embed){
+      const frame=document.createElement("div");frame.className="video-frame";
+      const iframe=document.createElement("iframe");iframe.src=embed;iframe.title=n.title||"Vídeo PLAYVERSE";iframe.loading="lazy";iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";iframe.allowFullscreen=true;frame.appendChild(iframe);card.appendChild(frame);
+    }else{
+      const link=document.createElement("a");link.href=raw;link.target="_blank";link.rel="noopener noreferrer";link.className="video-placeholder";link.innerHTML="<span>▶</span>";card.appendChild(link);
+    }
+    const body=document.createElement("div");body.className="video-card-body";
+    const title=document.createElement("div");title.className="video-card-title";title.textContent=n.title||"Vídeo PLAYVERSE";
+    const meta=document.createElement("div");meta.className="video-card-meta";meta.textContent=n.video_type||n.videoType||"Trailer / Gameplay";
+    body.append(title,meta);card.appendChild(body);grid.appendChild(card);
+  });
+}
+function renderSuggest(){document.getElementById("suggestList").innerHTML=SUGGEST.map(s=>'<a class="suggest-card" href="'+s.href+'"'+(s.href.startsWith("http")?' target="_blank" rel="noopener"':'')+'><img src="'+s.image+'" alt="" loading="lazy"><div class="suggest-body"><div class="suggest-label">'+s.label+'</div><div class="suggest-title">'+s.title+'</div></div></a>').join("")}
+function openArticle(id){const n=mergeNews().find(x=>x.id===id);if(!n)return;document.getElementById("articleCover").style.backgroundImage="url("+(n.image||"")+")";document.getElementById("articleCat").textContent="// "+(n.category||"Notícia")+" //";document.getElementById("articleTitle").textContent=n.title;document.getElementById("articleMeta").textContent=formatDate(n.date)+(n.summary?" · "+n.summary:"");document.getElementById("articleText").textContent=n.body||n.summary||"";const sourceWrap=document.getElementById("articleSourceWrap"),sourceLink=document.getElementById("articleSourceLink");if(n.url&&/^https?:\/\//i.test(n.url)){sourceLink.href=n.url;sourceWrap.style.display="block"}else sourceWrap.style.display="none";const person=document.getElementById("articlePerson");if(n.person){person.hidden=false;document.getElementById("articlePersonImg").src=n.person.photo||"";document.getElementById("articlePersonName").textContent=n.person.name||"";document.getElementById("articlePersonRole").textContent=n.person.role||""}else person.hidden=true;document.getElementById("articleModal").classList.add("open");document.body.style.overflow="hidden"}
+function closeArticle(){document.getElementById("articleModal").classList.remove("open");document.body.style.overflow=""}
+document.getElementById("articleClose").onclick=closeArticle;document.getElementById("articleModal").onclick=e=>{if(e.target.id==="articleModal")closeArticle()};
+document.querySelectorAll("#chips .chip").forEach(btn=>{btn.onclick=()=>{document.querySelectorAll("#chips .chip").forEach(c=>c.classList.remove("on"));btn.classList.add("on");currentCat=btn.dataset.cat;visibleNewsLimit=16;renderList()}});
+async function fetchApiNews(force){const status=document.getElementById("apiStatus");const ts=+localStorage.getItem(NEWS_API_TS)||0;if(!force&&Date.now()-ts<NEWS_DAY_MS){status.textContent="Feed API em cache (24h). Arquivo: "+mergeNews().length;return}status.textContent="A atualizar feed API…";const key=localStorage.getItem("pv_rawg_key")||"47531b491b544f4fa2bd5588869d9402";try{const r=await fetch("https://api.rawg.io/api/games?ordering=-released&page_size=12&metacritic=60,100&key="+encodeURIComponent(key));if(!r.ok)throw new Error("HTTP "+r.status);const data=await r.json();const items=(data.results||[]).map(g=>{const date=(g.released||"").slice(0,10)||new Date().toISOString().slice(0,10);const genres=(g.genres||[]).map(x=>x.name);return{id:"rawg-"+g.id+"-"+date,title:g.name+(g.released?" — lançamento "+date:""),category:genres.some(x=>/indie/i.test(x))?"Estúdios":"Lançamentos",date,source:"RAWG",fromApi:true,image:g.background_image||"",person:null,summary:"★ "+(g.rating||"—")+" · "+genres.slice(0,3).join(", "),body:(g.name||"Jogo")+" nos lançamentos recentes. Vê trailers na secção Trailers.",url:"trailers.html"}});const added=appendNews(items);localStorage.setItem(NEWS_API_TS,String(Date.now()));status.textContent=(added?"Feed API: +"+added+" novas. ":"Sem novidades. ")+"Arquivo: "+mergeNews().length;renderHero();renderList()}catch(err){status.textContent="Feed API indisponível — arquivo local ("+mergeNews().length+")"}}
+async function fetchPlayverseNews(reset=true){
+  const status=document.getElementById("apiStatus");
+  if(!PLAYVERSE_API_URL||PLAYVERSE_API_URL.includes("TEU-SERVICO")){status.textContent="Backend PLAYVERSE por ligar — arquivo local ativo ("+mergeNews().length+")";return}
+  if(backendLoading)return;backendLoading=true;
+  if(reset){backendOffset=0;status.textContent="A sincronizar notícias automáticas da PLAYVERSE…"}
+  try{
+    const response=await fetch(PLAYVERSE_API_URL.replace(/\/$/,"")+"/api/news?limit=100&offset="+backendOffset,{headers:{"Accept":"application/json"},cache:"no-store"});
+    if(!response.ok)throw new Error("HTTP "+response.status);
+    const data=await response.json();
+    const items=(data.news||[]).map(n=>({
+      id:"playverse-ai-"+n.id,title:n.title,category:n.category||"Gaming",
+      date:n.published_at?String(n.published_at).slice(0,10):new Date().toISOString().slice(0,10),
+      source:n.source||"PLAYVERSE IA",fromApi:true,image:n.image_url||"",person:null,
+      summary:n.summary||"",body:n.body||n.summary||"",url:n.source_url||"",videoUrl:n.video_url||n.youtube_url||n.video_embed_url||"",video_type:n.video_type||""
+    }));
+    const added=appendNews(items);archive=loadArchive();backendOffset+=data.count||items.length;backendHasMore=Boolean(data.hasMore);
+    renderHero();renderList();renderVideos();
+    localStorage.setItem("pv_playverse_api_ts",String(Date.now()));
+    status.textContent=(added?"IA PLAYVERSE: +"+added+" notícias. ":"Notícias atualizadas. ")+"Arquivo local: "+mergeNews().length+" · Total publicado na base de dados: "+(data.total||0);
+  }catch(error){status.textContent="API PLAYVERSE indisponível — arquivo local preservado ("+mergeNews().length+")";console.error("PLAYVERSE API:",error)}
+  finally{backendLoading=false}
+}
+async function loadNextNewsBatch(){
+  if(infiniteNewsLoading)return;
+  infiniteNewsLoading=true;
+  try{
+    const available=filtered().length;
+    if(visibleNewsLimit<available){
+      visibleNewsLimit+=16;
+      renderList();
+      return;
+    }
+    if(backendHasMore){
+      await fetchPlayverseNews(false);
+      const updated=filtered().length;
+      if(visibleNewsLimit<updated)visibleNewsLimit+=16;
+      renderList();
+      return;
+    }
+    const sentinel=document.getElementById("newsLoadSentinel");
+    const feedEnd=document.getElementById("newsFeedEnd");
+    if(sentinel)sentinel.style.display="none";
+    if(feedEnd)feedEnd.hidden=false;
+  }finally{
+    infiniteNewsLoading=false;
+  }
+}
+function observeNewsSentinel(){
+  const sentinel=document.getElementById("newsLoadSentinel");
+  if(!sentinel)return;
+  if(newsScrollObserver)newsScrollObserver.disconnect();
+  if(!("IntersectionObserver" in window))return;
+  newsScrollObserver=new IntersectionObserver(entries=>{
+    if(entries.some(entry=>entry.isIntersecting))loadNextNewsBatch();
+  },{root:null,rootMargin:"900px 0px",threshold:0});
+  newsScrollObserver.observe(sentinel);
+}
+document.addEventListener("DOMContentLoaded",()=>{archive=loadArchive();appendNews(SEED_NEWS);archive=loadArchive();renderHero();renderList();renderSuggest();renderVideos();fetchApiNews(false);fetchPlayverseNews()});
+window.PLAYVERSE_NEWS={appendNews,mergeNews,fetchApiNews,fetchPlayverseNews};
+</script>
+
+<script>
+(() => {
+  "use strict";
+  const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyBHd-zh1MWL6bD5Ptu3vp62XKMawlRfDQI",
+    authDomain: "playverse-4af2d.firebaseapp.com",
+    projectId: "playverse-4af2d",
+    appId: "1:1054190266087:web:86c1c0572eec16eff66442"
+  };
+  const overlay = document.getElementById("accountOverlay");
+  const message = document.getElementById("accountMessage");
+  const authView = document.getElementById("accountAuthView");
+  const sessionView = document.getElementById("accountSessionView");
+  let auth = null;
+
+  function showMessage(text, success = false) {
+    message.className = "account-msg " + (success ? "ok" : "err");
+    message.textContent = text;
+  }
+  function clearMessage() {
+    message.className = "account-msg";
+    message.textContent = "";
+  }
+  function friendlyError(error) {
+    const messages = {
+      "auth/email-already-in-use": "Já existe uma conta com este email. Tenta entrar.",
+      "auth/invalid-email": "O endereço de email não é válido.",
+      "auth/weak-password": "A palavra-passe é demasiado fraca. Usa pelo menos 6 caracteres.",
+      "auth/user-not-found": "Não existe uma conta com este email.",
+      "auth/wrong-password": "Palavra-passe incorreta.",
+      "auth/invalid-credential": "Email ou palavra-passe incorretos.",
+      "auth/too-many-requests": "Demasiadas tentativas. Aguarda um pouco e tenta novamente.",
+      "auth/popup-closed-by-user": "A janela do Google foi fechada antes de concluir o acesso.",
+      "auth/popup-blocked": "O navegador bloqueou a janela do Google. Permite pop-ups e tenta novamente.",
+      "auth/unauthorized-domain": "Este domínio ainda não está autorizado no Firebase Authentication.",
+      "auth/network-request-failed": "Falha de ligação. Verifica a tua internet."
+    };
+    return messages[error.code] || error.message || "Ocorreu um erro. Tenta novamente.";
+  }
+  function busy(button, value, text) {
+    if (!button.dataset.originalText) button.dataset.originalText = button.textContent;
+    button.disabled = value;
+    button.textContent = value ? text : button.dataset.originalText;
+  }
+  function openAccount() {
+    overlay.classList.add("open");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    clearMessage();
+  }
+  function closeAccount() {
+    overlay.classList.remove("open");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+  function renderUser(user) {
+    authView.style.display = user ? "none" : "";
+    sessionView.classList.toggle("on", !!user);
+    if (!user) return;
+    const name = user.displayName || (user.email || "Jogador").split("@")[0];
+    document.getElementById("accountUserName").textContent = name;
+    document.getElementById("accountUserEmail").textContent = user.email || "";
+    document.getElementById("accountAvatar").textContent = name.charAt(0).toUpperCase();
+    const needsVerification = !!user.email && !user.emailVerified &&
+      user.providerData.some(p => p.providerId === "password");
+    document.getElementById("accountVerifyNotice").style.display = needsVerification ? "block" : "none";
+    document.getElementById("accountResendVerify").style.display = needsVerification ? "block" : "none";
+    try {
+      localStorage.setItem("pv_user_session", JSON.stringify({
+        uid: user.uid, email: user.email || "", name,
+        provider: user.providerData[0]?.providerId || "password",
+        emailVerified: !!user.emailVerified
+      }));
+      if (!localStorage.getItem("pv_user_prefs")) {
+        localStorage.setItem("pv_user_prefs", JSON.stringify({likes: [], genres: [], watched: []}));
+      }
+    } catch (e) {}
+  }
+
+  document.getElementById("openAccount").addEventListener("click", openAccount);
+  document.getElementById("closeAccount").addEventListener("click", closeAccount);
+  document.getElementById("accountDone").addEventListener("click", closeAccount);
+  overlay.addEventListener("click", event => { if (event.target === overlay) closeAccount(); });
+  document.addEventListener("keydown", event => { if (event.key === "Escape" && overlay.classList.contains("open")) closeAccount(); });
+
+  document.querySelectorAll("[data-account-tab]").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll("[data-account-tab]").forEach(item => item.classList.toggle("on", item === tab));
+      document.querySelectorAll(".account-panel").forEach(panel => panel.classList.toggle("on", panel.id === "account-" + tab.dataset.accountTab));
+      clearMessage();
+    });
+  });
+
+  try {
+    if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
+    auth = firebase.auth();
+    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        renderUser(user);
+      } else {
+        localStorage.removeItem("pv_user_session");
+        renderUser(null);
+      }
+    });
+  } catch (error) {
+    console.error("Firebase Authentication:", error);
+    showMessage("Não foi possível iniciar a autenticação. Verifica a configuração do Firebase.");
+  }
+
+  document.getElementById("accountLoginForm").addEventListener("submit", async event => {
+    event.preventDefault(); clearMessage();
+    const button = document.getElementById("accountLoginBtn");
+    busy(button, true, "A entrar...");
+    try {
+      await auth.signInWithEmailAndPassword(
+        document.getElementById("accountLoginEmail").value.trim(),
+        document.getElementById("accountLoginPassword").value
+      );
+      showMessage("Sessão iniciada com sucesso.", true);
+    } catch (error) { showMessage(friendlyError(error)); }
+    finally { busy(button, false); }
+  });
+
+  document.getElementById("accountRegisterForm").addEventListener("submit", async event => {
+    event.preventDefault(); clearMessage();
+    const name = document.getElementById("accountRegName").value.trim();
+    const email = document.getElementById("accountRegEmail").value.trim();
+    const password = document.getElementById("accountRegPassword").value;
+    const button = document.getElementById("accountRegisterBtn");
+    if (name.length < 2) { showMessage("Escreve um nome com pelo menos 2 caracteres."); return; }
+    busy(button, true, "A criar conta...");
+    try {
+      const credential = await auth.createUserWithEmailAndPassword(email, password);
+      await credential.user.updateProfile({displayName: name});
+      await credential.user.sendEmailVerification();
+      await credential.user.reload();
+      showMessage("Conta criada! Enviámos um email para confirmares o teu endereço.", true);
+    } catch (error) { showMessage(friendlyError(error)); }
+    finally { busy(button, false); }
+  });
+
+  document.getElementById("accountGoogle").addEventListener("click", async () => {
+    clearMessage();
+    const button = document.getElementById("accountGoogle");
+    busy(button, true, "A ligar ao Google...");
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      provider.setCustomParameters({prompt: "select_account"});
+      await auth.signInWithPopup(provider);
+      showMessage("Autenticação Google concluída.", true);
+    } catch (error) { showMessage(friendlyError(error)); }
+    finally { busy(button, false); }
+  });
+
+  document.getElementById("accountForgot").addEventListener("click", async () => {
+    clearMessage();
+    const email = document.getElementById("accountLoginEmail").value.trim();
+    if (!email) {
+      showMessage("Escreve primeiro o teu email no campo de entrada.");
+      document.getElementById("accountLoginEmail").focus();
+      return;
+    }
+    try {
+      await auth.sendPasswordResetEmail(email);
+      showMessage("Se existir uma conta associada, receberás as instruções de recuperação.", true);
+    } catch (error) { showMessage(friendlyError(error)); }
+  });
+
+  document.getElementById("accountResendVerify").addEventListener("click", async () => {
+    try {
+      if (auth.currentUser && !auth.currentUser.emailVerified) {
+        await auth.currentUser.sendEmailVerification();
+        showMessage("Novo email de confirmação enviado.", true);
+      }
+    } catch (error) { showMessage(friendlyError(error)); }
+  });
+
+  document.getElementById("accountLogout").addEventListener("click", async () => {
+    try {
+      await auth.signOut();
+      localStorage.removeItem("pv_user_session");
+      showMessage("Sessão terminada.", true);
+    } catch (error) { showMessage(friendlyError(error)); }
+  });
+})();
+</script>
+
+<script data-goatcounter="https://gunnerkiller.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
