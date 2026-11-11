@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<script async src="https://scripts.adeqmedia.com/master.js" data-id="562"></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CineVerse — O Universo do Cinema</title>
+<meta name="description" content="CineVerse: descubra filmes clássicos e contemporâneos, trailers oficiais, análises, géneros e a história do cinema. Plataforma cinematográfica completa e profissional.">
+<meta name="keywords" content="filmes, cinema, trailers, críticas, géneros, CineVerse">
+<link rel="canonical" href="https://cineverse.example.com/">
+<meta property="og:title" content="CineVerse — O Universo do Cinema">
+<meta property="og:description" content="Explore o melhor do cinema mundial: filmes, trailers oficiais, artigos e muito mais.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_PT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0f">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"CineVerse","description":"Plataforma cinematográfica profissional com filmes, trailers e artigos.","url":"https://cineverse.example.com/","potentialAction":{"@type":"SearchAction","target":"https://cineverse.example.com/?q={search_term_string}","query-input":"required name=search_term_string"}}
+</script>
+
+  <style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #12121a;
+  --bg3: #1a1a26;
+  --card: #16161f;
+  --text: #e8e8f0;
+  --text2: #a0a0b8;
+  --accent: #e50914;
+  --accent2: #b20710;
+  --gold: #f5c518;
+  --border: #2a2a3a;
+  --shadow: 0 8px 32px rgba(0,0,0,.45);
+  --radius: 12px;
+  --transition: .3s ease;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+[data-theme="light"] {
+  --bg: #f5f5f8;
+  --bg2: #ffffff;
+  --bg3: #ebebf0;
+  --card: #ffffff;
+  --text: #12121a;
+  --text2: #55556a;
+  --border: #d8d8e4;
+  --shadow: 0 8px 32px rgba(0,0,0,.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background var(--transition),color var(--transition)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+.container{width:min(1200px,92%);margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* Progress bar */
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));width:0;z-index:9999;transition:width .1s linear}
+
+/* Particles */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:2px;height:2px;background:rgba(255,255,255,.15);border-radius:50%;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,15,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:background var(--transition)}
+[data-theme="light"] header{background:rgba(245,245,248,.9)}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.5rem;font-weight:800;letter-spacing:-.5px;background:linear-gradient(135deg,var(--accent),#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--text2);transition:color var(--transition);position:relative}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width var(--transition)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:.75rem}
+.theme-btn,.search-toggle,.hamburger{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--bg3);color:var(--text);transition:background var(--transition),transform var(--transition)}
+.theme-btn:hover,.search-toggle:hover,.hamburger:hover{background:var(--accent);color:#fff;transform:scale(1.05)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:10px}
+.hamburger span{display:block;width:20px;height:2px;background:currentColor;transition:var(--transition)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Search bar */
+.search-bar{position:fixed;top:64px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1rem;z-index:999;transform:translateY(-120%);transition:transform var(--transition);box-shadow:var(--shadow)}
+.search-bar.open{transform:translateY(0)}
+.search-bar input{width:100%;max-width:600px;margin:0 auto;display:block;padding:.85rem 1.25rem;border-radius:50px;border:1px solid var(--border);background:var(--bg3);color:var(--text);font-size:1rem;outline:none}
+.search-bar input:focus{border-color:var(--accent)}
+
+/* Mobile menu */
+.mobile-menu{position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bg);z-index:998;padding:2rem;transform:translateX(100%);transition:transform var(--transition);display:flex;flex-direction:column;gap:1.25rem}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-size:1.2rem;font-weight:600;padding:.5rem 0;border-bottom:1px solid var(--border)}
+
+/* Hero */
+.hero{position:relative;height:85vh;min-height:520px;margin-top:64px;overflow:hidden}
+.hero-slides{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;background-size:cover;background-position:center}
+.hero-slide.active{opacity:1}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,15,.95) 0%,rgba(10,10,15,.4) 50%,rgba(10,10,15,.6) 100%)}
+[data-theme="light"] .hero-slide::after{background:linear-gradient(to top,rgba(245,245,248,.95) 0%,rgba(245,245,248,.3) 50%,rgba(245,245,248,.5) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:4rem}
+.hero-genre{display:inline-block;padding:.3rem .8rem;background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem}
+.hero-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.15;margin-bottom:.5rem;max-width:700px}
+.hero-meta{display:flex;gap:1rem;flex-wrap:wrap;color:var(--text2);font-size:.9rem;margin-bottom:1rem}
+.hero-meta span{display:flex;align-items:center;gap:.3rem}
+.hero-desc{max-width:550px;color:var(--text2);margin-bottom:1.5rem;font-size:1rem}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:6px;font-weight:600;font-size:.95rem;transition:all var(--transition)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(229,9,20,.4)}
+.btn-outline{background:rgba(255,255,255,.1);color:var(--text);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(4px)}
+.btn-outline:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+.hero-dots{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:3}
+.hero-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all var(--transition)}
+.hero-dot.active{background:var(--accent);width:28px;border-radius:5px}
+
+/* Sections */
+section{padding:4rem 0;position:relative;z-index:1}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.section-title{font-size:1.75rem;font-weight:700;position:relative;padding-left:1rem}
+.section-title::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:70%;background:var(--accent);border-radius:2px}
+
+/* Filters */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.filter-btn{padding:.45rem 1rem;border-radius:50px;font-size:.85rem;font-weight:500;background:var(--bg3);color:var(--text2);border:1px solid var(--border);transition:all var(--transition)}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.results-count{font-size:.9rem;color:var(--text2);margin-bottom:1rem}
+.sort-select{padding:.45rem 1rem;border-radius:6px;background:var(--bg3);color:var(--text);border:1px solid var(--border);font-size:.85rem;outline:none}
+
+/* Movie grid */
+.movie-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.5rem}
+.movie-card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);transition:all var(--transition);cursor:pointer;position:relative}
+.movie-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--accent)}
+.movie-card .poster-wrap{position:relative;aspect-ratio:2/3;overflow:hidden;background:var(--bg3)}
+.movie-card .poster-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.movie-card:hover .poster-wrap img{transform:scale(1.08)}
+.movie-card .poster-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a2e,#16213e);color:var(--text2);font-size:.85rem;text-align:center;padding:1rem}
+.movie-card .poster-fallback span{font-size:2.5rem;margin-bottom:.5rem}
+.movie-card .rating-badge{position:absolute;top:.6rem;right:.6rem;background:rgba(0,0,0,.75);color:var(--gold);font-size:.8rem;font-weight:700;padding:.25rem .5rem;border-radius:4px;display:flex;align-items:center;gap:.25rem}
+.movie-card .fav-btn{position:absolute;top:.6rem;left:.6rem;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--transition);font-size:1rem}
+.movie-card:hover .fav-btn{opacity:1}
+.movie-card .fav-btn.active{opacity:1;color:var(--accent)}
+.movie-card .card-body{padding:.9rem}
+.movie-card .card-title{font-size:.95rem;font-weight:600;margin-bottom:.25rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.movie-card .card-meta{font-size:.8rem;color:var(--text2);display:flex;justify-content:space-between}
+.movie-card .card-actions{display:flex;gap:.4rem;margin-top:.6rem}
+.movie-card .card-actions button{flex:1;padding:.4rem;font-size:.75rem;border-radius:4px;font-weight:600;transition:all var(--transition)}
+.movie-card .btn-detail{background:var(--bg3);color:var(--text)}
+.movie-card .btn-detail:hover{background:var(--accent);color:#fff}
+.movie-card .btn-trailer{background:var(--accent);color:#fff}
+.movie-card .btn-trailer:hover{background:var(--accent2)}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:2000;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;visibility:hidden;transition:all var(--transition)}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal{background:var(--bg2);border-radius:var(--radius);max-width:900px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(.95);transition:transform var(--transition);border:1px solid var(--border)}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;background:var(--bg3);color:var(--text);display:flex;align-items:center;justify-content:center;font-size:1.2rem;z-index:10;transition:background var(--transition)}
+.modal-close:hover{background:var(--accent);color:#fff}
+.modal-body{display:grid;grid-template-columns:280px 1fr;gap:0}
+.modal-poster{aspect-ratio:2/3;background:var(--bg3);position:relative}
+.modal-poster img{width:100%;height:100%;object-fit:cover}
+.modal-info{padding:2rem}
+.modal-info h2{font-size:1.75rem;margin-bottom:.5rem}
+.modal-meta{display:flex;flex-wrap:wrap;gap:.75rem;font-size:.9rem;color:var(--text2);margin-bottom:1rem}
+.modal-meta .tag{background:var(--bg3);padding:.2rem .6rem;border-radius:4px}
+.modal-synopsis{margin-bottom:1.25rem;color:var(--text2);font-size:.95rem}
+.modal-cast,.modal-director{font-size:.9rem;margin-bottom:.5rem}
+.modal-cast strong,.modal-director strong{color:var(--text)}
+.modal-rating{display:flex;align-items:center;gap:.5rem;margin:1rem 0;font-size:1.1rem}
+.modal-rating .stars{color:var(--gold)}
+.modal-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}
+
+/* Trailer modal */
+.trailer-modal .modal{max-width:900px}
+.trailer-wrap{position:relative;padding-bottom:56.25%;background:#000}
+.trailer-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+
+/* Articles */
+.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.article-card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);transition:all var(--transition);cursor:pointer}
+.article-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.article-card .article-img{aspect-ratio:16/9;background:var(--bg3);overflow:hidden}
+.article-card .article-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.article-card:hover .article-img img{transform:scale(1.05)}
+.article-card .article-body{padding:1.25rem}
+.article-card .article-cat{font-size:.75rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}
+.article-card .article-title{font-size:1.1rem;font-weight:600;margin-bottom:.5rem;line-height:1.35}
+.article-card .article-excerpt{font-size:.875rem;color:var(--text2);margin-bottom:.75rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.article-card .article-meta{font-size:.8rem;color:var(--text2);display:flex;justify-content:space-between}
+
+/* Article reader modal */
+.article-reader .modal{max-width:720px}
+.article-reader .modal-info{padding:2.5rem}
+.article-reader .reader-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin-bottom:1.5rem}
+.article-reader .reader-content{font-size:1.05rem;line-height:1.8;color:var(--text2)}
+.article-reader .reader-content p{margin-bottom:1.25rem}
+
+/* Contact & Institutional */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.contact-info{display:flex;flex-direction:column;gap:1.25rem}
+.contact-item{display:flex;align-items:flex-start;gap:1rem}
+.contact-icon{width:48px;height:48px;border-radius:12px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.contact-item h4{font-size:1rem;margin-bottom:.2rem}
+.contact-item p,.contact-item a{font-size:.9rem;color:var(--text2)}
+.contact-item a:hover{color:var(--accent)}
+.wa-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.5rem;background:#25D366;color:#fff;border-radius:8px;font-weight:600;margin-top:.5rem;transition:all var(--transition)}
+.wa-btn:hover{background:#1da851;transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,.35)}
+
+/* Newsletter */
+.newsletter{background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;text-align:center}
+.newsletter h3{font-size:1.5rem;margin-bottom:.5rem}
+.newsletter p{color:var(--text2);margin-bottom:1.5rem;max-width:450px;margin-inline:auto}
+.newsletter-form{display:flex;gap:.5rem;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.newsletter-form input{flex:1;min-width:200px;padding:.85rem 1.25rem;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:.95rem;outline:none}
+.newsletter-form input:focus{border-color:var(--accent)}
+.newsletter-form button{padding:.85rem 1.5rem;background:var(--accent);color:#fff;border-radius:6px;font-weight:600;transition:all var(--transition)}
+.newsletter-form button:hover{background:var(--accent2)}
+.newsletter-msg{margin-top:1rem;font-size:.9rem;min-height:1.4em}
+
+/* Institutional pages content */
+.inst-content{max-width:800px;margin:0 auto}
+.inst-content h2{font-size:1.75rem;margin-bottom:1.5rem}
+.inst-content h3{font-size:1.2rem;margin:1.5rem 0 .75rem}
+.inst-content p{color:var(--text2);margin-bottom:1rem}
+.inst-content ul{padding-left:1.5rem;margin-bottom:1rem;color:var(--text2)}
+.inst-content li{margin-bottom:.4rem;list-style:disc}
+
+/* Footer */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 0 1.5rem;position:relative;z-index:1}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.footer-brand p{color:var(--text2);font-size:.9rem;margin-top:.75rem;max-width:280px}
+.footer-col h4{font-size:.95rem;margin-bottom:1rem;font-weight:600}
+.footer-col a{display:block;font-size:.875rem;color:var(--text2);padding:.3rem 0;transition:color var(--transition)}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--text2);flex-wrap:wrap;gap:1rem}
+
+/* Ad spaces */
+.ad-space{background:var(--bg3);border:1px dashed var(--border);border-radius:8px;padding:1.5rem;text-align:center;color:var(--text2);font-size:.85rem;min-height:90px;display:flex;align-items:center;justify-content:center;margin:2rem 0}
+
+/* Back to top */
+#back-top{position:fixed;bottom:1.5rem;right:1.5rem;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;visibility:hidden;transition:all var(--transition);z-index:900;box-shadow:0 4px 16px rgba(229,9,20,.4)}
+#back-top.visible{opacity:1;visibility:visible}
+#back-top:hover{transform:translateY(-3px)}
+
+/* Random movie */
+.random-btn{padding:.6rem 1.25rem;background:linear-gradient(135deg,var(--accent),#ff6b6b);color:#fff;border-radius:50px;font-weight:600;font-size:.9rem;transition:all var(--transition)}
+.random-btn:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(229,9,20,.35)}
+
+/* Reveal — conteúdo entra ao fazer scroll */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+  will-change:opacity, transform;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.reveal-left{opacity:0;transform:translateX(-24px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.94);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+@media (prefers-reduced-motion: reduce){
+  .reveal,.reveal-left,.reveal-scale{opacity:1;transform:none;transition:none}
+}
+
+/* Empty state */
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--text2)}
+.empty-state span{font-size:3rem;display:block;margin-bottom:1rem}
+.watch-providers{border-top:1px solid var(--border);padding-top:1rem}
+.watch-providers h4{font-size:.9rem;margin-bottom:.75rem;color:var(--text2)}
+.watch-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+.watch-row strong{width:100%;font-size:.8rem;color:var(--text2);margin-bottom:.25rem}
+.watch-link{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .85rem;background:var(--bg3);border:1px solid var(--border);border-radius:6px;font-size:.85rem;font-weight:500;transition:all var(--transition);color:var(--text)}
+.watch-link:hover{border-color:var(--accent);background:var(--accent);color:#fff;transform:translateY(-1px)}
+.watch-link img{width:20px;height:20px;border-radius:4px;object-fit:contain}
+.watch-note{font-size:.75rem;color:var(--text2);margin-top:.5rem}
+.btn-whatsapp{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.25rem;background:#25D366;color:#fff!important;border-radius:8px;font-weight:600;font-size:.9rem;transition:all var(--transition);border:none;cursor:pointer;text-decoration:none}
+.btn-whatsapp:hover{background:#1da851;transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,.35);color:#fff!important}
+.watch-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 .5rem}
+.watch-actions .btn-whatsapp,.watch-actions .btn{flex:1;min-width:140px;justify-content:center}
+.list-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.list-tab{padding:.45rem 1rem;border-radius:50px;font-size:.85rem;font-weight:500;background:var(--bg3);color:var(--text2);border:1px solid var(--border);cursor:pointer;transition:all var(--transition)}
+.list-tab.active,.list-tab:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.range-filters{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;align-items:center}
+.range-filters label{font-size:.85rem;color:var(--text2);display:flex;align-items:center;gap:.5rem}
+.range-filters input[type=number]{width:70px;padding:.35rem .5rem;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text)}
+.search-history{display:flex;flex-wrap:wrap;gap:.4rem;margin:.75rem 0;min-height:0}
+.search-chip{padding:.3rem .75rem;border-radius:50px;font-size:.8rem;background:var(--bg3);border:1px solid var(--border);cursor:pointer;color:var(--text2)}
+.search-chip:hover{border-color:var(--accent);color:var(--text)}
+.extra-tools{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.season-list{margin-top:1rem}
+.season-btn{display:inline-block;padding:.35rem .75rem;margin:.25rem;border-radius:6px;background:var(--bg3);border:1px solid var(--border);cursor:pointer;font-size:.85rem}
+.season-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.episode-item{padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.episode-item strong{display:block;margin-bottom:.2rem}
+.recs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.75rem;margin-top:.75rem}
+.rec-card{cursor:pointer;text-align:center}
+.rec-card img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;background:var(--bg3)}
+.rec-card span{font-size:.75rem;display:block;margin-top:.3rem;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.compare-panel{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:600px){.compare-panel{grid-template-columns:1fr}}
+.compare-slot{border:1px dashed var(--border);border-radius:12px;padding:1rem;min-height:200px;background:var(--bg3)}
+.quiz-q{margin-bottom:1.25rem}
+.quiz-q h4{margin-bottom:.5rem}
+.quiz-options{display:flex;flex-wrap:wrap;gap:.5rem}
+.quiz-options button{padding:.5rem 1rem;border-radius:8px;background:var(--bg3);border:1px solid var(--border);cursor:pointer;color:var(--text)}
+.quiz-options button.selected{background:var(--accent);color:#fff;border-color:var(--accent)}
+.cinema-mode .modal{max-width:100%;max-height:100%;width:100%;height:100%;border-radius:0;display:flex;flex-direction:column}
+.cinema-mode .trailer-wrap{flex:1;padding-bottom:0;height:70vh}
+.cinema-info{padding:1rem 1.5rem;background:var(--bg2)}
+.person-movies{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.75rem;margin-top:1rem}
+.clickable-person{color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.list-badge{position:absolute;bottom:.5rem;left:.5rem;font-size:.65rem;padding:.15rem .4rem;border-radius:4px;background:rgba(0,0,0,.75);color:#fff}
+
+
+
+/* Utilities */
+.hidden{display:none!important}
+.mt-2{margin-top:2rem}
+.text-center{text-align:center}
+
+@media (max-width:900px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .modal-body{grid-template-columns:1fr}
+  .modal-poster{max-height:320px;aspect-ratio:auto}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .movie-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem}
+  .hero{height:70vh;min-height:420px}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column}
+  .btn{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .particle{display:none}
+}
+</style>
+</head>
+<body>
+<div>
+
+</div>
+  
+  <div id="progress-bar"></div>
+<div id="particles"></div>
+
+<header>
+  <div class="container nav-wrap">
+    <a href="#inicio" class="logo" aria-label="CineVerse Início">CINEVERSE</a>
+    <nav class="nav-links" aria-label="Menu principal">
+      <a href="#inicio" class="nav-link active">Início</a>
+      <a href="#filmes" class="nav-link">Filmes</a>
+      <a href="#generos" class="nav-link">Géneros</a>
+      <a href="#trending" class="nav-link">Em alta</a>
+      <a href="#listas" class="nav-link">Listas</a>
+      <a href="#destaque" class="nav-link">Em destaque</a>
+      <a href="#trailers" class="nav-link">Trailers</a>
+      <a href="#artigos" class="nav-link">Artigos</a>
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="search-toggle" id="searchToggle" aria-label="Abrir pesquisa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="theme-btn" id="themeBtn" aria-label="Alternar tema">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu mobile" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="search-bar" id="searchBar">
+  <input type="search" id="searchInput" placeholder="Pesquisar filmes e séries (ex: Homem-Aranha, Batman, Stranger Things)..." aria-label="Pesquisar filmes" autocomplete="off">
+</div>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
+  <a href="#inicio">Início</a>
+  <a href="#filmes">Filmes</a>
+  <a href="#generos">Géneros</a>
+  <a href="#trending">Em alta</a>
+  <a href="#listas">Listas</a>
+  <a href="#destaque">Em destaque</a>
+  <a href="#trailers">Trailers</a>
+  <a href="#artigos">Artigos</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-slides" id="heroSlides"></div>
+  <div class="container hero-content">
+    <div id="heroInfo">
+      <span class="hero-genre" id="heroGenre"></span>
+      <h1 class="hero-title" id="heroTitle"></h1>
+      <div class="hero-meta" id="heroMeta"></div>
+      <p class="hero-desc" id="heroDesc"></p>
+      <div class="hero-btns">
+        <button class="btn btn-primary" id="heroTrailerBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Ver trailer
+        </button>
+        <button class="btn btn-outline" id="heroDetailBtn">Ver detalhes</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots"></div>
+</section>
+
+
+<!-- TRENDING -->
+<section id="trending">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Em alta esta semana</h2>
+    </div>
+    <div class="movie-grid" id="trendingGrid"></div>
+  </div>
+</section>
+
+<!-- UPCOMING -->
+<section id="estreias" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Em breve / Estreias</h2>
+    </div>
+    <div class="movie-grid" id="upcomingGrid"></div>
+  </div>
+</section>
+
+<!-- MINHAS LISTAS -->
+<section id="listas">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">As minhas listas</h2>
+    </div>
+    <div class="list-tabs" id="listTabs">
+      <button class="list-tab active" data-list="favorites">Favoritos</button>
+      <button class="list-tab" data-list="want">Quero ver</button>
+      <button class="list-tab" data-list="watched">Já vi</button>
+    </div>
+    <div class="movie-grid" id="listsGrid"></div>
+    <div class="empty-state" id="listsEmpty"><span>📋</span><p>A sua lista está vazia. Adicione filmes a partir dos detalhes.</p></div>
+  </div>
+</section>
+
+<!-- FILMES -->
+<section id="filmes">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Todos os Filmes</h2>
+      <div style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap">
+        <button class="random-btn" id="randomBtn" aria-label="Escolher filme aleatório">🎲 Escolher um filme</button>
+        <select class="sort-select" id="sortSelect" aria-label="Ordenar filmes">
+          <option value="title">Título A-Z</option>
+          <option value="year-desc">Mais recentes</option>
+          <option value="year-asc">Mais antigos</option>
+          <option value="rating-desc">Melhor avaliação</option>
+        </select>
+      </div>
+    </div>
+    <div class="filters" id="genreFilters" role="group" aria-label="Filtrar por género"></div>
+    <div class="range-filters">
+      <label>Ano de <input type="number" id="yearMin" min="1900" max="2030" placeholder="1900"></label>
+      <label>até <input type="number" id="yearMax" min="1900" max="2030" placeholder="2030"></label>
+      <label>Nota mín. <input type="number" id="ratingMin" min="0" max="10" step="0.1" placeholder="0"></label>
+      <button class="filter-btn" id="applyRangeBtn" type="button">Aplicar</button>
+      <button class="filter-btn" id="clearRangeBtn" type="button">Limpar</button>
+    </div>
+    <div class="extra-tools">
+      <button class="random-btn" id="quizBtn" type="button">🎯 Que filme ver?</button>
+      <button class="btn btn-outline" id="compareBtn" type="button" style="padding:.6rem 1.25rem;border-radius:50px">⚖️ Comparar filmes</button>
+    </div>
+    <div class="search-history" id="searchHistory"></div>
+    <p class="results-count" id="resultsCount"></p>
+    <div class="movie-grid" id="movieGrid"></div>
+    <div class="empty-state hidden" id="emptyState">
+      <span>🎬</span>
+      <p>Nenhum filme encontrado com os critérios selecionados.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DESTAQUE -->
+<section id="destaque" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Em Destaque</h2>
+    </div>
+    <div class="movie-grid" id="featuredGrid"></div>
+  </div>
+</section>
+
+<!-- TRAILERS -->
+<section id="trailers">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Trailers Oficiais</h2>
+    </div>
+    <div class="movie-grid" id="trailersGrid"></div>
+  </div>
+</section>
+
+<!-- GÉNEROS -->
+<section id="generos" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Explorar por Género</h2>
+    </div>
+    <div class="filters" id="genreCards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem"></div>
+  </div>
+</section>
+
+<!-- ARTIGOS -->
+<section id="artigos">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Artigos & Notícias</h2>
+    </div>
+    <div class="articles-grid" id="articlesGrid"></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section>
+  <div class="container">
+    <div class="newsletter reveal">
+      <h3>Receba o melhor do cinema</h3>
+      <p>Subscreva a newsletter CineVerse e receba recomendações, análises e novidades cinematográficas.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="O seu email" required aria-label="Email para newsletter">
+        <button type="submit">Subscrever</button>
+      </form>
+      <p class="newsletter-msg" id="newsletterMsg" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" style="background:var(--bg2)">
+  <div class="container">
+    <div class="inst-content reveal">
+      <h2>Sobre o CineVerse</h2>
+      <p>O CineVerse é uma plataforma dedicada ao cinema em todas as suas formas. Criámos este espaço para celebrar a sétima arte — desde os clássicos atemporais até às produções contemporâneas de todo o mundo.</p>
+      <p>A nossa missão é disponibilizar informação precisa, trailers oficiais e conteúdo editorial de qualidade sobre filmes reais, realizadores e a história do cinema. Valorizamos a diversidade de géneros, épocas e origens, incluindo o cinema africano e internacional.</p>
+      <p>Todo o conteúdo apresentado é baseado em dados públicos verificáveis. As avaliações indicadas são referências de fontes reconhecidas (IMDb e similares) e servem apenas como orientação ao espectador.</p>
+      <h3>O que encontrará</h3>
+      <ul>
+        <li>Catálogo de filmes reais com sinopses, elenco e dados técnicos</li>
+        <li>Trailers oficiais incorporados de fontes legítimas</li>
+        <li>Artigos sobre história do cinema, tecnologia e curiosidades</li>
+        <li>Pesquisa e filtros por género, ano, realizador e ator</li>
+        <li>Experiência responsiva em qualquer dispositivo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <h2 class="section-title" style="margin-bottom:2rem">Contacto</h2>
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:yurijoaotaiobo@gmail.com">yurijoaotaiobo@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Telefone</h4>
+            <a href="tel:+258863582790">863 582 790</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div>
+            <h4>WhatsApp</h4>
+            <p>Resposta rápida via mensagem</p>
+            <a href="https://wa.me/258859573853" target="_blank" rel="noopener noreferrer" class="wa-btn">
+              Contacte-nos no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p style="color:var(--text2);margin-bottom:1rem">Tem sugestões de filmes, correções ou propostas de colaboração? Envie-nos uma mensagem. Respondemos no mais breve prazo possível.</p>
+        <p style="color:var(--text2);font-size:.9rem">Horário de atendimento: Segunda a Sexta, 09:00–18:00 (CAT).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Políticas (âncoras) -->
+<section id="politicas" style="background:var(--bg2);padding-bottom:2rem">
+  <div class="container">
+    <div class="inst-content">
+      <h2 id="politica-editorial">Política Editorial</h2>
+      <p>O CineVerse publica conteúdo informativo e editorial sobre cinema. As sinopses e dados de filmes são compilados a partir de fontes públicas. As avaliações são referências e não representam uma classificação oficial do CineVerse. Artigos de opinião ou análise são identificados como tal. Não inventamos factos nem apresentamos informação especulativa como definitiva.</p>
+
+      <h2 id="privacidade" style="margin-top:2.5rem">Política de Privacidade</h2>
+      <p>Este website funciona de forma estática. Utilizamos apenas o armazenamento local do navegador (localStorage) para guardar preferências de tema, favoritos e histórico de visualização. Estes dados permanecem no seu dispositivo e não são enviados para servidores externos. Não recolhemos dados pessoais através de formulários para fins de marketing sem o seu consentimento explícito. O formulário de newsletter valida o email localmente e apresenta confirmação; não existe envio automático para bases de dados externas nesta versão.</p>
+
+      <h2 id="cookies" style="margin-top:2.5rem">Política de Cookies</h2>
+      <p>O CineVerse não utiliza cookies de rastreamento de terceiros. A única persistência de dados ocorre via localStorage do navegador, exclusivamente para funcionalidades de preferência do utilizador (tema claro/escuro, favoritos). Pode limpar estes dados a qualquer momento através das definições do seu navegador.</p>
+
+      <h2 id="termos" style="margin-top:2.5rem">Termos de Uso</h2>
+      <p>Ao utilizar o CineVerse, concorda em usar o website de forma responsável. O conteúdo é disponibilizado para fins informativos e de entretenimento. Os trailers são incorporados a partir de fontes oficiais (YouTube) e permanecem propriedade dos respetivos detentores de direitos. É proibido utilizar o conteúdo para fins comerciais sem autorização. O CineVerse reserva-se o direito de atualizar estes termos.</p>
+
+      <h2 id="direitos" style="margin-top:2.5rem">Direitos de Autor</h2>
+      <p>Os cartazes, trailers e material promocional dos filmes pertencem aos respetivos estúdios, distribuidores e detentores de direitos. O CineVerse utiliza imagens e links de trailers disponíveis publicamente para fins informativos e de promoção legítima das obras cinematográficas. O design, código e textos originais do website são propriedade do CineVerse.</p>
+
+      <h2 id="aviso-legal" style="margin-top:2.5rem">Aviso Legal</h2>
+      <p>As informações apresentadas são compiladas de boa fé a partir de fontes públicas. Embora nos esforcemos por manter a precisão, o CineVerse não garante a ausência de erros. As avaliações são referências e não devem ser interpretadas como recomendações oficiais. O website não hospeda nem distribui filmes completos. Links externos (YouTube, WhatsApp) levam a serviços de terceiros cujos termos se aplicam separadamente.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo">CINEVERSE</a>
+        <p>O universo do cinema num só lugar. Filmes, trailers oficiais e a paixão pela sétima arte.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <a href="#filmes">Filmes</a>
+        <a href="#generos">Géneros</a>
+        <a href="#artigos">Artigos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#politica-editorial">Política Editorial</a>
+        <a href="#privacidade">Privacidade</a>
+        <a href="#termos">Termos de Uso</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#cookies">Cookies</a>
+        <a href="#direitos">Direitos de Autor</a>
+        <a href="#aviso-legal">Aviso Legal</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024–2026 CineVerse. Todos os direitos reservados.</span>
+      <span>Conteúdo informativo sobre cinema.</span>
+    </div>
+  </div>
+</footer>
+
+<button id="back-top" aria-label="Voltar ao topo">↑</button>
+
+<!-- Movie Modal -->
+<div class="modal-overlay" id="movieModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+    <div class="modal-body">
+      <div class="modal-poster">
+        <img id="modalPoster" alt="" loading="lazy">
+      </div>
+      <div class="modal-info">
+        <h2 id="modalTitle"></h2>
+        <div class="modal-meta" id="modalMeta"></div>
+        <div class="modal-rating" id="modalRating"></div>
+        <p class="modal-synopsis" id="modalSynopsis"></p>
+        <p class="modal-director" id="modalDirector"></p>
+        <p class="modal-cast" id="modalCast"></p>
+        <div class="modal-actions">
+          <button class="btn btn-primary" id="modalTrailerBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Ver trailer
+          </button>
+          <button class="btn btn-outline" id="modalWatchBtn" style="display:none">Onde assistir / Comprar</button>
+          <button class="btn btn-outline" id="modalFavBtn">Favorito</button>
+          <button class="btn btn-outline" id="modalWantBtn">Quero ver</button>
+          <button class="btn btn-outline" id="modalWatchedBtn">Já vi</button>
+          <button class="btn btn-outline" id="modalCinemaBtn">Modo cinema</button>
+          <button class="btn btn-outline" id="modalShareBtn">Partilhar</button>
+          <button class="btn btn-outline" id="modalCompareAddBtn">+ Comparar</button>
+        </div>
+        <div id="watchProviders" class="watch-providers" style="display:none;margin-top:1rem"></div>
+        <div id="seriesPanel" class="season-list" style="display:none"></div>
+        <div id="recsPanel" style="display:none;margin-top:1.25rem">
+          <h4 style="margin-bottom:.5rem">Se gostou disto, veja também</h4>
+          <div class="recs-grid" id="recsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Trailer Modal -->
+<div class="modal-overlay trailer-modal" id="trailerModal" role="dialog" aria-modal="true" aria-label="Trailer">
+  <div class="modal">
+    <button class="modal-close" id="trailerClose" aria-label="Fechar trailer">×</button>
+    <div class="trailer-wrap">
+      <iframe id="trailerFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Trailer do filme"></iframe>
+    </div>
+  </div>
+</div>
+
+
+<!-- Person Modal -->
+<div class="modal-overlay" id="personModal" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:720px">
+    <button class="modal-close" id="personClose" aria-label="Fechar">×</button>
+    <div class="modal-info" style="padding:2rem">
+      <h2 id="personName"></h2>
+      <p id="personBio" style="color:var(--text2);margin:1rem 0;font-size:.95rem"></p>
+      <div class="person-movies" id="personMovies"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Quiz Modal -->
+<div class="modal-overlay" id="quizModal" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:560px">
+    <button class="modal-close" id="quizClose" aria-label="Fechar">×</button>
+    <div class="modal-info" style="padding:2rem">
+      <h2>Que filme ver?</h2>
+      <p style="color:var(--text2);margin:.5rem 0 1.25rem">Responda e receba uma sugestão.</p>
+      <div id="quizBody"></div>
+      <div style="margin-top:1.25rem;display:flex;gap:.5rem;flex-wrap:wrap">
+        <button class="btn btn-primary" id="quizSubmit">Ver sugestão</button>
+        <button class="btn btn-outline" id="quizReset">Recomeçar</button>
+      </div>
+      <div id="quizResult" style="margin-top:1.25rem"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Compare Modal -->
+<div class="modal-overlay" id="compareModal" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:900px">
+    <button class="modal-close" id="compareClose" aria-label="Fechar">×</button>
+    <div class="modal-info" style="padding:2rem">
+      <h2>Comparar filmes</h2>
+      <p style="color:var(--text2);margin:.5rem 0 1rem">Escolha até 2 títulos (use “+ Comparar” nos detalhes).</p>
+      <div class="compare-panel">
+        <div class="compare-slot" id="compareSlot1"><p style="color:var(--text2)">Filme A</p></div>
+        <div class="compare-slot" id="compareSlot2"><p style="color:var(--text2)">Filme B</p></div>
+      </div>
+      <button class="btn btn-outline" id="compareClear" style="margin-top:1rem">Limpar comparação</button>
+    </div>
+  </div>
+</div>
+
+<!-- Article Modal -->
+<div class="modal-overlay article-reader" id="articleModal" role="dialog" aria-modal="true" aria-labelledby="articleTitle">
+  <div class="modal">
+    <button class="modal-close" id="articleClose" aria-label="Fechar artigo">×</button>
+    <div class="modal-info">
+      <span class="article-cat" id="articleCat"></span>
+      <h2 id="articleTitle"></h2>
+      <div class="article-meta" id="articleMeta" style="margin:1rem 0;color:var(--text2);font-size:.9rem"></div>
+      <img class="reader-img" id="articleImg" alt="">
+      <div class="reader-content" id="articleContent"></div>
+      <div style="margin-top:1.5rem">
+        <button class="btn btn-outline" id="articleShareBtn">Partilhar artigo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ========== DATA ========== */
+const MOVIES = [
+  {id:1,title:"Inception",year:2010,genre:["Ficção científica","Ação","Thriller"],runtime:"148 min",director:"Christopher Nolan",cast:["Leonardo DiCaprio","Joseph Gordon-Levitt","Ellen Page","Tom Hardy"],rating:8.8,ratingSource:"IMDb",synopsis:"Um ladrão especializado em extrair segredos do subconsciente durante o sono recebe a missão inversa: implantar uma ideia na mente de um herdeiro empresarial.",poster:"https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg",trailer:"YoHD9XEInc0",cert:"PG-13"},
+  {id:2,title:"The Dark Knight",year:2008,genre:["Ação","Crime","Drama"],runtime:"152 min",director:"Christopher Nolan",cast:["Christian Bale","Heath Ledger","Aaron Eckhart","Michael Caine"],rating:9.0,ratingSource:"IMDb",synopsis:"Batman enfrenta o Joker, um criminoso anárquico que mergulha Gotham no caos e força o herói a questionar os seus próprios limites.",poster:"https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX1000_.jpg",trailer:"EXeTwQWrcwY",cert:"PG-13"},
+  {id:3,title:"Interstellar",year:2014,genre:["Ficção científica","Drama","Aventura"],runtime:"169 min",director:"Christopher Nolan",cast:["Matthew McConaughey","Anne Hathaway","Jessica Chastain","Michael Caine"],rating:8.7,ratingSource:"IMDb",synopsis:"Num futuro próximo onde a Terra se torna inabitável, um grupo de astronautas viaja através de um buraco de minhoca em busca de um novo lar para a humanidade.",poster:"https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",trailer:"zSWdZVtXT7E",cert:"PG-13"},
+  {id:4,title:"The Matrix",year:1999,genre:["Ficção científica","Ação"],runtime:"136 min",director:"Lana Wachowski, Lilly Wachowski",cast:["Keanu Reeves","Laurence Fishburne","Carrie-Anne Moss","Hugo Weaving"],rating:8.7,ratingSource:"IMDb",synopsis:"Um programador descobre que a realidade que conhece é uma simulação controlada por máquinas e junta-se a uma rebelião para libertar a humanidade.",poster:"https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg",trailer:"vKQi3bBA1y8",cert:"R"},
+  {id:5,title:"Pulp Fiction",year:1994,genre:["Crime","Drama"],runtime:"154 min",director:"Quentin Tarantino",cast:["John Travolta","Samuel L. Jackson","Uma Thurman","Bruce Willis"],rating:8.9,ratingSource:"IMDb",synopsis:"Histórias interligadas de criminosos de Los Angeles, contadas de forma não linear, que exploram violência, redenção e cultura pop.",poster:"https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg",trailer:"s7EdQ4FqbhY",cert:"R"},
+  {id:6,title:"The Godfather",year:1972,genre:["Crime","Drama"],runtime:"175 min",director:"Francis Ford Coppola",cast:["Marlon Brando","Al Pacino","James Caan","Robert Duvall"],rating:9.2,ratingSource:"IMDb",synopsis:"O patriarca de uma família mafiosa transfere o controlo do seu império para o filho mais novo, num retrato épico do poder e da lealdade.",poster:"https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg",trailer:"sY1S349X3XU",cert:"R"},
+  {id:7,title:"Schindler's List",year:1993,genre:["Drama","História"],runtime:"195 min",director:"Steven Spielberg",cast:["Liam Neeson","Ralph Fiennes","Ben Kingsley","Caroline Goodall"],rating:9.0,ratingSource:"IMDb",synopsis:"Baseado em factos reais, conta a história de Oskar Schindler, que salvou mais de mil judeus durante o Holocausto ao empregá-los na sua fábrica.",poster:"https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg",trailer:"gG22XNhtp8Q",cert:"R"},
+  {id:8,title:"Titanic",year:1997,genre:["Drama","Romance"],runtime:"194 min",director:"James Cameron",cast:["Leonardo DiCaprio","Kate Winslet","Billy Zane","Kathy Bates"],rating:7.9,ratingSource:"IMDb",synopsis:"Um romance proibido entre um artista pobre e uma jovem da alta sociedade a bordo do ill-fated RMS Titanic.",poster:"https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_FMjpg_UX1000_.jpg",trailer:"kVrqfYjkTdQ",cert:"PG-13"},
+  {id:9,title:"Avatar",year:2009,genre:["Ficção científica","Ação","Aventura"],runtime:"162 min",director:"James Cameron",cast:["Sam Worthington","Zoe Saldana","Sigourney Weaver","Stephen Lang"],rating:7.9,ratingSource:"IMDb",synopsis:"Um marine paraplégico é enviado a Pandora numa missão e acaba por se juntar aos nativos Na'vi na luta pela sobrevivência do seu mundo.",poster:"https://image.tmdb.org/t/p/w500/6EiRUJpuoeQPghrs3YNktfnqOVh.jpg",trailer:"5PSNL1qE6VY",cert:"PG-13"},
+  {id:10,title:"Parasite",year:2019,genre:["Thriller","Drama","Comédia"],runtime:"132 min",director:"Bong Joon-ho",cast:["Song Kang-ho","Lee Sun-kyun","Cho Yeo-jeong","Choi Woo-shik"],rating:8.5,ratingSource:"IMDb",synopsis:"Uma família pobre se infiltra na vida de uma família rica com consequências inesperadas e sombrias, numa crítica social afiada.",poster:"https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_FMjpg_UX1000_.jpg",trailer:"5xH0HfJHsaI",cert:"R"},
+  {id:11,title:"Joker",year:2019,genre:["Crime","Drama","Thriller"],runtime:"122 min",director:"Todd Phillips",cast:["Joaquin Phoenix","Robert De Niro","Zazie Beetz","Frances Conroy"],rating:8.4,ratingSource:"IMDb",synopsis:"A origem de um homem marginalizado que, em meio ao caos social de Gotham, se transforma no icónico vilão Joker.",poster:"https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg",trailer:"zAGVQLHvwOY",cert:"R"},
+  {id:12,title:"The Shawshank Redemption",year:1994,genre:["Drama"],runtime:"142 min",director:"Frank Darabont",cast:["Tim Robbins","Morgan Freeman","Bob Gunton","William Sadler"],rating:9.3,ratingSource:"IMDb",synopsis:"Dois homens presos formam uma amizade profunda ao longo de décadas, encontrando redenção e esperança atrás das grades.",poster:"https://image.tmdb.org/t/p/w500/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",trailer:"6hB3S9bIaco",cert:"R"},
+  {id:13,title:"Forrest Gump",year:1994,genre:["Drama","Romance","Comédia"],runtime:"142 min",director:"Robert Zemeckis",cast:["Tom Hanks","Robin Wright","Gary Sinise","Sally Field"],rating:8.8,ratingSource:"IMDb",synopsis:"A vida extraordinária de um homem simples que, sem o saber, influencia momentos-chave da história americana do século XX.",poster:"https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg",trailer:"bLvqoHBptjg",cert:"PG-13"},
+  {id:14,title:"Gladiator",year:2000,genre:["Ação","Drama","Aventura"],runtime:"155 min",director:"Ridley Scott",cast:["Russell Crowe","Joaquin Phoenix","Connie Nielsen","Oliver Reed"],rating:8.5,ratingSource:"IMDb",synopsis:"Um general romano traído é forçado a tornar-se gladiador e busca vingança contra o imperador corrupto que destruiu a sua família.",poster:"https://images.metahub.space/poster/medium/tt0172495/img",trailer:"owK1qxDselE",cert:"R"},
+  {id:15,title:"The Silence of the Lambs",year:1991,genre:["Thriller","Crime","Drama"],runtime:"118 min",director:"Jonathan Demme",cast:["Jodie Foster","Anthony Hopkins","Scott Glenn","Ted Levine"],rating:8.6,ratingSource:"IMDb",synopsis:"Uma jovem agente do FBI procura a ajuda de um brilhante e perigoso canibal para capturar outro serial killer.",poster:"https://upload.wikimedia.org/wikipedia/en/8/86/The_Silence_of_the_Lambs_poster.jpg",trailer:"W6Mm8Sbe__o",cert:"R"},
+  {id:16,title:"Spirited Away",year:2001,genre:["Animação","Fantasia","Aventura"],runtime:"125 min",director:"Hayao Miyazaki",cast:["Rumi Hiiragi","Miyu Irino","Mari Natsuki"],rating:8.6,ratingSource:"IMDb",synopsis:"Uma menina entra num mundo espiritual e deve trabalhar numa casa de banhos para libertar os pais transformados em porcos.",poster:"https://upload.wikimedia.org/wikipedia/en/d/db/Spirited_Away_Japanese_poster.png",trailer:"ByXuk9QqQkk",cert:"PG"},
+  {id:17,title:"The Lion King",year:1994,genre:["Animação","Aventura","Drama"],runtime:"88 min",director:"Roger Allers, Rob Minkoff",cast:["Matthew Broderick","Jeremy Irons","James Earl Jones","Whoopi Goldberg"],rating:8.5,ratingSource:"IMDb",synopsis:"Um jovem leão foge após a morte do pai e deve regressar para reclamar o seu lugar legítimo como rei.",poster:"https://m.media-amazon.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_FMjpg_UX1000_.jpg",trailer:"4sj1MT05lAA",cert:"G"},
+  {id:18,title:"Get Out",year:2017,genre:["Terror","Mistério","Thriller"],runtime:"104 min",director:"Jordan Peele",cast:["Daniel Kaluuya","Allison Williams","Bradley Whitford","Catherine Keener"],rating:7.8,ratingSource:"IMDb",synopsis:"Um jovem afro-americano visita a família da namorada branca e descobre um segredo aterrador por trás da aparente hospitalidade.",poster:"https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_FMjpg_UX1000_.jpg",trailer:"sRfnevzM9k0",cert:"R"},
+  {id:19,title:"A Quiet Place",year:2018,genre:["Terror","Drama","Ficção científica"],runtime:"90 min",director:"John Krasinski",cast:["Emily Blunt","John Krasinski","Millicent Simmonds","Noah Jupe"],rating:7.5,ratingSource:"IMDb",synopsis:"Uma família vive em silêncio absoluto para evitar criaturas que caçam pelo som, num mundo pós-apocalíptico.",poster:"https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_FMjpg_UX1000_.jpg",trailer:"WR7mOLuY1hY",cert:"PG-13"},
+  {id:20,title:"Mad Max: Fury Road",year:2015,genre:["Ação","Aventura","Ficção científica"],runtime:"120 min",director:"George Miller",cast:["Tom Hardy","Charlize Theron","Nicholas Hoult","Hugh Keays-Byrne"],rating:8.1,ratingSource:"IMDb",synopsis:"Num deserto pós-apocalíptico, Max junta-se a Furiosa numa fuga em alta velocidade contra um tirano e o seu exército.",poster:"https://m.media-amazon.com/images/M/MV5BN2EwM2I5OWMtMGQyMi00Zjg1LWJkNTctZTdjYTA4OGUwZjMyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",trailer:"hA6hldpSTF8",cert:"R"},
+  {id:21,title:"La La Land",year:2016,genre:["Romance","Drama","Comédia"],runtime:"128 min",director:"Damien Chazelle",cast:["Ryan Gosling","Emma Stone","John Legend","Rosemarie DeWitt"],rating:8.0,ratingSource:"IMDb",synopsis:"Um pianista de jazz e uma atriz aspirante apaixonam-se em Los Angeles enquanto perseguem os seus sonhos artísticos.",poster:"https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_FMjpg_UX1000_.jpg",trailer:"0pdqf4bZ8rM",cert:"PG-13"},
+  {id:22,title:"Whiplash",year:2014,genre:["Drama","Música"],runtime:"106 min",director:"Damien Chazelle",cast:["Miles Teller","J.K. Simmons","Paul Reiser","Melissa Benoist"],rating:8.5,ratingSource:"IMDb",synopsis:"Um jovem baterista ambicioso enfrenta um professor de jazz tirânico que o empurra até aos limites da perfeição.",poster:"https://image.tmdb.org/t/p/w500/7fn624j5lj3xTme2SgiLCeuedmO.jpg",trailer:"7d_jQycdQGo",cert:"R"},
+  {id:23,title:"The Grand Budapest Hotel",year:2014,genre:["Comédia","Drama","Aventura"],runtime:"99 min",director:"Wes Anderson",cast:["Ralph Fiennes","Tony Revolori","Saoirse Ronan","Adrien Brody"],rating:8.1,ratingSource:"IMDb",synopsis:"As aventuras de um lendário concierge de um hotel europeu e do seu protegido, envolvendo um assassinato e uma fortuna.",poster:"https://m.media-amazon.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_FMjpg_UX1000_.jpg",trailer:"1Fg5iWmQjwk",cert:"R"},
+  {id:24,title:"Cidade de Deus",year:2002,genre:["Crime","Drama"],runtime:"130 min",director:"Fernando Meirelles, Kátia Lund",cast:["Alexandre Rodrigues","Leandro Firmino","Phellipe Haagensen","Douglas Silva"],rating:8.6,ratingSource:"IMDb",synopsis:"A vida de jovens na favela Cidade de Deus, no Rio de Janeiro, entre os anos 1960 e 1980, marcada pela violência e pela busca de escape.",poster:"https://upload.wikimedia.org/wikipedia/en/1/10/CidadedeDeus.jpg",trailer:"dcUOO4Itgmw",cert:"R"},
+  {id:25,title:"Pan's Labyrinth",year:2006,genre:["Fantasia","Drama","Guerra"],runtime:"118 min",director:"Guillermo del Toro",cast:["Ivana Baquero","Sergi López","Maribel Verdú","Doug Jones"],rating:8.2,ratingSource:"IMDb",synopsis:"Na Espanha franquista, uma menina encontra um labirinto mágico e enfrenta provas de um fauno enquanto a realidade da guerra a rodeia.",poster:"https://upload.wikimedia.org/wikipedia/en/6/67/Pan%27s_Labyrinth.jpg",trailer:"EqYiKlxyk7Q",cert:"R"},
+  {id:26,title:"The Social Network",year:2010,genre:["Drama","Biografia"],runtime:"120 min",director:"David Fincher",cast:["Jesse Eisenberg","Andrew Garfield","Justin Timberlake","Rooney Mara"],rating:7.8,ratingSource:"IMDb",synopsis:"A criação do Facebook e as disputas legais e pessoais que se seguiram entre Mark Zuckerberg e os seus co-fundadores.",poster:"https://m.media-amazon.com/images/M/MV5BOGUyZDUxZjEtMmIzMC00MzlmLTg4MGItZWJmMzBhZjE0Mjc1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",trailer:"lB95KLmpLR4",cert:"PG-13"},
+  {id:27,title:"Django Unchained",year:2012,genre:["Western","Drama","Ação"],runtime:"165 min",director:"Quentin Tarantino",cast:["Jamie Foxx","Christoph Waltz","Leonardo DiCaprio","Kerry Washington"],rating:8.5,ratingSource:"IMDb",synopsis:"Um escravo liberto e um caçador de recompensas unem-se para resgatar a esposa do primeiro de um cruel proprietário de plantação.",poster:"https://images.metahub.space/poster/medium/tt1853728/img",trailer:"0fUCuvNlOCg",cert:"R"},
+  {id:28,title:"Arrival",year:2016,genre:["Ficção científica","Drama","Mistério"],runtime:"116 min",director:"Denis Villeneuve",cast:["Amy Adams","Jeremy Renner","Forest Whitaker","Michael Stuhlbarg"],rating:7.9,ratingSource:"IMDb",synopsis:"Uma linguista é recrutada para comunicar com alienígenas que chegaram à Terra, descobrindo que a linguagem pode alterar a percepção do tempo.",poster:"https://images.metahub.space/poster/medium/tt2543164/img",trailer:"tFMo3Vf2Q2g",cert:"PG-13"},
+  {id:29,title:"Blade Runner 2049",year:2017,genre:["Ficção científica","Drama","Thriller"],runtime:"164 min",director:"Denis Villeneuve",cast:["Ryan Gosling","Harrison Ford","Ana de Armas","Jared Leto"],rating:8.0,ratingSource:"IMDb",synopsis:"Um blade runner descobre um segredo que pode mergulhar a sociedade no caos e decide encontrar o lendário Rick Deckard.",poster:"https://images.metahub.space/poster/medium/tt1856101/img",trailer:"gCcx85zbxz4",cert:"R"},
+  {id:30,title:"Everything Everywhere All at Once",year:2022,genre:["Ação","Comédia","Ficção científica"],runtime:"139 min",director:"Daniel Kwan, Daniel Scheinert",cast:["Michelle Yeoh","Stephanie Hsu","Ke Huy Quan","Jamie Lee Curtis"],rating:7.8,ratingSource:"IMDb",synopsis:"Uma mulher comum é arrastada para um combate interdimensional para salvar o multiverso, confrontando versões alternativas de si mesma.",poster:"https://images.metahub.space/poster/medium/tt6710474/img",trailer:"wxN1T1uxQ2g",cert:"R"},
+  {id:31,title:"Oppenheimer",year:2023,genre:["Drama","História","Biografia"],runtime:"180 min",director:"Christopher Nolan",cast:["Cillian Murphy","Emily Blunt","Robert Downey Jr.","Matt Damon"],rating:8.3,ratingSource:"IMDb",synopsis:"A história de J. Robert Oppenheimer e o desenvolvimento da bomba atómica durante a Segunda Guerra Mundial, com as suas consequências morais.",poster:"https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_FMjpg_UX1000_.jpg",trailer:"uYPbbksJxIg",cert:"R"},
+  {id:32,title:"Dune",year:2021,genre:["Ficção científica","Aventura","Drama"],runtime:"155 min",director:"Denis Villeneuve",cast:["Timothée Chalamet","Rebecca Ferguson","Oscar Isaac","Zendaya"],rating:8.0,ratingSource:"IMDb",synopsis:"O jovem Paul Atreides viaja para o planeta deserto Arrakis, onde uma batalha pelo controlo da especiaria mais valiosa do universo está prestes a começar.",poster:"https://m.media-amazon.com/images/M/MV5BN2FjNmEyNWMtYzM0ZS00NjIyLTg5YzYtYThlMGVjNzE1OGViXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg",trailer:"n9xhJrPXop4",cert:"PG-13"},
+  {id:33,title:"Spider-Man",year:2002,genre:["Ação","Aventura","Ficção científica"],runtime:"121 min",director:"Sam Raimi",cast:["Tobey Maguire","Willem Dafoe","Kirsten Dunst","James Franco"],rating:7.4,ratingSource:"IMDb",synopsis:"Peter Parker ganha poderes de aranha após ser mordido por uma aranha geneticamente modificada e decide usar as suas habilidades para combater o crime.",poster:"https://images.metahub.space/poster/medium/tt0145487/img",trailer:"t06RUxFgbgk",cert:"PG-13"},
+  {id:34,title:"Spider-Man 2",year:2004,genre:["Ação","Aventura","Ficção científica"],runtime:"127 min",director:"Sam Raimi",cast:["Tobey Maguire","Kirsten Dunst","Alfred Molina","James Franco"],rating:7.5,ratingSource:"IMDb",synopsis:"Peter Parker luta para equilibrar a vida pessoal com o papel de herói enquanto enfrenta o Doutor Octopus.",poster:"https://images.metahub.space/poster/medium/tt0316654/img",trailer:"1x0G6Qh5o8c",cert:"PG-13"},
+  {id:35,title:"Spider-Man 3",year:2007,genre:["Ação","Aventura","Ficção científica"],runtime:"139 min",director:"Sam Raimi",cast:["Tobey Maguire","Kirsten Dunst","Topher Grace","Thomas Haden Church"],rating:6.3,ratingSource:"IMDb",synopsis:"Peter Parker enfrenta novos desafios quando um simbionte alienígena amplifica o seu lado sombrio e surgem novos vilões.",poster:"https://images.metahub.space/poster/medium/tt0413300/img",trailer:"eRsGyueVLvQ",cert:"PG-13"},
+  {id:36,title:"The Amazing Spider-Man",year:2012,genre:["Ação","Aventura","Ficção científica"],runtime:"136 min",director:"Marc Webb",cast:["Andrew Garfield","Emma Stone","Rhys Ifans","Denis Leary"],rating:6.9,ratingSource:"IMDb",synopsis:"Peter Parker descobre o legado dos pais e torna-se o Homem-Aranha, enfrentando o Lagarto.",poster:"https://images.metahub.space/poster/medium/tt0948470/img",trailer:"upAXl0gpZyE",cert:"PG-13"},
+  {id:37,title:"Spider-Man: Homecoming",year:2017,genre:["Ação","Aventura","Ficção científica"],runtime:"133 min",director:"Jon Watts",cast:["Tom Holland","Michael Keaton","Robert Downey Jr.","Marisa Tomei"],rating:7.4,ratingSource:"IMDb",synopsis:"Peter Parker tenta equilibrar a vida de estudante com o papel de Homem-Aranha sob a orientação de Tony Stark.",poster:"https://images.metahub.space/poster/medium/tt2250912/img",trailer:"n9DwoQ7HBqI",cert:"PG-13"},
+  {id:38,title:"Spider-Man: Far From Home",year:2019,genre:["Ação","Aventura","Ficção científica"],runtime:"129 min",director:"Jon Watts",cast:["Tom Holland","Zendaya","Jake Gyllenhaal","Samuel L. Jackson"],rating:7.4,ratingSource:"IMDb",synopsis:"Peter Parker viaja para a Europa e enfrenta Mysterio, um vilão que manipula a realidade com ilusões.",poster:"https://images.metahub.space/poster/medium/tt6320628/img",trailer:"Nt9L1jCKGnE",cert:"PG-13"},
+  {id:39,title:"Spider-Man: No Way Home",year:2021,genre:["Ação","Aventura","Ficção científica"],runtime:"148 min",director:"Jon Watts",cast:["Tom Holland","Zendaya","Benedict Cumberbatch","Willem Dafoe"],rating:8.2,ratingSource:"IMDb",synopsis:"A identidade de Peter Parker é revelada e ele pede ajuda ao Doutor Strange, abrindo o multiverso e reunindo diferentes versões do Homem-Aranha.",poster:"https://images.metahub.space/poster/medium/tt10872600/img",trailer:"JfVOs4VSpmA",cert:"PG-13"},
+  {id:40,title:"Spider-Man: Into the Spider-Verse",year:2018,genre:["Animação","Ação","Aventura"],runtime:"117 min",director:"Bob Persichetti, Peter Ramsey, Rodney Rothman",cast:["Shameik Moore","Jake Johnson","Hailee Steinfeld","Mahershala Ali"],rating:8.4,ratingSource:"IMDb",synopsis:"Miles Morales torna-se o Homem-Aranha e conhece versões alternativas de si mesmo de outros universos.",poster:"https://images.metahub.space/poster/medium/tt4633694/img",trailer:"tg52up9f-dc",cert:"PG"},
+  {id:41,title:"Spider-Man: Across the Spider-Verse",year:2023,genre:["Animação","Ação","Aventura"],runtime:"140 min",director:"Joaquim Dos Santos, Kemp Powers, Justin K. Thompson",cast:["Shameik Moore","Hailee Steinfeld","Brian Tyree Henry","Luna Lauren Vélez"],rating:8.6,ratingSource:"IMDb",synopsis:"Miles Morales atravessa o multiverso com Gwen Stacy e enfrenta uma nova ameaça que coloca em risco todas as realidades.",poster:"https://images.metahub.space/poster/medium/tt9362722/img",trailer:"cqGjhVJWtEg",cert:"PG"},
+  {id:42,title:"Batman Begins",year:2005,genre:["Ação","Crime","Drama"],runtime:"140 min",director:"Christopher Nolan",cast:["Christian Bale","Michael Caine","Liam Neeson","Katie Holmes"],rating:8.2,ratingSource:"IMDb",synopsis:"Bruce Wayne treina para se tornar Batman e combater a corrupção e o crime em Gotham City.",poster:"https://images.metahub.space/poster/medium/tt0372784/img",trailer:"neY2xVmOfUM",cert:"PG-13"},
+  {id:43,title:"The Dark Knight Rises",year:2012,genre:["Ação","Crime","Drama"],runtime:"164 min",director:"Christopher Nolan",cast:["Christian Bale","Tom Hardy","Anne Hathaway","Gary Oldman"],rating:8.4,ratingSource:"IMDb",synopsis:"Oito anos após os eventos de The Dark Knight, Batman regressa para enfrentar Bane e salvar Gotham.",poster:"https://images.metahub.space/poster/medium/tt1345836/img",trailer:"GokKUqLcvD8",cert:"PG-13"},
+  {id:44,title:"The Avengers",year:2012,genre:["Ação","Aventura","Ficção científica"],runtime:"143 min",director:"Joss Whedon",cast:["Robert Downey Jr.","Chris Evans","Scarlett Johansson","Mark Ruffalo"],rating:8.0,ratingSource:"IMDb",synopsis:"Os heróis da Marvel unem-se pela primeira vez para enfrentar Loki e uma invasão alienígena em Nova Iorque.",poster:"https://images.metahub.space/poster/medium/tt0848228/img",trailer:"eOrNdBpGMv8",cert:"PG-13"},
+  {id:45,title:"Avengers: Infinity War",year:2018,genre:["Ação","Aventura","Ficção científica"],runtime:"149 min",director:"Anthony Russo, Joe Russo",cast:["Robert Downey Jr.","Chris Hemsworth","Mark Ruffalo","Chris Evans"],rating:8.4,ratingSource:"IMDb",synopsis:"Os Vingadores e os Guardiões da Galáxia tentam impedir Thanos de reunir as Joias do Infinito.",poster:"https://images.metahub.space/poster/medium/tt4154756/img",trailer:"6ZfuNTqbHE8",cert:"PG-13"},
+  {id:46,title:"Avengers: Endgame",year:2019,genre:["Ação","Aventura","Drama"],runtime:"181 min",director:"Anthony Russo, Joe Russo",cast:["Robert Downey Jr.","Chris Evans","Mark Ruffalo","Chris Hemsworth"],rating:8.4,ratingSource:"IMDb",synopsis:"Após a devastação causada por Thanos, os Vingadores restantes tentam reverter o estalar de dedos e salvar o universo.",poster:"https://images.metahub.space/poster/medium/tt4154796/img",trailer:"TcMBFSGVi1c",cert:"PG-13"},
+  {id:47,title:"Iron Man",year:2008,genre:["Ação","Aventura","Ficção científica"],runtime:"126 min",director:"Jon Favreau",cast:["Robert Downey Jr.","Gwyneth Paltrow","Terrence Howard","Jeff Bridges"],rating:7.9,ratingSource:"IMDb",synopsis:"Tony Stark, um industrial bilionário, constrói uma armadura sofisticada e torna-se o Homem de Ferro.",poster:"https://images.metahub.space/poster/medium/tt0371746/img",trailer:"8ugaeA-nMTc",cert:"PG-13"},
+  {id:48,title:"Black Panther",year:2018,genre:["Ação","Aventura","Ficção científica"],runtime:"134 min",director:"Ryan Coogler",cast:["Chadwick Boseman","Michael B. Jordan","Lupita Nyong'o","Danai Gurira"],rating:7.3,ratingSource:"IMDb",synopsis:"T'Challa regressa a Wakanda para assumir o trono e enfrenta um adversário que desafia o destino da nação.",poster:"https://images.metahub.space/poster/medium/tt1825683/img",trailer:"xjDjIWPwcPU",cert:"PG-13"},
+  {id:49,title:"Guardians of the Galaxy",year:2014,genre:["Ação","Aventura","Comédia"],runtime:"121 min",director:"James Gunn",cast:["Chris Pratt","Zoe Saldana","Dave Bautista","Vin Diesel"],rating:8.0,ratingSource:"IMDb",synopsis:"Um grupo de desajustados intergalácticos une-se para impedir um vilão de destruir a galáxia.",poster:"https://images.metahub.space/poster/medium/tt2015381/img",trailer:"d96cjJhvlMA",cert:"PG-13"},
+  {id:50,title:"Thor: Ragnarok",year:2017,genre:["Ação","Aventura","Comédia"],runtime:"130 min",director:"Taika Waititi",cast:["Chris Hemsworth","Tom Hiddleston","Cate Blanchett","Mark Ruffalo"],rating:7.9,ratingSource:"IMDb",synopsis:"Thor é aprisionado num planeta distante e deve escapar a tempo de impedir o Ragnarok e salvar Asgard.",poster:"https://images.metahub.space/poster/medium/tt3501632/img",trailer:"ue80QwXMRHg",cert:"PG-13"},
+  {id:51,title:"Doctor Strange",year:2016,genre:["Ação","Aventura","Fantasia"],runtime:"115 min",director:"Scott Derrickson",cast:["Benedict Cumberbatch","Chiwetel Ejiofor","Rachel McAdams","Benedict Wong"],rating:7.5,ratingSource:"IMDb",synopsis:"Um cirurgião brilhante descobre as artes místicas e torna-se o Doutor Strange para proteger a realidade.",poster:"https://images.metahub.space/poster/medium/tt1211837/img",trailer:"HSzx-zryEgM",cert:"PG-13"},
+  {id:52,title:"Captain America: The Winter Soldier",year:2014,genre:["Ação","Aventura","Thriller"],runtime:"136 min",director:"Anthony Russo, Joe Russo",cast:["Chris Evans","Scarlett Johansson","Sebastian Stan","Samuel L. Jackson"],rating:7.7,ratingSource:"IMDb",synopsis:"Steve Rogers descobre uma conspiração dentro da S.H.I.E.L.D. e enfrenta o Soldado Invernal.",poster:"https://images.metahub.space/poster/medium/tt1843866/img",trailer:"7SlILk2WMTI",cert:"PG-13"},
+  {id:53,title:"Star Wars: Episode IV - A New Hope",year:1977,genre:["Ação","Aventura","Fantasia"],runtime:"121 min",director:"George Lucas",cast:["Mark Hamill","Harrison Ford","Carrie Fisher","Alec Guinness"],rating:8.6,ratingSource:"IMDb",synopsis:"Luke Skywalker junta-se a uma rebelião contra o Império Galáctico para salvar a princesa Leia e destruir a Estrela da Morte.",poster:"https://images.metahub.space/poster/medium/tt0076759/img",trailer:"vZ734NWnAHA",cert:"PG"},
+  {id:54,title:"Star Wars: Episode V - The Empire Strikes Back",year:1980,genre:["Ação","Aventura","Fantasia"],runtime:"124 min",director:"Irvin Kershner",cast:["Mark Hamill","Harrison Ford","Carrie Fisher","Billy Dee Williams"],rating:8.7,ratingSource:"IMDb",synopsis:"Os rebeldes são perseguidos pelo Império enquanto Luke treina com Yoda e descobre a verdade sobre o seu pai.",poster:"https://images.metahub.space/poster/medium/tt0080684/img",trailer:"JNwNXF9Y6kY",cert:"PG"},
+  {id:55,title:"Star Wars: Episode VI - Return of the Jedi",year:1983,genre:["Ação","Aventura","Fantasia"],runtime:"131 min",director:"Richard Marquand",cast:["Mark Hamill","Harrison Ford","Carrie Fisher","Billy Dee Williams"],rating:8.3,ratingSource:"IMDb",synopsis:"A Aliança Rebelde lança um ataque final à segunda Estrela da Morte enquanto Luke confronta Darth Vader e o Imperador.",poster:"https://images.metahub.space/poster/medium/tt0086190/img",trailer:"7Lfi5kn3z4I",cert:"PG"},
+  {id:56,title:"Harry Potter and the Sorcerer's Stone",year:2001,genre:["Aventura","Família","Fantasia"],runtime:"152 min",director:"Chris Columbus",cast:["Daniel Radcliffe","Rupert Grint","Emma Watson","Richard Harris"],rating:7.6,ratingSource:"IMDb",synopsis:"Um rapaz órfão descobre que é um bruxo e inicia a sua educação em Hogwarts, onde enfrenta forças das trevas.",poster:"https://images.metahub.space/poster/medium/tt0241527/img",trailer:"VyHV0BRtdxo",cert:"PG"},
+  {id:57,title:"Harry Potter and the Chamber of Secrets",year:2002,genre:["Aventura","Família","Fantasia"],runtime:"161 min",director:"Chris Columbus",cast:["Daniel Radcliffe","Rupert Grint","Emma Watson","Kenneth Branagh"],rating:7.4,ratingSource:"IMDb",synopsis:"Harry regressa a Hogwarts e investiga uma série de ataques misteriosos ligados a uma câmara secreta antiga.",poster:"https://images.metahub.space/poster/medium/tt0295297/img",trailer:"1bq0qff4iF8",cert:"PG"},
+  {id:58,title:"Harry Potter and the Prisoner of Azkaban",year:2004,genre:["Aventura","Família","Fantasia"],runtime:"142 min",director:"Alfonso Cuarón",cast:["Daniel Radcliffe","Rupert Grint","Emma Watson","Gary Oldman"],rating:7.9,ratingSource:"IMDb",synopsis:"Harry descobre que um perigoso prisioneiro escapou de Azkaban e pode estar ligado ao seu passado.",poster:"https://images.metahub.space/poster/medium/tt0304141/img",trailer:"lAxgztbYQcQ",cert:"PG"},
+  {id:59,title:"The Lord of the Rings: The Fellowship of the Ring",year:2001,genre:["Aventura","Drama","Fantasia"],runtime:"178 min",director:"Peter Jackson",cast:["Elijah Wood","Ian McKellen","Viggo Mortensen","Orlando Bloom"],rating:8.9,ratingSource:"IMDb",synopsis:"Um hobbit herda um anel poderoso e parte numa jornada para o destruir, acompanhado por uma sociedade de heróis.",poster:"https://images.metahub.space/poster/medium/tt0120737/img",trailer:"V75dMMIW2B4",cert:"PG-13"},
+  {id:60,title:"The Lord of the Rings: The Two Towers",year:2002,genre:["Aventura","Drama","Fantasia"],runtime:"179 min",director:"Peter Jackson",cast:["Elijah Wood","Ian McKellen","Viggo Mortensen","Orlando Bloom"],rating:8.8,ratingSource:"IMDb",synopsis:"A Sociedade do Anel está dividida. Enquanto Frodo e Sam continuam a viagem, Aragorn, Legolas e Gimli enfrentam a guerra em Rohan.",poster:"https://images.metahub.space/poster/medium/tt0167261/img",trailer:"LbfMDwc4azU",cert:"PG-13"},
+  {id:61,title:"The Lord of the Rings: The Return of the King",year:2003,genre:["Aventura","Drama","Fantasia"],runtime:"201 min",director:"Peter Jackson",cast:["Elijah Wood","Viggo Mortensen","Ian McKellen","Orlando Bloom"],rating:9.0,ratingSource:"IMDb",synopsis:"A batalha final pela Terra-média aproxima-se enquanto Frodo e Sam tentam destruir o Anel em Mordor.",poster:"https://images.metahub.space/poster/medium/tt0167260/img",trailer:"r5X-hFf6Bwo",cert:"PG-13"},
+  {id:62,title:"Jurassic Park",year:1993,genre:["Aventura","Ficção científica","Thriller"],runtime:"127 min",director:"Steven Spielberg",cast:["Sam Neill","Laura Dern","Jeff Goldblum","Richard Attenborough"],rating:8.2,ratingSource:"IMDb",synopsis:"Cientistas visitam um parque temático com dinossauros clonados e enfrentam o caos quando os sistemas de segurança falham.",poster:"https://images.metahub.space/poster/medium/tt0107290/img",trailer:"lc0UehITEhQ",cert:"PG-13"},
+  {id:63,title:"Jurassic World",year:2015,genre:["Ação","Aventura","Ficção científica"],runtime:"124 min",director:"Colin Trevorrow",cast:["Chris Pratt","Bryce Dallas Howard","Vincent D'Onofrio","Ty Simpkins"],rating:6.9,ratingSource:"IMDb",synopsis:"Um parque de dinossauros reaberto enfrenta uma crise quando uma criatura geneticamente modificada escapa.",poster:"https://images.metahub.space/poster/medium/tt0369610/img",trailer:"RFinNxS5KN4",cert:"PG-13"},
+  {id:64,title:"The Hunger Games",year:2012,genre:["Ação","Aventura","Ficção científica"],runtime:"142 min",director:"Gary Ross",cast:["Jennifer Lawrence","Josh Hutcherson","Liam Hemsworth","Woody Harrelson"],rating:7.2,ratingSource:"IMDb",synopsis:"Katniss Everdeen voluntaria-se para os Jogos Vorazes no lugar da irmã e torna-se um símbolo de resistência.",poster:"https://images.metahub.space/poster/medium/tt1392170/img",trailer:"mfmrPu43GIQ",cert:"PG-13"},
+  {id:65,title:"Twilight",year:2008,genre:["Drama","Fantasia","Romance"],runtime:"122 min",director:"Catherine Hardwicke",cast:["Kristen Stewart","Robert Pattinson","Billy Burke","Taylor Lautner"],rating:5.3,ratingSource:"IMDb",synopsis:"Uma adolescente apaixona-se por um vampiro e descobre um mundo secreto de criaturas sobrenaturais.",poster:"https://images.metahub.space/poster/medium/tt1099212/img",trailer:"uxjNDE2fMjI",cert:"PG-13"},
+  {id:66,title:"The Twilight Saga: New Moon",year:2009,genre:["Drama","Fantasia","Romance"],runtime:"130 min",director:"Chris Weitz",cast:["Kristen Stewart","Robert Pattinson","Taylor Lautner","Ashley Greene"],rating:4.7,ratingSource:"IMDb",synopsis:"Após a partida de Edward, Bella aproxima-se de Jacob e enfrenta novas ameaças no mundo dos vampiros e lobisomens.",poster:"https://images.metahub.space/poster/medium/tt1259571/img",trailer:"S3CQCc1Kp6Y",cert:"PG-13"},
+  {id:67,title:"Fast & Furious",year:2009,genre:["Ação","Crime","Thriller"],runtime:"107 min",director:"Justin Lin",cast:["Vin Diesel","Paul Walker","Michelle Rodriguez","Jordana Brewster"],rating:6.5,ratingSource:"IMDb",synopsis:"Brian O'Conner e Dominic Toretto unem-se novamente em corridas de rua e operações perigosas.",poster:"https://images.metahub.space/poster/medium/tt1013752/img",trailer:"2TAOizOnNZo",cert:"PG-13"},
+  {id:68,title:"Furious 7",year:2015,genre:["Ação","Crime","Thriller"],runtime:"137 min",director:"James Wan",cast:["Vin Diesel","Paul Walker","Dwayne Johnson","Michelle Rodriguez"],rating:7.1,ratingSource:"IMDb",synopsis:"A equipa enfrenta um mercenario mortal determinado a vingar a morte do irmão.",poster:"https://images.metahub.space/poster/medium/tt2820852/img",trailer:"yISKeVqUeQ4",cert:"PG-13"},
+  {id:69,title:"John Wick",year:2014,genre:["Ação","Crime","Thriller"],runtime:"101 min",director:"Chad Stahelski",cast:["Keanu Reeves","Michael Nyqvist","Alfie Allen","Willem Dafoe"],rating:7.4,ratingSource:"IMDb",synopsis:"Um assassino retirado regressa ao submundo do crime para vingar a morte do cão que lhe restava da mulher.",poster:"https://images.metahub.space/poster/medium/tt2911666/img",trailer:"2AUmvW5Zb8o",cert:"R"},
+  {id:70,title:"John Wick: Chapter 2",year:2017,genre:["Ação","Crime","Thriller"],runtime:"122 min",director:"Chad Stahelski",cast:["Keanu Reeves","Riccardo Scamarcio","Ian McShane","Ruby Rose"],rating:7.4,ratingSource:"IMDb",synopsis:"John Wick é forçado a cumprir um juramento de sangue e torna-se alvo de assassinos de todo o mundo.",poster:"https://images.metahub.space/poster/medium/tt4425200/img",trailer:"XGk2EfbQY5s",cert:"R"},
+  {id:71,title:"Mission: Impossible - Fallout",year:2018,genre:["Ação","Aventura","Thriller"],runtime:"147 min",director:"Christopher McQuarrie",cast:["Tom Cruise","Henry Cavill","Ving Rhames","Simon Pegg"],rating:7.7,ratingSource:"IMDb",synopsis:"Ethan Hunt e a equipa IMF enfrentam as consequências de uma missão falhada e uma ameaça nuclear global.",poster:"https://images.metahub.space/poster/medium/tt4912910/img",trailer:"wb49-oV0F78",cert:"PG-13"},
+  {id:72,title:"Top Gun: Maverick",year:2022,genre:["Ação","Drama"],runtime:"130 min",director:"Joseph Kosinski",cast:["Tom Cruise","Miles Teller","Jennifer Connelly","Jon Hamm"],rating:8.2,ratingSource:"IMDb",synopsis:"Após mais de trinta anos de serviço, Pete Maverick Mitchell treina uma nova geração de pilotos para uma missão perigosa.",poster:"https://images.metahub.space/poster/medium/tt1745960/img",trailer:"giXco2jaZ_4",cert:"PG-13"},
+  {id:73,title:"The Batman",year:2022,genre:["Ação","Crime","Drama"],runtime:"176 min",director:"Matt Reeves",cast:["Robert Pattinson","Zoë Kravitz","Paul Dano","Jeffrey Wright"],rating:7.8,ratingSource:"IMDb",synopsis:"No segundo ano como vigilante, Batman investiga a corrupção em Gotham e enfrenta o Charada.",poster:"https://images.metahub.space/poster/medium/tt1877832/img",trailer:"mqqft2x_Aa4",cert:"PG-13"},
+  {id:74,title:"Shrek",year:2001,genre:["Animação","Aventura","Comédia"],runtime:"90 min",director:"Andrew Adamson, Vicky Jenson",cast:["Mike Myers","Eddie Murphy","Cameron Diaz","John Lithgow"],rating:8.1,ratingSource:"IMDb",synopsis:"Um ogro solitário parte numa missão para resgatar uma princesa e acaba por questionar o que significa ser um herói.",poster:"https://images.metahub.space/poster/medium/tt0126029/img",trailer:"CwXOrWvPBPk",cert:"PG"},
+  {id:75,title:"Toy Story",year:1995,genre:["Animação","Aventura","Comédia"],runtime:"81 min",director:"John Lasseter",cast:["Tom Hanks","Tim Allen","Don Rickles","Jim Varney"],rating:8.3,ratingSource:"IMDb",synopsis:"Os brinquedos de Andy ganham vida quando ninguém os vê, e Woody enfrenta a chegada do novo brinquedo Buzz Lightyear.",poster:"https://images.metahub.space/poster/medium/tt0114709/img",trailer:"v-pjgYDrgRM",cert:"G"},
+  {id:76,title:"Finding Nemo",year:2003,genre:["Animação","Aventura","Comédia"],runtime:"100 min",director:"Andrew Stanton",cast:["Albert Brooks","Ellen DeGeneres","Alexander Gould","Willem Dafoe"],rating:8.2,ratingSource:"IMDb",synopsis:"Um peixe-palhaço atravessa o oceano para encontrar o filho desaparecido, com a ajuda de uma peixe-cirurgião esquecida.",poster:"https://images.metahub.space/poster/medium/tt0266543/img",trailer:"2zLkasScy7U",cert:"G"},
+  {id:77,title:"Frozen",year:2013,genre:["Animação","Aventura","Comédia"],runtime:"102 min",director:"Chris Buck, Jennifer Lee",cast:["Kristen Bell","Idina Menzel","Jonathan Groff","Josh Gad"],rating:7.4,ratingSource:"IMDb",synopsis:"A princesa Anna parte numa jornada para encontrar a irmã Elsa, cujo poder de gelo ameaça o reino.",poster:"https://images.metahub.space/poster/medium/tt2294629/img",trailer:"TbQm5doF_Uc",cert:"PG"},
+  {id:78,title:"The Super Mario Bros. Movie",year:2023,genre:["Animação","Aventura","Comédia"],runtime:"92 min",director:"Aaron Horvath, Michael Jelenic",cast:["Chris Pratt","Anya Taylor-Joy","Charlie Day","Jack Black"],rating:7.0,ratingSource:"IMDb",synopsis:"Mario e Luigi são transportados para um mundo mágico e devem salvar a Princesa Peach do malvado Bowser.",poster:"https://images.metahub.space/poster/medium/tt6718170/img",trailer:"TnGl0NixZ3Y",cert:"PG"},
+  {id:79,title:"Deadpool",year:2016,genre:["Ação","Comédia"],runtime:"108 min",director:"Tim Miller",cast:["Ryan Reynolds","Morena Baccarin","T.J. Miller","Ed Skrein"],rating:8.0,ratingSource:"IMDb",synopsis:"Um mercenário com humor ácido obtém poderes de regeneração e parte em busca de vingança contra quem o destruiu.",poster:"https://images.metahub.space/poster/medium/tt1431045/img",trailer:"ONHBaCRuUZU",cert:"R"},
+  {id:80,title:"Deadpool 2",year:2018,genre:["Ação","Aventura","Comédia"],runtime:"119 min",director:"David Leitch",cast:["Ryan Reynolds","Josh Brolin","Morena Baccarin","Julian Dennison"],rating:7.6,ratingSource:"IMDb",synopsis:"Deadpool forma uma equipa improvável de mutantes para proteger um jovem de um soldado do futuro.",poster:"https://images.metahub.space/poster/medium/tt5463162/img",trailer:"D86JhQJFaDw",cert:"R"}
+
+];
+
+const ARTICLES = [
+  {id:1,title:"A Evolução dos Efeitos Visuais no Cinema",category:"Tecnologia",date:"2024-03-12",readTime:"7 min",image:"https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80",excerpt:"Desde os truques de Méliès até ao CGI contemporâneo, os efeitos visuais transformaram a linguagem cinematográfica.",content:"<p>Os efeitos visuais existem desde os primórdios do cinema. Georges Méliès, no final do século XIX, já utilizava sobreposições, desaparecimentos e maquetes para criar ilusões. Com o passar das décadas, técnicas como o stop-motion, a projeção traseira e a matte painting expandiram as possibilidades narrativas.</p><p>A introdução do CGI nos anos 1990, especialmente com Jurassic Park (1993) e depois Titanic e The Matrix, marcou uma mudança de paradigma. Hoje, produções como Avatar e Dune combinam captura de movimento, ambientes digitais e iluminação virtual para criar mundos inteiros.</p><p>Apesar dos avanços, muitos realizadores continuam a valorizar efeitos práticos pela sua textura e presença física. O debate entre o digital e o prático permanece vivo e enriquece a diversidade estética do cinema contemporâneo.</p>"},
+  {id:2,title:"O Cinema Africano: Vozes e Histórias",category:"Cinema Africano",date:"2023-11-08",readTime:"9 min",image:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80",excerpt:"Do Senegal de Ousmane Sembène ao Nollywood contemporâneo, o cinema africano constrói uma identidade própria.",content:"<p>O cinema africano moderno ganhou força após as independências, com figuras como Ousmane Sembène (Senegal), cujo filme La Noire de… (1966) é frequentemente citado como um marco. Sembène utilizava o cinema como ferramenta de crítica social e de afirmação cultural.</p><p>Nas décadas seguintes, realizadores como Djibril Diop Mambéty, Souleymane Cissé e Abderrahmane Sissako levaram a produção africana a festivais internacionais. Em paralelo, a Nigéria desenvolveu o Nollywood, uma indústria de vídeo que se tornou uma das maiores do mundo em volume de produções anuais.</p><p>O cinema africano continua a explorar temas de identidade, memória colonial, urbanização e espiritualidade, oferecendo perspetivas essenciais para a compreensão global da sétima arte.</p>"},
+  {id:3,title:"Como o Som Molda a Experiência Cinematográfica",category:"Tecnologia",date:"2024-01-22",readTime:"6 min",image:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80",excerpt:"Do silêncio ao surround, a banda sonora e o desenho de som são tão narrativos quanto a imagem.",content:"<p>Nos primeiros anos do cinema, a música ao vivo e os efeitos sonoros improvisados acompanhavam as projeções. Com a chegada do som sincronizado no final dos anos 1920, a narrativa ganhou uma dimensão nova.</p><p>Hoje, o desenho de som é uma disciplina sofisticada. Filmes como A Quiet Place demonstram como a ausência de som pode gerar tensão. Em Interstellar, a colaboração entre Hans Zimmer e a equipa de som criou uma experiência imersiva que reforça os temas de tempo e distância.</p><p>A mixagem em formatos como Dolby Atmos permite posicionar sons no espaço tridimensional, aproximando o espetador do ponto de vista dos personagens e ampliando a imersão.</p>"},
+  {id:4,title:"Clássicos que Definiram Géneros",category:"História do Cinema",date:"2023-09-15",readTime:"8 min",image:"https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80",excerpt:"Certas obras não apenas pertencem a um género — elas o inventaram ou redefiniram para sempre.",content:"<p>O Western encontrou em Stagecoach (1939) de John Ford uma forma clássica. O film noir consolidou-se com obras como The Maltese Falcon e Double Indemnity. A comédia screwball dos anos 1930 estabeleceu o ritmo e o diálogo afiado que ainda ecoam.</p><p>No terror, Nosferatu e depois Psycho de Hitchcock expandiram o vocabulário do medo. A ficção científica moderna deve muito a 2001: A Space Odyssey, que elevou o género a uma reflexão filosófica e visual.</p><p>Reconhecer estes marcos ajuda a compreender como as convenções de género se formaram e como realizadores posteriores as subverteram ou homenagearam.</p>"},
+  {id:5,title:"A Arte da Montagem: Cortar para Contar",category:"Análise",date:"2024-05-03",readTime:"7 min",image:"https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80",excerpt:"A montagem é onde o cinema se distingue de outras artes: o tempo e o espaço são reconstruídos no corte.",content:"<p>Sergei Eisenstein teorizou a montagem como colisão de imagens que gera significado. Alfred Hitchcock usava o corte para controlar a informação e o suspense. Walter Murch e outros montadores contemporâneos falam do corte como uma decisão emocional tanto quanto técnica.</p><p>Em filmes como Whiplash, a montagem rítmica acompanha a tensão musical. Em Parasite, os cortes revelam camadas sociais e arquitetónicas. A montagem invisível do cinema clássico hollywoodiano convive hoje com estilos mais fragmentados e expressivos.</p><p>Compreender a montagem enriquece a leitura de qualquer filme e revela escolhas que moldam a nossa percepção da história.</p>"},
+  {id:6,title:"Curiosidades dos Bastidores de Grandes Produções",category:"Curiosidades",date:"2023-07-19",readTime:"5 min",image:"https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80",excerpt:"Histórias pouco conhecidas sobre filmagens, improvisos e soluções criativas em obras célebres.",content:"<p>Muitos momentos icónicos nasceram de improvisação ou de limitações práticas. Em Jaws, o tubarão mecânico falhava com frequência, o que forçou Spielberg a sugerir a presença do animal em vez de o mostrar constantemente — uma escolha que aumentou o terror.</p><p>Em The Godfather, a cena do cavalo na cama utilizou uma cabeça real obtida de um matadouro. Em Blade Runner, a chuva constante ajudava a ocultar imperfeições dos cenários e tornou-se parte da identidade visual do filme.</p><p>Estas histórias lembram que o cinema é também um exercício de resolução de problemas sob pressão, onde a criatividade muitas vezes nasce da restrição.</p>"}
+];
+
+const GENRES = ["Todos","Ação","Aventura","Comédia","Drama","Terror","Ficção científica","Animação","Crime","Fantasia","Romance","Thriller","Mistério"];
+
+/* ========== TMDB API ========== */
+const TMDB_API_KEY = "78c676038ed725a9e5ac05ce2c8a5709";
+const TMDB_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OGM2NzYwMzhlZDcyNWE5ZTVhYzA1Y2UyYzhhNTcwOSIsIm5iZiI6MTc4ODU4NDc5OS42MDA5OTk4LCJzdWIiOiI2YTliYTM1ZjMyYjI4OGNlMTlkMTg4ZjIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.9HG_mp1GoACnoUqHveiYbMhDOepm3vMRh9NkY0c-xq0";
+const TMDB_BASE = "https://api.themoviedb.org/3";
+const TMDB_IMG = "https://image.tmdb.org/t/p/w500";
+const TMDB_GENRES = {
+  28:"Ação",12:"Aventura",16:"Animação",35:"Comédia",80:"Crime",99:"Documentário",
+  18:"Drama",10751:"Família",14:"Fantasia",36:"História",27:"Terror",10402:"Música",
+  9648:"Mistério",10749:"Romance",878:"Ficção científica",10770:"Telefilme",53:"Thriller",10752:"Guerra",37:"Western"
+};
+
+/* ========== STATE ========== */
+let currentFilter = "Todos";
+let currentSearch = "";
+let currentSort = "title";
+let favorites = JSON.parse(localStorage.getItem("cv_favs") || "[]");
+let wantList = JSON.parse(localStorage.getItem("cv_want") || "[]");
+let watchedList = JSON.parse(localStorage.getItem("cv_watched") || "[]");
+let searchHistory = JSON.parse(localStorage.getItem("cv_search_hist") || "[]");
+let currentHeroIndex = 0;
+let heroInterval = null;
+let currentMovieId = null;
+let apiResults = [];
+let apiCache = {};
+let searchTimer = null;
+let isSearchingApi = false;
+let yearMin = null, yearMax = null, ratingMin = null;
+let activeListTab = "favorites";
+let compareIds = [];
+let cinemaMovie = null;
+
+/* ========== UTILITIES ========== */
+function setupImageFallbacks() {
+  document.querySelectorAll("img").forEach(img => {
+    if (img.dataset.fallbackSetup) return;
+    img.dataset.fallbackSetup = "1";
+    let tries = 0;
+    img.addEventListener("error", function handler() {
+      tries++;
+      // Try TMDB-style alternate if Amazon failed
+      if (tries === 1 && img.src.includes("media-amazon")) {
+        const alt = img.getAttribute("data-alt") || "";
+        if (alt) { img.src = alt; return; }
+      }
+      img.removeEventListener("error", handler);
+      const parent = img.closest(".poster-wrap, .modal-poster, .article-img");
+      if (parent && !parent.querySelector(".poster-fallback")) {
+        img.style.display = "none";
+        const fb = document.createElement("div");
+        fb.className = "poster-fallback";
+        fb.innerHTML = "<span>🎬</span><p>" + (img.alt || "Imagem indisponível") + "</p>";
+        parent.appendChild(fb);
+      } else if (!parent) {
+        img.src = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><rect fill="#1a1a2e" width="100%" height="100%"/><text x="50%" y="50%" fill="#666" text-anchor="middle" dy=".3em" font-size="28">🎬</text></svg>');
+      }
+    });
+  });
+}
+
+function saveFavorites() {
+  localStorage.setItem("cv_favs", JSON.stringify(favorites));
+}
+
+function isFav(id) {
+  const s = String(id);
+  return favorites.some(f => String(f) === s);
+}
+
+function toggleFav(id) {
+  const s = String(id);
+  if (isFav(s)) favorites = favorites.filter(f => String(f) !== s);
+  else favorites.push(s);
+  saveFavorites();
+  renderMovies();
+  renderFeatured();
+  if (String(currentMovieId) === s) updateModalFavBtn();
+}
+
+function updateModalFavBtn() {
+  const btn = document.getElementById("modalFavBtn");
+  if (!btn || currentMovieId == null) return;
+  btn.textContent = isFav(currentMovieId) ? "Remover dos favoritos" : "Adicionar aos favoritos";
+}
+
+/* ========== RENDER MOVIES ========== */
+function getFilteredMovies() {
+  // When API search is active, show API results (+ local matches merged)
+  if (currentSearch && apiResults.length) {
+    let list = [...apiResults];
+    if (currentFilter !== "Todos") {
+      list = list.filter(m => m.genre.some(g => g.toLowerCase() === currentFilter.toLowerCase()));
+    }
+    switch (currentSort) {
+      case "year-desc": list.sort((a,b) => b.year - a.year); break;
+      case "year-asc": list.sort((a,b) => a.year - b.year); break;
+      case "rating-desc": list.sort((a,b) => b.rating - a.rating); break;
+      default: list.sort((a,b) => a.title.localeCompare(b.title));
+    }
+    return list;
+  }
+  let list = [...MOVIES];
+  if (currentFilter !== "Todos") {
+    list = list.filter(m => m.genre.some(g => g.toLowerCase() === currentFilter.toLowerCase()));
+  }
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    list = list.filter(m =>
+      m.title.toLowerCase().includes(q) ||
+      m.genre.some(g => g.toLowerCase().includes(q)) ||
+      String(m.year).includes(q) ||
+      m.director.toLowerCase().includes(q) ||
+      m.cast.some(c => c.toLowerCase().includes(q))
+    );
+  }
+  list = applyRangeFilters(list);
+  list = applyRangeFilters(list);
+  switch (currentSort) {
+    case "year-desc": list.sort((a,b) => b.year - a.year); break;
+    case "year-asc": list.sort((a,b) => a.year - b.year); break;
+    case "rating-desc": list.sort((a,b) => b.rating - a.rating); break;
+    default: list.sort((a,b) => a.title.localeCompare(b.title));
+  }
+  return list;
+}
+
+function mapTmdbMovie(item) {
+  if (!item || !item.id) return null;
+  const isTv = item.media_type === "tv" || (!item.title && !!item.name);
+  const genres = (item.genre_ids || []).map(id => TMDB_GENRES[id]).filter(Boolean);
+  if (!genres.length) genres.push(isTv ? "Drama" : "Drama");
+  const posterPath = item.poster_path || item.profile_path || "";
+  const poster = posterPath ? TMDB_IMG + posterPath : "";
+  const dateStr = item.release_date || item.first_air_date || "";
+  const year = dateStr ? parseInt(dateStr.slice(0, 4), 10) : 0;
+  const id = (isTv ? "tmdb-tv-" : "tmdb-") + item.id;
+  const m = {
+    id: id,
+    tmdbId: item.id,
+    mediaType: isTv ? "tv" : "movie",
+    title: item.title || item.name || item.original_title || item.original_name || "Sem título",
+    year: year || "—",
+    genre: genres,
+    runtime: "—",
+    director: "—",
+    cast: [],
+    rating: item.vote_average ? Math.round(item.vote_average * 10) / 10 : 0,
+    ratingSource: "TMDB",
+    synopsis: item.overview || "Sinopse não disponível.",
+    poster: poster,
+    trailer: null,
+    cert: "",
+    fromApi: true
+  };
+  apiCache[id] = m;
+  return m;
+}
+
+async function searchTmdb(query) {
+  if (query && query.length >= 2) pushSearchHistory(query);
+  if (!query || query.length < 2) {
+    apiResults = [];
+    isSearchingApi = false;
+    renderMovies();
+    return;
+  }
+  isSearchingApi = true;
+  const countEl = document.getElementById("resultsCount");
+  if (countEl) countEl.textContent = "A pesquisar…";
+  try {
+    const url = TMDB_BASE + "/search/movie?query=" + encodeURIComponent(query) + "&language=pt-PT&include_adult=false&page=1";
+    const res = await fetch(url, {
+      headers: {
+        Authorization: "Bearer " + TMDB_TOKEN,
+        Accept: "application/json"
+      }
+    });
+    if (!res.ok) throw new Error("TMDB " + res.status);
+    const data = await res.json();
+    apiResults = (data.results || []).map(mapTmdbMovie);
+    // Also merge multi-search for TV if few movie results
+    if (apiResults.length < 8) {
+      try {
+        const url2 = TMDB_BASE + "/search/multi?query=" + encodeURIComponent(query) + "&language=pt-PT&include_adult=false&page=1";
+        const res2 = await fetch(url2, {
+          headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" }
+        });
+        if (res2.ok) {
+          const data2 = await res2.json();
+          const extra = (data2.results || [])
+            .filter(x => x.media_type === "movie" || x.media_type === "tv")
+            .map(item => {
+              if (item.media_type === "tv") {
+                const genres = (item.genre_ids || []).map(id => TMDB_GENRES[id]).filter(Boolean);
+                if (!genres.length) genres.push("Drama");
+                const id = "tmdb-tv-" + item.id;
+                const m = {
+                  id: id,
+                  tmdbId: item.id,
+                  mediaType: "tv",
+                  title: item.name || item.original_name || "Sem título",
+                  year: item.first_air_date ? parseInt(item.first_air_date.slice(0, 4), 10) : "—",
+                  genre: genres,
+                  runtime: "—",
+                  director: "—",
+                  cast: [],
+                  rating: item.vote_average ? Math.round(item.vote_average * 10) / 10 : 0,
+                  ratingSource: "TMDB",
+                  synopsis: item.overview || "Sinopse não disponível.",
+                  poster: item.poster_path ? TMDB_IMG + item.poster_path : "",
+                  trailer: null,
+                  cert: "",
+                  fromApi: true
+                };
+                apiCache[id] = m;
+                return m;
+              }
+              return mapTmdbMovie(item);
+            });
+          const seen = new Set(apiResults.map(m => m.id));
+          extra.forEach(m => { if (!seen.has(m.id)) { apiResults.push(m); seen.add(m.id); } });
+        }
+      } catch (e) {}
+    }
+  } catch (err) {
+    console.warn("Pesquisa TMDB falhou:", err);
+    apiResults = [];
+  }
+  isSearchingApi = false;
+  renderMovies();
+  document.getElementById("filmes").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+async function fetchTmdbDetails(m) {
+  if (!m || !m.tmdbId) return m;
+  const type = m.mediaType === "tv" ? "tv" : "movie";
+  try {
+    const url = TMDB_BASE + "/" + type + "/" + m.tmdbId + "?language=pt-PT&append_to_response=credits,videos";
+    const res = await fetch(url, {
+      headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" }
+    });
+    if (!res.ok) return m;
+    const d = await res.json();
+    if (d.runtime) m.runtime = d.runtime + " min";
+    else if (d.episode_run_time && d.episode_run_time[0]) m.runtime = d.episode_run_time[0] + " min/ep";
+    if (d.genres && d.genres.length) m.genre = d.genres.map(g => TMDB_GENRES[g.id] || g.name);
+    if (d.overview) m.synopsis = d.overview;
+    if (d.vote_average) m.rating = Math.round(d.vote_average * 10) / 10;
+    if (d.credits) {
+      const dir = (d.credits.crew || []).find(c => c.job === "Director" || c.job === "Director");
+      if (dir) m.director = dir.name;
+      const creators = d.credits.crew || [];
+      if (type === "tv" && !dir) {
+        const cr = (d.created_by || [])[0];
+        if (cr) m.director = cr.name;
+      }
+      m.cast = (d.credits.cast || []).slice(0, 6).map(c => c.name);
+    }
+    if (d.videos && d.videos.results) {
+      const trailers = d.videos.results.filter(v => v.site === "YouTube" && (v.type === "Trailer" || v.type === "Teaser"));
+      if (trailers.length) m.trailer = trailers[0].key;
+    }
+    if (d.poster_path) m.poster = TMDB_IMG + d.poster_path;
+    apiCache[m.id] = m;
+  } catch (e) {
+    console.warn("Detalhes TMDB falharam:", e);
+  }
+  return m;
+}
+
+async function fetchWatchProviders(m) {
+  const box = document.getElementById("watchProviders");
+  const btn = document.getElementById("modalWatchBtn");
+  if (!box || !btn) return;
+  box.style.display = "none";
+  box.innerHTML = "";
+  btn.style.display = "none";
+  btn.onclick = null;
+
+  const tmdbId = m.tmdbId || null;
+  // For local catalog movies, try to find TMDB id by search
+  let id = tmdbId;
+  let type = m.mediaType === "tv" ? "tv" : "movie";
+
+  try {
+    if (!id && m.title) {
+      const q = encodeURIComponent(m.title + (m.year && m.year !== "—" ? " " + m.year : ""));
+      const sUrl = TMDB_BASE + "/search/" + type + "?query=" + q + "&language=pt-PT";
+      const sRes = await fetch(sUrl, { headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" } });
+      if (sRes.ok) {
+        const sData = await sRes.json();
+        if (sData.results && sData.results[0]) id = sData.results[0].id;
+      }
+    }
+    if (!id) {
+      const boxEl = document.getElementById("watchProviders");
+      const btnEl = document.getElementById("modalWatchBtn");
+      if (boxEl && btnEl) {
+        const waWatch = "https://wa.me/258862541532?text=" + encodeURIComponent("Olá! Gostaria de saber onde posso assistir: " + (m.title || "") + ".");
+        const waDownload = "https://wa.me/258862541532?text=" + encodeURIComponent("Olá! Gostaria de informação sobre compra ou download oficial de: " + (m.title || "") + ".");
+        const waContact = "https://wa.me/258862541532?text=" + encodeURIComponent("Olá! Gostaria de falar convosco sobre o CineVerse.");
+        boxEl.innerHTML = '<h4>Apoio</h4><div class="watch-actions">' +
+          '<a class="btn-whatsapp" href="' + waWatch + '" target="_blank" rel="noopener noreferrer">WhatsApp</a>' +
+          '<a class="btn btn-outline" href="' + waContact + '" target="_blank" rel="noopener noreferrer">Fale conosco</a>' +
+          '<a class="btn btn-primary" href="' + waDownload + '" target="_blank" rel="noopener noreferrer">Onde baixar</a></div>';
+        btnEl.style.display = "";
+        btnEl.onclick = () => {
+          const open = boxEl.style.display !== "none";
+          boxEl.style.display = open ? "none" : "block";
+          btnEl.textContent = open ? "Onde assistir / Comprar" : "Ocultar opções";
+        };
+      }
+      return;
+    }
+
+    const url = TMDB_BASE + "/" + type + "/" + id + "/watch/providers";
+    const res = await fetch(url, { headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" } });
+    if (!res.ok) return;
+    const data = await res.json();
+    // Prefer MZ (Mozambique), then PT, BR, US
+    const regions = ["MZ", "PT", "BR", "US", "GB"];
+    let providers = null;
+    let region = null;
+    for (const r of regions) {
+      if (data.results && data.results[r]) {
+        providers = data.results[r];
+        region = r;
+        break;
+      }
+    }
+    if (!providers) return;
+
+    const logoBase = "https://image.tmdb.org/t/p/w45";
+    let html = "";
+    const sections = [
+      { key: "flatrate", label: "Streaming (subscrição)" },
+      { key: "rent", label: "Alugar" },
+      { key: "buy", label: "Comprar / Download oficial" },
+      { key: "free", label: "Grátis com anúncios" }
+    ];
+    let hasAny = false;
+    sections.forEach(sec => {
+      const list = providers[sec.key];
+      if (!list || !list.length) return;
+      hasAny = true;
+      html += '<div class="watch-row"><strong>' + sec.label + '</strong>';
+      list.forEach(p => {
+        const link = providers.link || ("https://www.themoviedb.org/" + type + "/" + id + "/watch");
+        html += '<a class="watch-link" href="' + link + '" target="_blank" rel="noopener noreferrer">';
+        if (p.logo_path) html += '<img src="' + logoBase + p.logo_path + '" alt="">';
+        html += (p.provider_name || "Ver") + '</a>';
+      });
+      html += '</div>';
+    });
+    if (!hasAny) return;
+
+    const waWatch = "https://wa.me/258862541532?text=" + encodeURIComponent("Olá! Gostaria de saber onde posso assistir: " + (m.title || "") + (m.year && m.year !== "—" ? " (" + m.year + ")" : "") + ".");
+    const waDownload = "https://wa.me/258862541532?text=" + encodeURIComponent("Olá! Gostaria de informação sobre compra ou download oficial de: " + (m.title || "") + (m.year && m.year !== "—" ? " (" + m.year + ")" : "") + ".");
+    const waContact = "https://wa.me/258862541532?text=" + encodeURIComponent("Olá! Gostaria de falar convosco sobre o CineVerse.");
+
+    html = '<h4>Disponível legalmente</h4>' + html;
+    html += '<div class="watch-actions">';
+    html += '<a class="btn-whatsapp" href="' + waWatch + '" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>';
+    html += '<a class="btn btn-outline" href="' + waContact + '" target="_blank" rel="noopener noreferrer">Fale conosco</a>';
+    html += '<a class="btn btn-primary" href="' + waDownload + '" target="_blank" rel="noopener noreferrer">Onde baixar</a>';
+    html += '</div>';
+    html += '<p class="watch-note">Links oficiais via JustWatch / TMDB (região ' + region + '). Compra e download apenas em lojas autorizadas. Use o WhatsApp para apoio.</p>';
+    box.innerHTML = html;
+
+    btn.style.display = "";
+    btn.textContent = "Onde assistir / Comprar";
+    btn.onclick = () => {
+      const open = box.style.display !== "none";
+      box.style.display = open ? "none" : "block";
+      btn.textContent = open ? "Onde assistir / Comprar" : "Ocultar opções";
+    };
+  } catch (e) {
+    console.warn("Watch providers:", e);
+    const box = document.getElementById("watchProviders");
+    const btn = document.getElementById("modalWatchBtn");
+    if (box && btn) {
+      const waWatch = "https://wa.me/258862541532?text=" + encodeURIComponent("Olá! Gostaria de saber onde posso assistir: " + (m.title || "") + ".");
+      const waDownload = "https://wa.me/258862541532?text=" + encodeURIComponent("Olá! Gostaria de informação sobre compra ou download oficial de: " + (m.title || "") + ".");
+      const waContact = "https://wa.me/258862541532?text=" + encodeURIComponent("Olá! Gostaria de falar convosco sobre o CineVerse.");
+      box.innerHTML = '<h4>Apoio</h4><div class="watch-actions">' +
+        '<a class="btn-whatsapp" href="' + waWatch + '" target="_blank" rel="noopener noreferrer">WhatsApp</a>' +
+        '<a class="btn btn-outline" href="' + waContact + '" target="_blank" rel="noopener noreferrer">Fale conosco</a>' +
+        '<a class="btn btn-primary" href="' + waDownload + '" target="_blank" rel="noopener noreferrer">Onde baixar</a></div>' +
+        '<p class="watch-note">Fale connosco no WhatsApp para orientação sobre opções legais de visualização e compra.</p>';
+      btn.style.display = "";
+      btn.textContent = "Onde assistir / Comprar";
+      btn.onclick = () => {
+        const open = box.style.display !== "none";
+        box.style.display = open ? "none" : "block";
+        btn.textContent = open ? "Onde assistir / Comprar" : "Ocultar opções";
+      };
+    }
+  }
+}
+
+
+function createMovieCard(m) {
+  const card = document.createElement("article");
+  card.className = "movie-card reveal";
+  card.dataset.id = m.id;
+  card.innerHTML = `
+    <div class="poster-wrap">
+      <img src="${m.poster}" alt="Poster de ${m.title}" loading="lazy">
+      <span class="rating-badge">★ ${m.rating || "—"}</span>
+      <button class="fav-btn ${isFav(m.id) ? "active" : ""}" data-fav="${m.id}" aria-label="Favorito">♥</button>
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">${m.title}</h3>
+      <div class="card-meta"><span>${m.year}</span><span>${(m.genre && m.genre[0]) ? m.genre[0] : "Filme"}</span></div>
+      <div class="card-actions">
+        <button class="btn-detail" data-detail="${m.id}">Detalhes</button>
+        ${m.trailer ? `<button class="btn-trailer" data-trailer="${m.trailer}" data-title="${m.title}">Trailer</button>` : ""}
+      </div>
+    </div>`;
+  return card;
+}
+
+function renderMovies() {
+  const grid = document.getElementById("movieGrid");
+  const empty = document.getElementById("emptyState");
+  const count = document.getElementById("resultsCount");
+  const list = getFilteredMovies();
+  grid.innerHTML = "";
+  if (list.length === 0) {
+    empty.classList.remove("hidden");
+    count.textContent = "0 resultados";
+  } else {
+    empty.classList.add("hidden");
+    count.textContent = list.length + " filme" + (list.length !== 1 ? "s" : "") + " encontrado" + (list.length !== 1 ? "s" : "");
+    list.forEach(m => grid.appendChild(createMovieCard(m)));
+  }
+  setupImageFallbacks();
+  observeReveals();
+  bindCardEvents();
+}
+
+function renderFeatured() {
+  const grid = document.getElementById("featuredGrid");
+  grid.innerHTML = "";
+  const featured = [...MOVIES].sort((a,b) => b.rating - a.rating).slice(0, 8);
+  featured.forEach(m => grid.appendChild(createMovieCard(m)));
+  setupImageFallbacks();
+  observeReveals();
+  bindCardEvents();
+}
+
+function renderTrailers() {
+  const grid = document.getElementById("trailersGrid");
+  grid.innerHTML = "";
+  MOVIES.filter(m => m.trailer).slice(0, 12).forEach(m => {
+    const card = createMovieCard(m);
+    grid.appendChild(card);
+  });
+  setupImageFallbacks();
+  observeReveals();
+  bindCardEvents();
+}
+
+function bindCardEvents() {
+  document.querySelectorAll("[data-detail]").forEach(btn => {
+    btn.onclick = e => { e.stopPropagation(); openMovieModal(btn.dataset.detail); };
+  });
+  document.querySelectorAll("[data-trailer]").forEach(btn => {
+    btn.onclick = e => { e.stopPropagation(); openTrailer(btn.dataset.trailer, btn.dataset.title); };
+  });
+  document.querySelectorAll("[data-fav]").forEach(btn => {
+    btn.onclick = e => { e.stopPropagation(); toggleFav(btn.dataset.fav); };
+  });
+  document.querySelectorAll(".movie-card").forEach(card => {
+    card.onclick = () => openMovieModal(card.dataset.id);
+  });
+}
+
+/* ========== FILTERS ========== */
+function renderGenreFilters() {
+  const container = document.getElementById("genreFilters");
+  container.innerHTML = "";
+  GENRES.forEach(g => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn" + (g === currentFilter ? " active" : "");
+    btn.textContent = g;
+    btn.setAttribute("aria-pressed", g === currentFilter);
+    btn.onclick = () => {
+      currentFilter = g;
+      renderGenreFilters();
+      renderMovies();
+    };
+    container.appendChild(btn);
+  });
+}
+
+function renderGenreCards() {
+  const container = document.getElementById("genreCards");
+  container.innerHTML = "";
+  GENRES.filter(g => g !== "Todos").forEach(g => {
+    const count = MOVIES.filter(m => m.genre.some(x => x.toLowerCase() === g.toLowerCase())).length;
+    const btn = document.createElement("button");
+    btn.className = "filter-btn";
+    btn.style.padding = "1.25rem";
+    btn.style.textAlign = "center";
+    btn.innerHTML = `<strong style="display:block;font-size:1rem;margin-bottom:.3rem">${g}</strong><span style="font-size:.8rem;opacity:.7">${count} filmes</span>`;
+    btn.onclick = () => {
+      currentFilter = g;
+      renderGenreFilters();
+      renderMovies();
+      document.getElementById("filmes").scrollIntoView({behavior:"smooth"});
+    };
+    container.appendChild(btn);
+  });
+}
+
+/* ========== HERO ========== */
+function initHero() {
+  const slidesEl = document.getElementById("heroSlides");
+  const dotsEl = document.getElementById("heroDots");
+  const heroMovies = MOVIES.filter(m => m.trailer).slice(0, 6);
+  slidesEl.innerHTML = "";
+  dotsEl.innerHTML = "";
+  heroMovies.forEach((m, i) => {
+    const slide = document.createElement("div");
+    slide.className = "hero-slide" + (i === 0 ? " active" : "");
+    slide.style.backgroundImage = `url(${m.poster})`;
+    slidesEl.appendChild(slide);
+    const dot = document.createElement("button");
+    dot.className = "hero-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("aria-label", "Slide " + (i + 1));
+    dot.onclick = () => goToHero(i);
+    dotsEl.appendChild(dot);
+  });
+  updateHeroInfo(heroMovies[0]);
+  currentHeroIndex = 0;
+  if (heroInterval) clearInterval(heroInterval);
+  heroInterval = setInterval(() => {
+    currentHeroIndex = (currentHeroIndex + 1) % heroMovies.length;
+    goToHero(currentHeroIndex);
+  }, 1000);
+  window._heroMovies = heroMovies;
+}
+
+function goToHero(index) {
+  const slides = document.querySelectorAll(".hero-slide");
+  const dots = document.querySelectorAll(".hero-dot");
+  slides.forEach((s, i) => s.classList.toggle("active", i === index));
+  dots.forEach((d, i) => d.classList.toggle("active", i === index));
+  currentHeroIndex = index;
+  updateHeroInfo(window._heroMovies[index]);
+}
+
+function updateHeroInfo(m) {
+  document.getElementById("heroGenre").textContent = m.genre[0];
+  document.getElementById("heroTitle").textContent = m.title;
+  document.getElementById("heroMeta").innerHTML = `<span>${m.year}</span><span>★ ${m.rating} (${m.ratingSource})</span><span>${m.runtime}</span>`;
+  document.getElementById("heroDesc").textContent = m.synopsis.slice(0, 160) + (m.synopsis.length > 160 ? "…" : "");
+  document.getElementById("heroTrailerBtn").onclick = () => openTrailer(m.trailer, m.title);
+  document.getElementById("heroDetailBtn").onclick = () => openMovieModal(m.id);
+}
+
+/* ========== MODALS ========== */
+function findMovie(id) {
+  if (apiCache[id]) return apiCache[id];
+  return MOVIES.find(x => x.id === id || String(x.id) === String(id));
+}
+
+async function openMovieModal(id) {
+  let m = findMovie(id);
+  if (!m) return;
+  currentMovieId = id;
+  document.getElementById("modalTitle").textContent = m.title;
+  document.getElementById("modalPoster").src = m.poster || "";
+  document.getElementById("modalPoster").alt = "Poster de " + m.title;
+  document.getElementById("modalMeta").innerHTML = `
+    <span class="tag">${m.year}</span>
+    <span class="tag">${m.runtime || "—"}</span>
+    <span class="tag">${(m.genre || []).join(" · ")}</span>
+    ${m.cert ? `<span class="tag">${m.cert}</span>` : ""}`;
+  document.getElementById("modalRating").innerHTML = `<span class="stars">★ ${m.rating}</span> <span style="color:var(--text2);font-size:.9rem">referência ${m.ratingSource || "TMDB"}</span>`;
+  document.getElementById("modalSynopsis").textContent = m.synopsis || "";
+  document.getElementById("modalDirector").innerHTML = "<strong>Realizador:</strong> " + (m.director || "—");
+  document.getElementById("modalCast").innerHTML = "<strong>Elenco principal:</strong> " + ((m.cast && m.cast.length) ? m.cast.join(", ") : "—");
+  const tBtn = document.getElementById("modalTrailerBtn");
+  if (m.fromApi) {
+    tBtn.style.display = "";
+    tBtn.textContent = "A carregar…";
+    tBtn.disabled = true;
+    document.getElementById("movieModal").classList.add("open");
+    document.body.style.overflow = "hidden";
+    m = await fetchTmdbDetails(m);
+    document.getElementById("modalMeta").innerHTML = `
+      <span class="tag">${m.year}</span>
+      <span class="tag">${m.runtime || "—"}</span>
+      <span class="tag">${(m.genre || []).join(" · ")}</span>`;
+    document.getElementById("modalRating").innerHTML = `<span class="stars">★ ${m.rating}</span> <span style="color:var(--text2);font-size:.9rem">referência ${m.ratingSource}</span>`;
+    document.getElementById("modalSynopsis").textContent = m.synopsis || "";
+    document.getElementById("modalDirector").innerHTML = "<strong>Realizador:</strong> " + (m.director || "—");
+    document.getElementById("modalCast").innerHTML = "<strong>Elenco principal:</strong> " + ((m.cast && m.cast.length) ? m.cast.join(", ") : "—");
+    if (m.poster) document.getElementById("modalPoster").src = m.poster;
+    tBtn.disabled = false;
+    tBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Ver trailer';
+    if (m.trailer) {
+      tBtn.style.display = "";
+      tBtn.onclick = () => openTrailer(m.trailer, m.title);
+    } else {
+      tBtn.style.display = "none";
+    }
+    updateModalFavBtn();
+    document.getElementById("modalFavBtn").onclick = () => toggleFav(m.id);
+    document.getElementById("modalShareBtn").onclick = () => shareMovie(m);
+    setupImageFallbacks();
+    fetchWatchProviders(m);
+    updateListButtons(m.id);
+    loadSeriesPanel(m);
+    loadRecommendations(m);
+    wireModalListButtons(m);
+    return;
+  }
+
+  if (m.trailer) {
+    tBtn.style.display = "";
+    tBtn.onclick = () => openTrailer(m.trailer, m.title);
+  } else {
+    tBtn.style.display = "none";
+  }
+  updateModalFavBtn();
+  document.getElementById("modalFavBtn").onclick = () => toggleFav(m.id);
+  document.getElementById("modalShareBtn").onclick = () => shareMovie(m);
+  document.getElementById("movieModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+  setupImageFallbacks();
+  fetchWatchProviders(m);
+  updateListButtons(m.id);
+  loadSeriesPanel(m);
+  loadRecommendations(m);
+  wireModalListButtons(m);
+}
+
+function closeMovieModal() {
+  document.getElementById("movieModal").classList.remove("open");
+  document.body.style.overflow = "";
+  currentMovieId = null;
+  const sp = document.getElementById("seriesPanel");
+  const rp = document.getElementById("recsPanel");
+  const wp = document.getElementById("watchProviders");
+  if (sp) { sp.style.display = "none"; sp.innerHTML = ""; }
+  if (rp) { rp.style.display = "none"; }
+  if (wp) { wp.style.display = "none"; }
+}
+
+function openTrailer(videoId, title) {
+  const frame = document.getElementById("trailerFrame");
+  frame.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
+  frame.title = "Trailer: " + title;
+  document.getElementById("trailerModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeTrailer() {
+  document.getElementById("trailerModal").classList.remove("open");
+  document.getElementById("trailerFrame").src = "";
+  document.body.style.overflow = "";
+  closeCinemaMode();
+}
+
+function shareMovie(m) {
+  const text = m.title + " (" + m.year + ") — " + m.synopsis.slice(0, 100) + "…";
+  if (navigator.share) {
+    navigator.share({title: m.title, text: text, url: location.href}).catch(() => copyText(text));
+  } else {
+    copyText(text + " " + location.href);
+  }
+}
+
+function copyText(t) {
+  navigator.clipboard.writeText(t).then(() => {
+    alert("Link copiado para a área de transferência.");
+  }).catch(() => {});
+}
+
+/* ========== ARTICLES ========== */
+function renderArticles() {
+  const grid = document.getElementById("articlesGrid");
+  grid.innerHTML = "";
+  ARTICLES.forEach(a => {
+    const card = document.createElement("article");
+    card.className = "article-card reveal";
+    card.innerHTML = `
+      <div class="article-img"><img src="${a.image}" alt="${a.title}" loading="lazy"></div>
+      <div class="article-body">
+        <div class="article-cat">${a.category}</div>
+        <h3 class="article-title">${a.title}</h3>
+        <p class="article-excerpt">${a.excerpt}</p>
+        <div class="article-meta"><span>${formatDate(a.date)}</span><span>${a.readTime} de leitura</span></div>
+      </div>`;
+    card.onclick = () => openArticle(a);
+    grid.appendChild(card);
+  });
+  setupImageFallbacks();
+  observeReveals();
+}
+
+function formatDate(d) {
+  const [y,m,day] = d.split("-");
+  const months = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  return day + " " + months[+m - 1] + " " + y;
+}
+
+function openArticle(a) {
+  document.getElementById("articleCat").textContent = a.category;
+  document.getElementById("articleTitle").textContent = a.title;
+  document.getElementById("articleMeta").textContent = formatDate(a.date) + " · " + a.readTime + " de leitura";
+  document.getElementById("articleImg").src = a.image;
+  document.getElementById("articleImg").alt = a.title;
+  document.getElementById("articleContent").innerHTML = a.content;
+  document.getElementById("articleShareBtn").onclick = () => {
+    const t = a.title + " — CineVerse";
+    if (navigator.share) navigator.share({title: a.title, text: a.excerpt, url: location.href}).catch(() => copyText(t));
+    else copyText(t + " " + location.href);
+  };
+  document.getElementById("articleModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+  setupImageFallbacks();
+}
+
+function closeArticle() {
+  document.getElementById("articleModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+
+/* ========== LISTS (favoritos / quero ver / já vi) ========== */
+function saveList(key, arr) { localStorage.setItem(key, JSON.stringify(arr)); }
+function inList(arr, id) { const s = String(id); return arr.some(x => String(x) === s); }
+function toggleList(arr, id, key) {
+  const s = String(id);
+  if (inList(arr, s)) arr = arr.filter(x => String(x) !== s);
+  else arr.push(s);
+  saveList(key, arr);
+  return arr;
+}
+function resolveListMovies(ids) {
+  return ids.map(id => findMovie(id) || apiCache[id]).filter(Boolean);
+}
+function renderLists() {
+  const grid = document.getElementById("listsGrid");
+  const empty = document.getElementById("listsEmpty");
+  if (!grid) return;
+  let ids = favorites;
+  if (activeListTab === "want") ids = wantList;
+  if (activeListTab === "watched") ids = watchedList;
+  const items = resolveListMovies(ids);
+  grid.innerHTML = "";
+  if (!items.length) {
+    empty.style.display = "";
+  } else {
+    empty.style.display = "none";
+    items.forEach(m => grid.appendChild(createMovieCard(m)));
+    setupImageFallbacks();
+    bindCardEvents();
+  }
+}
+function updateListButtons(id) {
+  const fav = document.getElementById("modalFavBtn");
+  const want = document.getElementById("modalWantBtn");
+  const watched = document.getElementById("modalWatchedBtn");
+  if (fav) fav.textContent = inList(favorites, id) ? "★ Favorito" : "Favorito";
+  if (want) want.textContent = inList(wantList, id) ? "✓ Quero ver" : "Quero ver";
+  if (watched) watched.textContent = inList(watchedList, id) ? "✓ Já vi" : "Já vi";
+}
+
+/* ========== SEARCH HISTORY ========== */
+function pushSearchHistory(q) {
+  if (!q || q.length < 2) return;
+  searchHistory = [q, ...searchHistory.filter(x => x.toLowerCase() !== q.toLowerCase())].slice(0, 8);
+  localStorage.setItem("cv_search_hist", JSON.stringify(searchHistory));
+  renderSearchHistory();
+}
+function renderSearchHistory() {
+  const el = document.getElementById("searchHistory");
+  if (!el) return;
+  el.innerHTML = searchHistory.map(q =>
+    '<button type="button" class="search-chip" data-q="' + q.replace(/"/g, "&quot;") + '">' + q + "</button>"
+  ).join("");
+  el.querySelectorAll(".search-chip").forEach(btn => {
+    btn.onclick = () => {
+      const input = document.getElementById("searchInput");
+      currentSearch = btn.dataset.q;
+      if (input) input.value = currentSearch;
+      searchTmdb(currentSearch);
+    };
+  });
+}
+
+/* ========== TRENDING / UPCOMING ========== */
+async function loadTmdbCollection(endpoint, gridId) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  grid.innerHTML = '<p style="color:var(--text2);padding:1rem 0">A carregar…</p>';
+  try {
+    const res = await fetch(TMDB_BASE + endpoint, {
+      headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" }
+    });
+    if (!res.ok) {
+      grid.innerHTML = '<p style="color:var(--text2);padding:1rem 0">Não foi possível carregar. Tente mais tarde.</p>';
+      return;
+    }
+    const data = await res.json();
+    const items = (data.results || []).filter(item => {
+      if (!item || !item.id) return false;
+      if (item.media_type === "person") return false;
+      return !!(item.poster_path || item.profile_path || item.title || item.name);
+    }).slice(0, 12);
+
+    grid.innerHTML = "";
+    if (!items.length) {
+      grid.innerHTML = '<p style="color:var(--text2);padding:1rem 0">Sem resultados de momento.</p>';
+      return;
+    }
+    items.forEach(item => {
+      const m = mapTmdbMovie(item);
+      if (!m) return;
+      const card = createMovieCard(m);
+      card.classList.add("visible");
+      grid.appendChild(card);
+    });
+    setupImageFallbacks();
+    bindCardEvents();
+    if (typeof observeReveals === "function") observeReveals();
+  } catch (e) {
+    console.warn(endpoint, e);
+    grid.innerHTML = '<p style="color:var(--text2);padding:1rem 0">Erro de rede ao carregar esta secção.</p>';
+  }
+}
+function loadTrending() {
+  loadTmdbCollection("/trending/movie/week?language=pt-PT", "trendingGrid");
+}
+function loadUpcoming() {
+  loadTmdbCollection("/movie/upcoming?language=pt-PT&page=1", "upcomingGrid");
+}
+async function loadTrendingTv() {
+  const grid = document.getElementById("trendingGrid");
+  if (!grid || grid.querySelector(".movie-card")) return;
+  loadTmdbCollection("/trending/tv/week?language=pt-PT", "trendingGrid");
+}
+
+/* ========== YEAR / RATING FILTER ========== */
+function applyRangeFilters(list) {
+  return list.filter(m => {
+    const y = parseInt(m.year, 10);
+    const r = parseFloat(m.rating) || 0;
+    if (yearMin != null && !isNaN(y) && y < yearMin) return false;
+    if (yearMax != null && !isNaN(y) && y > yearMax) return false;
+    if (ratingMin != null && r < ratingMin) return false;
+    return true;
+  });
+}
+
+/* ========== SERIES SEASONS ========== */
+async function loadSeriesPanel(m) {
+  const panel = document.getElementById("seriesPanel");
+  if (!panel) return;
+  panel.style.display = "none";
+  panel.innerHTML = "";
+  if (!m || m.mediaType !== "tv" || !m.tmdbId) return;
+  try {
+    const res = await fetch(TMDB_BASE + "/tv/" + m.tmdbId + "?language=pt-PT", {
+      headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" }
+    });
+    if (!res.ok) return;
+    const d = await res.json();
+    const seasons = (d.seasons || []).filter(s => s.season_number > 0);
+    if (!seasons.length) return;
+    let html = "<h4>Temporadas</h4><div id='seasonBtns'>";
+    seasons.forEach((s, i) => {
+      html += '<button type="button" class="season-btn' + (i === 0 ? " active" : "") + '" data-season="' + s.season_number + '">T' + s.season_number + " (" + (s.episode_count || "?") + " eps)</button>";
+    });
+    html += '</div><div id="episodeList"></div>';
+    panel.innerHTML = html;
+    panel.style.display = "block";
+    const loadEps = async (num) => {
+      const er = await fetch(TMDB_BASE + "/tv/" + m.tmdbId + "/season/" + num + "?language=pt-PT", {
+        headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" }
+      });
+      if (!er.ok) return;
+      const ed = await er.json();
+      const box = document.getElementById("episodeList");
+      box.innerHTML = (ed.episodes || []).map(ep =>
+        '<div class="episode-item"><strong>E' + ep.episode_number + ": " + (ep.name || "") + "</strong><span style=\"color:var(--text2);font-size:.85rem\">" + (ep.overview || "Sem sinopse.").slice(0, 180) + (ep.overview && ep.overview.length > 180 ? "…" : "") + "</span></div>"
+      ).join("");
+    };
+    panel.querySelectorAll(".season-btn").forEach(btn => {
+      btn.onclick = () => {
+        panel.querySelectorAll(".season-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        loadEps(btn.dataset.season);
+      };
+    });
+    loadEps(seasons[0].season_number);
+  } catch (e) { console.warn("series", e); }
+}
+
+/* ========== RECOMMENDATIONS ========== */
+async function loadRecommendations(m) {
+  const panel = document.getElementById("recsPanel");
+  const grid = document.getElementById("recsGrid");
+  if (!panel || !grid) return;
+  panel.style.display = "none";
+  grid.innerHTML = "";
+  let id = m.tmdbId;
+  let type = m.mediaType === "tv" ? "tv" : "movie";
+  if (!id && m.title) {
+    try {
+      const sRes = await fetch(TMDB_BASE + "/search/" + type + "?query=" + encodeURIComponent(m.title) + "&language=pt-PT", {
+        headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" }
+      });
+      if (sRes.ok) {
+        const sData = await sRes.json();
+        if (sData.results && sData.results[0]) id = sData.results[0].id;
+      }
+    } catch (e) {}
+  }
+  if (!id) return;
+  try {
+    const res = await fetch(TMDB_BASE + "/" + type + "/" + id + "/recommendations?language=pt-PT&page=1", {
+      headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" }
+    });
+    if (!res.ok) return;
+    const data = await res.json();
+    const list = (data.results || []).slice(0, 8);
+    if (!list.length) return;
+    list.forEach(item => {
+      const rec = mapTmdbMovie(item);
+      const card = document.createElement("div");
+      card.className = "rec-card";
+      card.innerHTML = '<img src="' + (rec.poster || "") + '" alt="' + rec.title + '" loading="lazy"><span>' + rec.title + "</span>";
+      card.onclick = () => openMovieModal(rec.id);
+      grid.appendChild(card);
+    });
+    panel.style.display = "block";
+    setupImageFallbacks();
+  } catch (e) { console.warn("recs", e); }
+}
+
+/* ========== PERSON / ACTOR ========== */
+async function openPersonModal(personId, nameHint) {
+  const modal = document.getElementById("personModal");
+  if (!modal) return;
+  document.getElementById("personName").textContent = nameHint || "A carregar…";
+  document.getElementById("personBio").textContent = "";
+  document.getElementById("personMovies").innerHTML = "";
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+  try {
+    const res = await fetch(TMDB_BASE + "/person/" + personId + "?language=pt-PT&append_to_response=combined_credits", {
+      headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" }
+    });
+    if (!res.ok) return;
+    const d = await res.json();
+    document.getElementById("personName").textContent = d.name || nameHint;
+    document.getElementById("personBio").textContent = (d.biography || "Biografia não disponível.").slice(0, 600);
+    const credits = (d.combined_credits && d.combined_credits.cast) || [];
+    const seen = new Set();
+    const grid = document.getElementById("personMovies");
+    credits.filter(c => c.poster_path && (c.title || c.name)).slice(0, 16).forEach(c => {
+      const key = (c.media_type || "movie") + c.id;
+      if (seen.has(key)) return;
+      seen.add(key);
+      const id = (c.media_type === "tv" ? "tmdb-tv-" : "tmdb-") + c.id;
+      const m = {
+        id: id, tmdbId: c.id, mediaType: c.media_type === "tv" ? "tv" : "movie",
+        title: c.title || c.name, year: (c.release_date || c.first_air_date || "").slice(0, 4) || "—",
+        genre: ["Drama"], runtime: "—", director: "—", cast: [], rating: c.vote_average || 0,
+        ratingSource: "TMDB", synopsis: c.overview || "", poster: TMDB_IMG + c.poster_path,
+        trailer: null, fromApi: true
+      };
+      apiCache[id] = m;
+      const card = document.createElement("div");
+      card.className = "rec-card";
+      card.innerHTML = '<img src="' + m.poster + '" alt=""><span>' + m.title + "</span>";
+      card.onclick = () => { document.getElementById("personModal").classList.remove("open"); openMovieModal(id); };
+      grid.appendChild(card);
+    });
+    setupImageFallbacks();
+  } catch (e) { console.warn("person", e); }
+}
+async function searchPersonByName(name) {
+  try {
+    const res = await fetch(TMDB_BASE + "/search/person?query=" + encodeURIComponent(name) + "&language=pt-PT", {
+      headers: { Authorization: "Bearer " + TMDB_TOKEN, Accept: "application/json" }
+    });
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data.results && data.results[0]) openPersonModal(data.results[0].id, name);
+  } catch (e) {}
+}
+
+/* ========== CINEMA MODE ========== */
+function openCinemaMode(m) {
+  if (!m) return;
+  cinemaMovie = m;
+  const openPlayer = (trailerKey) => {
+    if (trailerKey) openTrailer(trailerKey, m.title);
+    const tm = document.getElementById("trailerModal");
+    tm.classList.add("cinema-mode");
+    let info = document.getElementById("cinemaInfo");
+    if (!info) {
+      info = document.createElement("div");
+      info.id = "cinemaInfo";
+      info.className = "cinema-info";
+      tm.querySelector(".modal").appendChild(info);
+    }
+    info.innerHTML = "<h3 style='margin-bottom:.35rem'>" + m.title + " (" + m.year + ")</h3><p style='color:var(--text2);font-size:.95rem'>" + (m.synopsis || "").slice(0, 280) + "</p>";
+  };
+  if (m.trailer) openPlayer(m.trailer);
+  else if (m.fromApi || m.tmdbId) {
+    fetchTmdbDetails(m).then(mm => openPlayer(mm.trailer));
+  } else openPlayer(null);
+}
+function closeCinemaMode() {
+  const tm = document.getElementById("trailerModal");
+  if (tm) tm.classList.remove("cinema-mode");
+  const info = document.getElementById("cinemaInfo");
+  if (info) info.remove();
+  cinemaMovie = null;
+}
+
+/* ========== COMPARE ========== */
+function addToCompare(id) {
+  const s = String(id);
+  if (compareIds.includes(s)) return;
+  if (compareIds.length >= 2) compareIds.shift();
+  compareIds.push(s);
+  renderCompare();
+  document.getElementById("compareModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function renderCompare() {
+  [0, 1].forEach(i => {
+    const slot = document.getElementById("compareSlot" + (i + 1));
+    const id = compareIds[i];
+    if (!id) {
+      slot.innerHTML = "<p style='color:var(--text2)'>Filme " + (i === 0 ? "A" : "B") + "</p>";
+      return;
+    }
+    const m = findMovie(id) || apiCache[id];
+    if (!m) {
+      slot.innerHTML = "<p>Indisponível</p>";
+      return;
+    }
+    slot.innerHTML = (m.poster ? '<img src="' + m.poster + '" style="width:120px;border-radius:8px;margin-bottom:.75rem" alt="">' : "") +
+      "<h3>" + m.title + "</h3>" +
+      "<p style='color:var(--text2);font-size:.9rem'>" + m.year + " · ★ " + m.rating + "<br>" + (m.genre || []).join(", ") + "<br>" + (m.runtime || "") + "</p>" +
+      "<p style='font-size:.85rem;margin-top:.5rem'>" + (m.synopsis || "").slice(0, 160) + "…</p>" +
+      '<button class="btn btn-primary" style="margin-top:.75rem" data-open="' + m.id + '">Detalhes</button>';
+    slot.querySelector("[data-open]").onclick = () => {
+      document.getElementById("compareModal").classList.remove("open");
+      openMovieModal(m.id);
+    };
+  });
+}
+
+/* ========== QUIZ ========== */
+const QUIZ_DATA = [
+  { q: "Que ambiente prefere?", options: [
+    { t: "Ação e adrenalina", genres: ["Ação", "Aventura"] },
+    { t: "Drama e emoção", genres: ["Drama", "Romance"] },
+    { t: "Suspense e mistério", genres: ["Thriller", "Mistério", "Terror"] },
+    { t: "Fantasia e ficção", genres: ["Ficção científica", "Fantasia", "Animação"] }
+  ]},
+  { q: "Época preferida?", options: [
+    { t: "Clássicos (antes de 2000)", yearMax: 1999 },
+    { t: "Anos 2000–2015", yearMin: 2000, yearMax: 2015 },
+    { t: "Recentes (2016+)", yearMin: 2016 },
+    { t: "Tanto faz", }
+  ]},
+  { q: "Nota mínima?", options: [
+    { t: "Qualquer uma", ratingMin: 0 },
+    { t: "Pelo menos 7", ratingMin: 7 },
+    { t: "Pelo menos 8", ratingMin: 8 },
+    { t: "Só obras-primas (8.5+)", ratingMin: 8.5 }
+  ]}
+];
+let quizAnswers = [null, null, null];
+function renderQuiz() {
+  const body = document.getElementById("quizBody");
+  if (!body) return;
+  body.innerHTML = QUIZ_DATA.map((item, qi) => {
+    let h = '<div class="quiz-q"><h4>' + (qi + 1) + ". " + item.q + "</h4><div class='quiz-options'>";
+    item.options.forEach((opt, oi) => {
+      h += '<button type="button" data-q="' + qi + '" data-o="' + oi + '"' + (quizAnswers[qi] === oi ? ' class="selected"' : "") + ">" + opt.t + "</button>";
+    });
+    return h + "</div></div>";
+  }).join("");
+  body.querySelectorAll("button[data-q]").forEach(btn => {
+    btn.onclick = () => {
+      quizAnswers[+btn.dataset.q] = +btn.dataset.o;
+      renderQuiz();
+    };
+  });
+}
+function runQuiz() {
+  const result = document.getElementById("quizResult");
+  if (quizAnswers.some(a => a === null)) {
+    result.innerHTML = "<p style='color:var(--accent)'>Responda a todas as perguntas.</p>";
+    return;
+  }
+  let genres = [];
+  let yMin = null, yMax = null, rMin = 0;
+  quizAnswers.forEach((oi, qi) => {
+    const opt = QUIZ_DATA[qi].options[oi];
+    if (opt.genres) genres = genres.concat(opt.genres);
+    if (opt.yearMin != null) yMin = opt.yearMin;
+    if (opt.yearMax != null) yMax = opt.yearMax;
+    if (opt.ratingMin != null) rMin = opt.ratingMin;
+  });
+  let pool = [...MOVIES, ...Object.values(apiCache)];
+  const seen = new Set();
+  pool = pool.filter(m => {
+    if (seen.has(String(m.id))) return false;
+    seen.add(String(m.id));
+    const y = parseInt(m.year, 10);
+    const r = parseFloat(m.rating) || 0;
+    if (r < rMin) return false;
+    if (yMin != null && !isNaN(y) && y < yMin) return false;
+    if (yMax != null && !isNaN(y) && y > yMax) return false;
+    if (genres.length && !(m.genre || []).some(g => genres.includes(g))) return false;
+    return true;
+  });
+  if (!pool.length) pool = [...MOVIES];
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+  result.innerHTML = '<p>Sugestão: <strong>' + pick.title + " (" + pick.year + ")</strong> · ★ " + pick.rating + "</p>" +
+    '<button class="btn btn-primary" style="margin-top:.75rem" id="quizOpenPick">Ver detalhes</button>';
+  document.getElementById("quizOpenPick").onclick = () => {
+    document.getElementById("quizModal").classList.remove("open");
+    openMovieModal(pick.id);
+  };
+}
+
+
+
+function wireModalListButtons(m) {
+  const id = m.id;
+  const fav = document.getElementById("modalFavBtn");
+  const want = document.getElementById("modalWantBtn");
+  const watched = document.getElementById("modalWatchedBtn");
+  const cinema = document.getElementById("modalCinemaBtn");
+  const cmp = document.getElementById("modalCompareAddBtn");
+  if (fav) fav.onclick = () => { favorites = toggleList(favorites, id, "cv_favs"); updateListButtons(id); renderLists(); renderMovies(); };
+  if (want) want.onclick = () => { wantList = toggleList(wantList, id, "cv_want"); updateListButtons(id); renderLists(); };
+  if (watched) watched.onclick = () => { watchedList = toggleList(watchedList, id, "cv_watched"); updateListButtons(id); renderLists(); };
+  if (cinema) cinema.onclick = () => openCinemaMode(m);
+  if (cmp) cmp.onclick = () => addToCompare(id);
+  // Clickable director / cast
+  const dirEl = document.getElementById("modalDirector");
+  const castEl = document.getElementById("modalCast");
+  if (dirEl && m.director && m.director !== "—") {
+    dirEl.innerHTML = "<strong>Realizador:</strong> <span class='clickable-person' data-person='" + m.director.replace(/'/g, "&#39;") + "'>" + m.director + "</span>";
+  }
+  if (castEl && m.cast && m.cast.length) {
+    castEl.innerHTML = "<strong>Elenco principal:</strong> " + m.cast.map(c =>
+      "<span class='clickable-person' data-person='" + String(c).replace(/'/g, "&#39;") + "'>" + c + "</span>"
+    ).join(", ");
+  }
+  document.querySelectorAll(".clickable-person").forEach(el => {
+    el.onclick = () => searchPersonByName(el.dataset.person || el.textContent);
+  });
+}
+
+/* ========== THEME ========== */
+function initTheme() {
+  const saved = localStorage.getItem("cv_theme");
+  if (saved) document.documentElement.setAttribute("data-theme", saved);
+  document.getElementById("themeBtn").onclick = () => {
+    const cur = document.documentElement.getAttribute("data-theme");
+    const next = cur === "light" ? "dark" : "light";
+    if (next === "dark") document.documentElement.removeAttribute("data-theme");
+    else document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("cv_theme", next === "dark" ? "" : "light");
+  };
+}
+
+/* ========== SEARCH / NAV / UI ========== */
+function initUI() {
+  const searchToggle = document.getElementById("searchToggle");
+  const searchBar = document.getElementById("searchBar");
+  const searchInput = document.getElementById("searchInput");
+  searchToggle.onclick = () => {
+    searchBar.classList.toggle("open");
+    if (searchBar.classList.contains("open")) searchInput.focus();
+  };
+  searchInput.oninput = () => {
+    currentSearch = searchInput.value.trim();
+    if (searchTimer) clearTimeout(searchTimer);
+    if (!currentSearch) {
+      apiResults = [];
+      renderMovies();
+      return;
+    }
+    // Local instant filter while typing short queries
+    if (currentSearch.length < 2) {
+      apiResults = [];
+      renderMovies();
+      return;
+    }
+    searchTimer = setTimeout(() => searchTmdb(currentSearch), 400);
+  };
+  searchInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (searchTimer) clearTimeout(searchTimer);
+      currentSearch = searchInput.value.trim();
+      searchTmdb(currentSearch);
+    }
+  });
+
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  hamburger.onclick = () => {
+    const open = mobileMenu.classList.toggle("open");
+    hamburger.classList.toggle("open", open);
+    hamburger.setAttribute("aria-expanded", open);
+  };
+  mobileMenu.querySelectorAll("a").forEach(a => {
+    a.onclick = () => {
+      mobileMenu.classList.remove("open");
+      hamburger.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+    };
+  });
+
+  document.getElementById("sortSelect").onchange = e => {
+    currentSort = e.target.value;
+    renderMovies();
+  };
+
+  document.getElementById("randomBtn").onclick = () => {
+    const list = getFilteredMovies();
+    if (list.length === 0) return;
+    const m = list[Math.floor(Math.random() * list.length)];
+    openMovieModal(m.id);
+  };
+
+  document.getElementById("modalClose").onclick = closeMovieModal;
+  document.getElementById("movieModal").onclick = e => { if (e.target === e.currentTarget) closeMovieModal(); };
+  document.getElementById("trailerClose").onclick = closeTrailer;
+  document.getElementById("trailerModal").onclick = e => { if (e.target === e.currentTarget) closeTrailer(); };
+  document.getElementById("articleClose").onclick = closeArticle;
+  document.getElementById("articleModal").onclick = e => { if (e.target === e.currentTarget) closeArticle(); };
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+      closeMovieModal();
+      closeTrailer();
+      closeArticle();
+      const pm = document.getElementById("personModal");
+      const qm = document.getElementById("quizModal");
+      const cm = document.getElementById("compareModal");
+      if (pm) pm.classList.remove("open");
+      if (qm) qm.classList.remove("open");
+      if (cm) cm.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  });
+
+  // List tabs
+  document.querySelectorAll("#listTabs .list-tab").forEach(tab => {
+    tab.onclick = () => {
+      document.querySelectorAll("#listTabs .list-tab").forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      activeListTab = tab.dataset.list;
+      renderLists();
+    };
+  });
+
+  // Range filters
+  const applyRange = () => {
+    const ymin = document.getElementById("yearMin");
+    const ymax = document.getElementById("yearMax");
+    const rmin = document.getElementById("ratingMin");
+    yearMin = ymin && ymin.value ? parseInt(ymin.value, 10) : null;
+    yearMax = ymax && ymax.value ? parseInt(ymax.value, 10) : null;
+    ratingMin = rmin && rmin.value ? parseFloat(rmin.value) : null;
+    renderMovies();
+  };
+  const ar = document.getElementById("applyRangeBtn");
+  if (ar) ar.onclick = applyRange;
+  const cr = document.getElementById("clearRangeBtn");
+  if (cr) cr.onclick = () => {
+    ["yearMin","yearMax","ratingMin"].forEach(id => { const el = document.getElementById(id); if (el) el.value = ""; });
+    yearMin = yearMax = ratingMin = null;
+    renderMovies();
+  };
+
+  // Quiz
+  const quizBtn = document.getElementById("quizBtn");
+  if (quizBtn) quizBtn.onclick = () => {
+    quizAnswers = [null, null, null];
+    renderQuiz();
+    document.getElementById("quizResult").innerHTML = "";
+    document.getElementById("quizModal").classList.add("open");
+    document.body.style.overflow = "hidden";
+  };
+  const quizClose = document.getElementById("quizClose");
+  if (quizClose) quizClose.onclick = () => { document.getElementById("quizModal").classList.remove("open"); document.body.style.overflow = ""; };
+  const quizSubmit = document.getElementById("quizSubmit");
+  if (quizSubmit) quizSubmit.onclick = runQuiz;
+  const quizReset = document.getElementById("quizReset");
+  if (quizReset) quizReset.onclick = () => { quizAnswers = [null, null, null]; renderQuiz(); document.getElementById("quizResult").innerHTML = ""; };
+
+  // Compare
+  const compareBtn = document.getElementById("compareBtn");
+  if (compareBtn) compareBtn.onclick = () => {
+    renderCompare();
+    document.getElementById("compareModal").classList.add("open");
+    document.body.style.overflow = "hidden";
+  };
+  const compareClose = document.getElementById("compareClose");
+  if (compareClose) compareClose.onclick = () => { document.getElementById("compareModal").classList.remove("open"); document.body.style.overflow = ""; };
+  const compareClear = document.getElementById("compareClear");
+  if (compareClear) compareClear.onclick = () => { compareIds = []; renderCompare(); };
+  const personClose = document.getElementById("personClose");
+  if (personClose) personClose.onclick = () => { document.getElementById("personModal").classList.remove("open"); document.body.style.overflow = ""; };
+  ["personModal","quizModal","compareModal"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.onclick = e => { if (e.target === el) { el.classList.remove("open"); document.body.style.overflow = ""; } };
+  });
+
+  renderSearchHistory();
+  renderLists();
+
+
+  document.getElementById("newsletterForm").onsubmit = e => {
+    e.preventDefault();
+    const email = document.getElementById("newsletterEmail").value.trim();
+    const msg = document.getElementById("newsletterMsg");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.textContent = "Por favor, introduza um email válido.";
+      msg.style.color = "var(--accent)";
+      return;
+    }
+    msg.textContent = "Subscrição registada localmente. Obrigado!";
+    msg.style.color = "#25D366";
+    document.getElementById("newsletterEmail").value = "";
+  };
+
+  // Progress bar & back to top
+  window.addEventListener("scroll", () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById("progress-bar").style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
+    document.getElementById("back-top").classList.toggle("visible", window.scrollY > 400);
+  });
+  document.getElementById("back-top").onclick = () => window.scrollTo({top: 0, behavior: "smooth"});
+
+  // Active nav
+  const sections = document.querySelectorAll("section[id]");
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    document.querySelectorAll(".nav-link").forEach(a => {
+      a.classList.toggle("active", a.getAttribute("href") === "#" + current);
+    });
+  });
+}
+
+/* ========== PARTICLES ========== */
+function initParticles() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (window.innerWidth < 768) return;
+  const container = document.getElementById("particles");
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random() * 100 + "%";
+    p.style.animationDuration = (8 + Math.random() * 12) + "s";
+    p.style.animationDelay = Math.random() * 8 + "s";
+    p.style.opacity = 0.1 + Math.random() * 0.2;
+    container.appendChild(p);
+  }
+}
+
+/* ========== SCROLL REVEAL ========== */
+function markSectionReveals() {
+  // Só títulos e blocos de secção — grelhas animam cartão a cartão
+  document.querySelectorAll(".section-header, .section-title, .newsletter, .inst-content, .contact-grid").forEach(el => {
+    if (!el.classList.contains("reveal") && !el.classList.contains("visible")) {
+      el.classList.add("reveal");
+    }
+  });
+}
+
+function observeReveals() {
+  const els = document.querySelectorAll(".reveal:not(.visible), .reveal-left:not(.visible), .reveal-scale:not(.visible)");
+  if (!els.length) return;
+  // Stagger within the same parent grid
+  const byParent = new Map();
+  els.forEach(el => {
+    const p = el.parentElement;
+    if (!byParent.has(p)) byParent.set(p, []);
+    byParent.get(p).push(el);
+  });
+  byParent.forEach(list => {
+    list.forEach((el, i) => {
+      el.style.transitionDelay = Math.min(i * 0.06, 0.48) + "s";
+    });
+  });
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+  els.forEach(el => io.observe(el));
+}
+
+/* ========== INIT ========== */
+document.addEventListener("DOMContentLoaded", () => {
+  initTheme();
+  initUI();
+  initParticles();
+  initHero();
+  renderGenreFilters();
+  renderGenreCards();
+  renderMovies();
+  renderFeatured();
+  renderTrailers();
+  renderArticles();
+  loadTrending();
+  loadUpcoming();
+  markSectionReveals();
+  setTimeout(() => {
+    const g = document.getElementById("trendingGrid");
+    if (g && !g.querySelector(".movie-card")) {
+      loadTmdbCollection("/movie/popular?language=pt-PT&page=1", "trendingGrid");
+    }
+  }, 2500);
+  renderLists();
+  renderSearchHistory();
+  observeReveals();
+  setupImageFallbacks();
+});
+</script>
+<script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+  
+</body>
+</html>
