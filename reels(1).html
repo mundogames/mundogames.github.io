@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080b12">
+<meta name="description" content="PLAYVERSE Reels — vídeos curtos da comunidade gaming.">
+<title>PLAYVERSE Reels</title>
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googleapis.com" crossorigin>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<style>
+:root{--bg:#080b12;--panel:#111722;--panel2:#171f2c;--line:#263244;--text:#f4f7fb;--muted:#9ba8ba;--accent:#8b5cf6;--accent2:#22d3a6;--danger:#ff647c}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+body{overflow-x:hidden}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.topbar{height:64px;position:sticky;top:0;z-index:20;background:rgba(8,11,18,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
+.topbar-inner{max-width:1180px;height:100%;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{color:#fff;text-decoration:none;font-size:20px;font-weight:900;letter-spacing:-.7px}
+.brand span{color:var(--accent2)}
+.nav{display:flex;align-items:center;gap:9px}
+.nav a,.nav button{color:#c7d0dc;text-decoration:none;border:0;background:none;padding:9px 11px;border-radius:10px;font-size:13px;font-weight:700}
+.nav a:hover,.nav button:hover{background:var(--panel2);color:#fff}
+.nav .active{color:#fff;background:#201b35}
+.account-btn,.primary{border:0!important;background:linear-gradient(120deg,#7650e8,#4c9be8)!important;color:#fff!important;border-radius:11px!important;padding:10px 15px!important;font-weight:800!important}
+.page{max-width:1180px;margin:0 auto;padding:22px 20px 70px}
+.intro{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:5px 0 20px}
+.eyebrow{font-size:11px;letter-spacing:2px;color:var(--accent2);font-weight:900}
+h1{font-size:clamp(25px,4vw,38px);line-height:1.05;letter-spacing:-1.2px;margin:7px 0}
+.subtitle{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.upload-top{white-space:nowrap}
+.feed-shell{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:22px;align-items:start}
+.feed{display:flex;flex-direction:column;align-items:center;gap:18px}
+.reel-card{position:relative;width:min(100%,430px);height:min(76vh,760px);min-height:520px;background:#111722;border:1px solid #263244;border-radius:20px;overflow:hidden;isolation:isolate;box-shadow:0 18px 55px rgba(0,0,0,.28)}
+.reel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#05070b}
+.video-shade{position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.82));pointer-events:none}
+.reel-top{position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;z-index:3}
+.pill{font-size:10px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;padding:7px 10px;border-radius:99px;background:rgba(5,8,14,.65);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px)}
+.reel-actions{position:absolute;right:13px;bottom:105px;z-index:4;display:flex;flex-direction:column;gap:17px;align-items:center}
+.action{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.23);background:rgba(8,11,18,.58);color:white;display:grid;place-items:center;font-size:20px;backdrop-filter:blur(8px)}
+.action.liked{color:#ff6685;background:rgba(255,70,110,.18);border-color:#ff6685}
+.action-label{font-size:10px;font-weight:800;text-shadow:0 1px 4px #000;margin-top:-13px}
+.reel-info{position:absolute;z-index:3;left:17px;right:75px;bottom:18px}
+.creator{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-weight:900;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.creator-name{font-size:13px;font-weight:900}
+.reel-caption{font-size:13px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere;text-shadow:0 1px 5px #000}
+.reel-date{font-size:10px;color:#d2d9e2;margin-top:7px}
+.play-hint{position:absolute;inset:0;display:grid;place-items:center;z-index:2;pointer-events:none;font-size:48px;color:#fff;text-shadow:0 2px 15px #000;opacity:0;transition:.2s}
+.reel-card.paused .play-hint{opacity:.9}
+.empty,.loading,.error-state{width:min(100%,430px);min-height:310px;border:1px dashed #344258;border-radius:20px;background:linear-gradient(145deg,#111722,#0d121b);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:var(--muted)}
+.empty strong{font-size:18px;color:#fff;margin:12px 0 7px}
+.empty p{font-size:13px;line-height:1.6;max-width:300px}
+.empty-icon{font-size:38px}
+.side{position:sticky;top:84px}
+.side-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:13px}
+.side-card h3{font-size:14px;margin:0 0 10px}
+.side-card p,.side-card li{font-size:12px;color:var(--muted);line-height:1.65}
+.side-card ul{padding-left:18px;margin:8px 0}
+.side-note{font-size:11px;color:#8492a5}
+.status{font-size:11px;color:var(--muted);margin-top:10px;min-height:16px}
+.modal-backdrop{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.72);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:16px}
+.modal-backdrop.open{display:flex}
+.modal{width:min(100%,480px);max-height:92vh;overflow:auto;background:#111722;border:1px solid #344258;border-radius:18px;padding:22px;position:relative;box-shadow:0 24px 80px #0009}
+.modal h2{font-size:21px;margin:0 35px 7px 0}
+.modal p{font-size:12px;color:var(--muted);line-height:1.55}
+.close{position:absolute;right:14px;top:12px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#1a2432;color:#fff;font-size:20px}
+.field{display:block;margin:14px 0 6px;font-size:12px;font-weight:800;color:#d9e1eb}
+input,textarea{width:100%;padding:12px 13px;border-radius:10px;border:1px solid #344258;background:#0b111a;color:#fff;outline:none}
+input:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:90px;resize:vertical}
+.filebox{border:1px dashed #46566e;border-radius:12px;padding:18px;text-align:center;background:#0b111a}
+.filebox input{border:0;padding:8px 0}
+.preview{width:100%;max-height:260px;object-fit:contain;background:#05070b;border-radius:10px;margin-top:12px}
+.btn{width:100%;border:0;border-radius:11px;padding:12px 15px;font-weight:900;color:#fff;background:linear-gradient(120deg,#7650e8,#4c9be8);margin-top:14px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-secondary{background:#202b3b;border:1px solid #344258}
+.msg{font-size:12px;min-height:18px;margin-top:10px;color:var(--muted)}
+.msg.error{color:#ff8295}.msg.success{color:#54e0b4}
+.tabs{display:flex;gap:8px;margin:17px 0}
+.tabs button{flex:1;border:1px solid var(--line);background:#0b111a;color:#cbd5e1;padding:10px;border-radius:9px;font-weight:800}
+.tabs button.on{background:#292143;border-color:#7650e8;color:#fff}
+.comment-list{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.comment{padding:11px;background:#0b111a;border-radius:10px}
+.comment strong{font-size:12px}.comment p{margin:5px 0 0;font-size:12px;color:#d5deea}
+.footer{text-align:center;color:#738095;font-size:11px;padding:25px 12px;border-top:1px solid rgba(255,255,255,.06)}
+@media(max-width:800px){.feed-shell{grid-template-columns:1fr}.side{position:static;max-width:430px;width:100%;margin:0 auto}.intro{align-items:start;flex-direction:column}.upload-top{width:100%}}
+@media(max-width:520px){.topbar{height:58px}.topbar-inner{padding:0 12px}.brand{font-size:18px}.nav{gap:2px}.nav a{padding:8px 6px;font-size:11px}.nav a:nth-child(1){display:none}.nav .account-btn{padding:8px 10px!important;font-size:11px}.page{padding:16px 10px 45px}.reel-card{height:calc(100dvh - 118px);min-height:490px;border-radius:15px}.feed{gap:12px}.reel-actions{right:9px;bottom:98px}.reel-info{left:13px;bottom:14px}.subtitle{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">PLAYVERSE <span>REELS</span></a>
+    <nav class="nav">
+      <a href="index.html">Notícias</a>
+      <a href="trailers.html">Trailers</a>
+      <a class="active" href="reels.html">Reels</a>
+      <button class="account-btn" id="accountOpen">Conta</button>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <section class="intro">
+    <div>
+      <div class="eyebrow">PLAYVERSE COMMUNITY VIDEO</div>
+      <h1>Reels da comunidade</h1>
+      <p class="subtitle">Vídeos curtos de gaming, novidades, gameplay e criatividade. Assiste e descobre o que a comunidade está a publicar.</p>
+    </div>
+    <button class="primary upload-top" id="uploadOpen">＋ Publicar vídeo</button>
+  </section>
+
+  <div class="feed-shell">
+    <section class="feed" id="reelsFeed" aria-live="polite">
+      <div class="loading"><div class="empty-icon">◌</div><strong>A carregar Reels…</strong><p>A procurar vídeos públicos da comunidade.</p></div>
+    </section>
+    <aside class="side">
+      <div class="side-card">
+        <h3>Como funciona</h3>
+        <ul>
+          <li>Qualquer visitante pode assistir aos Reels públicos.</li>
+          <li>Para publicar, gostar ou comentar, entra na tua conta PLAYVERSE.</li>
+          <li>Os vídeos publicados ficam sujeitos às regras da comunidade e à moderação.</li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>A tua conta</h3>
+        <p id="sessionText">Estás a navegar como visitante. Entra ou cria uma conta para interagir.</p>
+        <button class="btn btn-secondary" id="sideAccount">Entrar / Criar conta</button>
+        <div class="status" id="apiStatus">A verificar ligação ao serviço de Reels…</div>
+      </div>
+      <div class="side-card">
+        <h3>PLAYVERSE</h3>
+        <p>Partilha a tua paixão por jogos. Publica apenas vídeos que tens autorização para utilizar e respeita os outros membros.</p>
+        <div class="side-note">PLAYVERSE — Publisher Moçambique</div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="footer">© 2026 PLAYVERSE · <a href="index.html" style="color:#9ba8ba">Voltar às notícias</a></footer>
+
+<!-- Modal de autenticação: utiliza o mesmo projeto Firebase da página principal. -->
+<div class="modal-backdrop" id="authModal" aria-hidden="true">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button class="close" data-close="authModal" aria-label="Fechar">×</button>
+    <h2 id="authTitle">Conta PLAYVERSE</h2>
+    <p>Usa a mesma conta que já utilizas no site principal.</p>
+    <div class="tabs">
+      <button class="on" data-auth-tab="login">Entrar</button>
+      <button data-auth-tab="register">Criar conta</button>
+    </div>
+    <form id="loginForm">
+      <label class="field" for="loginEmail">Email</label><input id="loginEmail" type="email" autocomplete="email" required>
+      <label class="field" for="loginPassword">Palavra-passe</label><input id="loginPassword" type="password" autocomplete="current-password" required>
+      <button class="btn" type="submit" id="loginBtn">Entrar</button>
+      <button class="btn btn-secondary" type="button" id="forgotBtn">Recuperar palavra-passe</button>
+    </form>
+    <form id="registerForm" hidden>
+      <label class="field" for="registerName">Nome de utilizador</label><input id="registerName" maxlength="40" required>
+      <label class="field" for="registerEmail">Email</label><input id="registerEmail" type="email" autocomplete="email" required>
+      <label class="field" for="registerPassword">Palavra-passe (mínimo 6 caracteres)</label><input id="registerPassword" type="password" minlength="6" autocomplete="new-password" required>
+      <button class="btn" type="submit" id="registerBtn">Criar conta</button>
+    </form>
+    <button class="btn btn-secondary" type="button" id="googleBtn">Continuar com Google</button>
+    <div class="msg" id="authMsg" role="status"></div>
+  </section>
+</div>
+
+<div class="modal-backdrop" id="uploadModal" aria-hidden="true">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="uploadTitle">
+    <button class="close" data-close="uploadModal" aria-label="Fechar">×</button>
+    <h2 id="uploadTitle">Publicar um Reel</h2>
+    <p>Escolhe um vídeo e escreve uma legenda. A publicação será associada à tua conta PLAYVERSE.</p>
+    <form id="uploadForm">
+      <label class="field" for="videoFile">Vídeo</label>
+      <div class="filebox">
+        <input id="videoFile" type="file" accept="video/*" required>
+        <div class="side-note">MP4, WebM ou MOV · até 100 MB · até 3 minutos.</div>
+        <video class="preview" id="videoPreview" controls playsinline hidden></video>
+      </div>
+      <label class="field" for="videoCaption">Legenda</label>
+      <textarea id="videoCaption" maxlength="2200" placeholder="Escreve algo sobre o teu vídeo…"></textarea>
+      <button class="btn" type="submit" id="publishBtn">Publicar vídeo</button>
+    </form>
+    <div class="msg" id="uploadMsg" role="status"></div>
+  </section>
+</div>
+
+<div class="modal-backdrop" id="commentsModal" aria-hidden="true">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="commentsTitle">
+    <button class="close" data-close="commentsModal" aria-label="Fechar">×</button>
+    <h2 id="commentsTitle">Comentários</h2>
+    <div class="comment-list" id="commentList"><p class="side-note">A carregar comentários…</p></div>
+    <form id="commentForm">
+      <label class="field" for="commentText">Adicionar comentário</label>
+      <textarea id="commentText" maxlength="1000" placeholder="Escreve um comentário…" required></textarea>
+      <button class="btn" type="submit" id="commentBtn">Comentar</button>
+    </form>
+    <div class="msg" id="commentMsg"></div>
+  </section>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  // O Firebase é o mesmo utilizado pelo index.html do PLAYVERSE.
+  const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyBHd-zh1MWL6bD5Ptu3vp62XKMawlRfDQI",
+    authDomain: "playverse-4af2d.firebaseapp.com",
+    projectId: "playverse-4af2d",
+    appId: "1:1054190266087:web:86c1c0572eec16eff66442"
+  };
+
+  // O serviço de notícias já está neste endereço. As rotas /api/reels
+  // ainda precisam de ser implementadas no backend antes de publicar/guardar vídeos.
+  const API_BASE = "https://playverse-news-backend.onrender.com";
+  const $ = (id) => document.getElementById(id);
+  let auth = null;
+  let currentUser = null;
+  let activeCommentsReel = null;
+  let reels = [];
+  let feedObserver = null;
+
+  function showModal(id) {
+    $(id).classList.add("open");
+    $(id).setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(id) {
+    $(id).classList.remove("open");
+    $(id).setAttribute("aria-hidden", "true");
+    if (!document.querySelector(".modal-backdrop.open")) document.body.style.overflow = "";
+  }
+  document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => closeModal(b.dataset.close)));
+  document.querySelectorAll(".modal-backdrop").forEach(m => m.addEventListener("click", e => {
+    if (e.target === m) closeModal(m.id);
+  }));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") document.querySelectorAll(".modal-backdrop.open").forEach(m => closeModal(m.id));
+  });
+
+  function authMessage(text, type = "") {
+    $("authMsg").className = "msg " + type;
+    $("authMsg").textContent = text;
+  }
+  function uploadMessage(text, type = "") {
+    $("uploadMsg").className = "msg " + type;
+    $("uploadMsg").textContent = text;
+  }
+  function friendlyError(error) {
+    const map = {
+      "auth/email-already-in-use":"Este email já tem uma conta. Entra na tua conta.",
+      "auth/invalid-email":"O email não é válido.",
+      "auth/weak-password":"A palavra-passe é demasiado fraca.",
+      "auth/user-not-found":"Não foi encontrada uma conta com este email.",
+      "auth/wrong-password":"Palavra-passe incorreta.",
+      "auth/invalid-credential":"Email ou palavra-passe incorretos.",
+      "auth/too-many-requests":"Demasiadas tentativas. Aguarda um pouco.",
+      "auth/unauthorized-domain":"Este domínio ainda não está autorizado no Firebase.",
+      "auth/network-request-failed":"Falha de ligação. Verifica a internet."
+    };
+    return map[error.code] || error.message || "Ocorreu um erro.";
+  }
+  function setBusy(button, busy, busyText) {
+    if (!button.dataset.label) button.dataset.label = button.textContent;
+    button.disabled = busy;
+    button.textContent = busy ? busyText : button.dataset.label;
+  }
+  function openAuth() {
+    authMessage("");
+    showModal("authModal");
+  }
+  function requireAuth() {
+    if (currentUser) return true;
+    openAuth();
+    authMessage("Entra ou cria uma conta para continuar.");
+    return false;
+  }
+  async function authHeaders() {
+    if (!currentUser) throw new Error("AUTH_REQUIRED");
+    const token = await currentUser.getIdToken();
+    return { "Authorization": "Bearer " + token };
+  }
+  function updateSession() {
+    $("sessionText").textContent = currentUser
+      ? "Sessão iniciada como " + (currentUser.displayName || currentUser.email || "membro PLAYVERSE") + ". Já podes publicar, gostar e comentar."
+      : "Estás a navegar como visitante. Entra ou cria uma conta para interagir.";
+    $("accountOpen").textContent = currentUser ? "A minha conta" : "Conta";
+  }
+
+  $("accountOpen").addEventListener("click", openAuth);
+  $("sideAccount").addEventListener("click", openAuth);
+  $("uploadOpen").addEventListener("click", () => {
+    if (!requireAuth()) return;
+    uploadMessage("");
+    showModal("uploadModal");
+  });
+
+  document.querySelectorAll("[data-auth-tab]").forEach(tab => tab.addEventListener("click", () => {
+    document.querySelectorAll("[data-auth-tab]").forEach(x => x.classList.toggle("on", x === tab));
+    const register = tab.dataset.authTab === "register";
+    $("loginForm").hidden = register;
+    $("registerForm").hidden = !register;
+    authMessage("");
+  }));
+
+  $("loginForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!auth) return authMessage("A autenticação ainda não está disponível.");
+    setBusy($("loginBtn"), true, "A entrar…");
+    try {
+      await auth.signInWithEmailAndPassword($("loginEmail").value.trim(), $("loginPassword").value);
+      authMessage("Sessão iniciada.", "success");
+      setTimeout(() => closeModal("authModal"), 450);
+    } catch (err) { authMessage(friendlyError(err), "error"); }
+    finally { setBusy($("loginBtn"), false); }
+  });
+
+  $("registerForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!auth) return authMessage("A autenticação ainda não está disponível.");
+    const name = $("registerName").value.trim();
+    if (name.length < 2) return authMessage("Escreve um nome com pelo menos 2 caracteres.", "error");
+    setBusy($("registerBtn"), true, "A criar conta…");
+    try {
+      const credential = await auth.createUserWithEmailAndPassword($("registerEmail").value.trim(), $("registerPassword").value);
+      await credential.user.updateProfile({ displayName: name });
+      await credential.user.sendEmailVerification();
+      authMessage("Conta criada. Confirma o teu email para proteger a tua conta.", "success");
+      setTimeout(() => closeModal("authModal"), 900);
+    } catch (err) { authMessage(friendlyError(err), "error"); }
+    finally { setBusy($("registerBtn"), false); }
+  });
+
+  $("googleBtn").addEventListener("click", async () => {
+    if (!auth) return authMessage("A autenticação ainda não está disponível.");
+    setBusy($("googleBtn"), true, "A ligar ao Google…");
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: "select_account" });
+      await auth.signInWithPopup(provider);
+      authMessage("Sessão iniciada com Google.", "success");
+      setTimeout(() => closeModal("authModal"), 450);
+    } catch (err) { authMessage(friendlyError(err), "error"); }
+    finally { setBusy($("googleBtn"), false); }
+  });
+
+  $("forgotBtn").addEventListener("click", async () => {
+    const email = $("loginEmail").value.trim();
+    if (!email) return authMessage("Escreve o teu email primeiro.", "error");
+    try {
+      await auth.sendPasswordResetEmail(email);
+      authMessage("Se existir uma conta, receberás instruções de recuperação.", "success");
+    } catch (err) { authMessage(friendlyError(err), "error"); }
+  });
+
+  try {
+    if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
+    auth = firebase.auth();
+    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+    auth.onAuthStateChanged(user => {
+      currentUser = user || null;
+      updateSession();
+    });
+  } catch (err) {
+    console.error("Firebase Auth:", err);
+    $("apiStatus").textContent = "Não foi possível iniciar a autenticação Firebase.";
+  }
+
+  function safeText(value) {
+    return String(value == null ? "" : value).replace(/[&<>"']/g, c => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[c]));
+  }
+  function dateLabel(value) {
+    if (!value) return "";
+    const d = new Date(value);
+    return Number.isNaN(d.getTime()) ? "" : d.toLocaleDateString("pt-PT", {day:"2-digit",month:"short",year:"numeric"});
+  }
+  function initials(name) {
+    return (String(name || "P").trim().charAt(0) || "P").toUpperCase();
+  }
+  function emptyState(title, message, icon = "▶") {
+    $("reelsFeed").innerHTML = `<div class="empty"><div class="empty-icon">${icon}</div><strong>${safeText(title)}</strong><p>${safeText(message)}</p><button class="btn" id="emptyRefresh" type="button">Tentar novamente</button></div>`;
+    $("emptyRefresh").addEventListener("click", loadReels);
+  }
+  function renderReels() {
+    if (!reels.length) {
+      emptyState("Ainda não há Reels publicados", "Sê um dos primeiros membros a partilhar um vídeo com a comunidade PLAYVERSE.", "▣");
+      return;
+    }
+    $("reelsFeed").innerHTML = reels.map((r, index) => {
+      const user = r.user || {};
+      const name = user.name || user.display_name || "Membro PLAYVERSE";
+      const avatar = user.photo_url || user.photoURL || "";
+      const liked = !!r.liked_by_me;
+      const caption = safeText(r.caption || "");
+      const videoUrl = safeText(r.video_url || r.videoUrl || "");
+      return `<article class="reel-card" data-reel-id="${safeText(r.id)}">
+        <video class="reel-video" src="${videoUrl}" playsinline loop muted preload="${index === 0 ? "metadata" : "none"}"></video>
+        <div class="video-shade"></div>
+        <div class="reel-top"><span class="pill">PLAYVERSE REELS</span><span class="pill">${index + 1} / ${reels.length}</span></div>
+        <div class="play-hint">▶</div>
+        <div class="reel-actions">
+          <button class="action ${liked ? "liked" : ""}" data-action="like" aria-label="Gostar">${liked ? "♥" : "♡"}</button><span class="action-label">${Number(r.likes_count || 0)}</span>
+          <button class="action" data-action="comments" aria-label="Comentários">▤</button><span class="action-label">${Number(r.comments_count || 0)}</span>
+          <button class="action" data-action="share" aria-label="Partilhar">↗</button><span class="action-label">Partilhar</span>
+          <button class="action" data-action="sound" aria-label="Ativar som">♫</button><span class="action-label">Som</span>
+          ${currentUser && r.owner_uid === currentUser.uid ? '<button class="action" data-action="delete" aria-label="Apagar Reel">⌫</button><span class="action-label">Apagar</span>' : ""}
+        </div>
+        <div class="reel-info">
+          <div class="creator"><div class="avatar">${avatar ? `<img src="${safeText(avatar)}" alt="">` : safeText(initials(name))}</div><div class="creator-name">${safeText(name)}</div></div>
+          <div class="reel-caption">${caption}</div>
+          <div class="reel-date">${dateLabel(r.created_at || r.createdAt)}</div>
+        </div>
+      </article>`;
+    }).join("");
+
+    if (feedObserver) feedObserver.disconnect();
+    feedObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const video = entry.target.querySelector("video");
+        if (!video) return;
+        if (entry.isIntersecting && entry.intersectionRatio >= .65) {
+          document.querySelectorAll(".reel-video").forEach(v => { if (v !== video) v.pause(); });
+          video.play().catch(() => entry.target.classList.add("paused"));
+        } else video.pause();
+      });
+    }, { threshold: [.2,.65,.9] });
+    document.querySelectorAll(".reel-card").forEach(card => {
+      feedObserver.observe(card);
+      const video = card.querySelector("video");
+      video.addEventListener("click", () => {
+        if (video.paused) { video.play().catch(() => {}); card.classList.remove("paused"); }
+        else { video.pause(); card.classList.add("paused"); }
+      });
+      video.addEventListener("play", () => card.classList.remove("paused"));
+      video.addEventListener("pause", () => card.classList.add("paused"));
+      card.querySelectorAll("[data-action]").forEach(button => button.addEventListener("click", () => handleAction(card.dataset.reelId, button.dataset.action, card)));
+    });
+  }
+
+  async function loadReels() {
+    $("apiStatus").textContent = "A carregar vídeos públicos…";
+    try {
+      const response = await fetch(API_BASE + "/api/reels?limit=30", { headers:{"Accept":"application/json"}, cache:"no-store" });
+      if (!response.ok) {
+        if (response.status === 404) throw new Error("REELS_NOT_READY");
+        throw new Error("HTTP_" + response.status);
+      }
+      const data = await response.json();
+      reels = Array.isArray(data.reels) ? data.reels : [];
+      $("apiStatus").textContent = reels.length + " Reel(s) carregado(s).";
+      renderReels();
+    } catch (err) {
+      console.warn("PLAYVERSE Reels:", err);
+      if (err.message === "REELS_NOT_READY") {
+        $("apiStatus").textContent = "Backend de Reels ainda por ativar.";
+        emptyState("O feed está preparado", "O serviço de Reels ainda não foi atualizado no Render. Assim que o backend for publicado e o R2 configurado, os vídeos públicos aparecerão aqui.", "⚙");
+      } else {
+        $("apiStatus").textContent = "Não foi possível carregar o feed.";
+        emptyState("Não foi possível carregar os vídeos", "Verifica a ligação à internet e tenta novamente. Os vídeos publicados não são substituídos por conteúdo de demonstração.", "⌁");
+      }
+    }
+  }
+
+  async function handleAction(id, action, card) {
+    const reel = reels.find(x => String(x.id) === String(id));
+    if (!reel) return;
+    if (action === "share") {
+      const url = location.origin + location.pathname + "?reel=" + encodeURIComponent(id);
+      try {
+        if (navigator.share) await navigator.share({ title:"PLAYVERSE Reels", text:reel.caption || "Vê este Reel no PLAYVERSE", url });
+        else if (navigator.clipboard) { await navigator.clipboard.writeText(url); $("apiStatus").textContent = "Link do Reel copiado."; }
+        else $("apiStatus").textContent = "Partilha não suportada neste navegador.";
+      } catch (err) { if (err.name !== "AbortError") console.warn(err); }
+      return;
+    }
+    if (action === "sound") {
+      const video = card.querySelector("video");
+      video.muted = !video.muted;
+      card.querySelector('[data-action="sound"]').textContent = video.muted ? "♫" : "🔊";
+      return;
+    }
+    if (!requireAuth()) return;
+    try {
+      const headers = await authHeaders();
+      if (action === "like") {
+        const response = await fetch(API_BASE + "/api/reels/" + encodeURIComponent(id) + "/like", { method:"POST", headers });
+        if (!response.ok) throw new Error("LIKE_HTTP_" + response.status);
+        const result = await response.json();
+        reel.liked_by_me = !!result.liked;
+        reel.likes_count = Number(result.likes_count ?? reel.likes_count);
+        renderReels();
+      } else if (action === "comments") {
+        await openComments(reel);
+      } else if (action === "delete") {
+        if (!confirm("Queres mesmo apagar este Reel?")) return;
+        const response = await fetch(API_BASE + "/api/reels/" + encodeURIComponent(id), { method:"DELETE", headers });
+        if (!response.ok) throw new Error("DELETE_HTTP_" + response.status);
+        reels = reels.filter(x => String(x.id) !== String(id));
+        renderReels();
+      }
+    } catch (err) {
+      console.error(err);
+      $("apiStatus").textContent = "A ação ainda não está disponível no backend. Nenhuma alteração foi simulada.";
+    }
+  }
+
+  async function openComments(reel) {
+    activeCommentsReel = reel;
+    $("commentsTitle").textContent = "Comentários";
+    $("commentList").innerHTML = '<p class="side-note">A carregar comentários…</p>';
+    $("commentMsg").textContent = "";
+    showModal("commentsModal");
+    try {
+      const response = await fetch(API_BASE + "/api/reels/" + encodeURIComponent(reel.id) + "/comments", {headers:{"Accept":"application/json"}});
+      if (!response.ok) throw new Error("COMMENTS_HTTP_" + response.status);
+      const data = await response.json();
+      const comments = Array.isArray(data.comments) ? data.comments : [];
+      $("commentList").innerHTML = comments.length ? comments.map(c => `<div class="comment"><strong>${safeText(c.user?.name || c.user_name || "Membro PLAYVERSE")}</strong><p>${safeText(c.text || c.body || "")}</p></div>`).join("") : '<p class="side-note">Ainda não há comentários. Sê o primeiro a comentar.</p>';
+    } catch (err) {
+      $("commentList").innerHTML = '<p class="side-note">Não foi possível carregar os comentários. A rota de comentários precisa de estar ativa no backend.</p>';
+    }
+  }
+
+  $("commentForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!activeCommentsReel || !requireAuth()) return;
+    setBusy($("commentBtn"), true, "A enviar…");
+    try {
+      const headers = await authHeaders();
+      headers["Content-Type"] = "application/json";
+      const response = await fetch(API_BASE + "/api/reels/" + encodeURIComponent(activeCommentsReel.id) + "/comments", {
+        method:"POST", headers, body:JSON.stringify({text:$("commentText").value.trim()})
+      });
+      if (!response.ok) throw new Error("COMMENT_HTTP_" + response.status);
+      $("commentText").value = "";
+      $("commentMsg").textContent = "Comentário publicado.";
+      $("commentMsg").className = "msg success";
+      const card = document.querySelector(`[data-reel-id="${CSS.escape(String(activeCommentsReel.id))}"]`);
+      if (card) {
+        const reel = reels.find(x => String(x.id) === String(activeCommentsReel.id));
+        if (reel) reel.comments_count = Number(reel.comments_count || 0) + 1;
+        renderReels();
+      }
+      await openComments(activeCommentsReel);
+    } catch (err) {
+      $("commentMsg").textContent = "Não foi possível publicar. Confirma se a API de comentários já está ativa.";
+      $("commentMsg").className = "msg error";
+    } finally { setBusy($("commentBtn"), false); }
+  });
+
+  $("videoFile").addEventListener("change", () => {
+    const file = $("videoFile").files[0];
+    const preview = $("videoPreview");
+    if (!file) { preview.hidden = true; preview.removeAttribute("src"); return; }
+    if (!file.type.startsWith("video/")) {
+      $("videoFile").value = "";
+      uploadMessage("Escolhe um ficheiro de vídeo válido.", "error");
+      return;
+    }
+    const objectUrl = URL.createObjectURL(file);
+    preview.src = objectUrl;
+    preview.hidden = false;
+    uploadMessage(file.name + " · " + (file.size / (1024 * 1024)).toFixed(1) + " MB");
+  });
+
+  async function readVideoDuration(file) {
+    return new Promise((resolve, reject) => {
+      const probe = document.createElement("video");
+      const url = URL.createObjectURL(file);
+      probe.preload = "metadata";
+      probe.onloadedmetadata = () => { const duration = Number(probe.duration || 0); URL.revokeObjectURL(url); resolve(duration); };
+      probe.onerror = () => { URL.revokeObjectURL(url); reject(new Error("Não foi possível ler a duração do vídeo.")); };
+      probe.src = url;
+    });
+  }
+
+  $("uploadForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!requireAuth()) return;
+    const file = $("videoFile").files[0];
+    if (!file || !["video/mp4", "video/webm", "video/quicktime"].includes(file.type.toLowerCase()))
+      return uploadMessage("Usa um vídeo MP4, WebM ou MOV.", "error");
+    if (file.size > 100 * 1024 * 1024) return uploadMessage("O vídeo deve ter no máximo 100 MB.", "error");
+    setBusy($("publishBtn"), true, "A preparar…");
+    uploadMessage("A validar o vídeo…");
+    try {
+      const durationSeconds = await readVideoDuration(file);
+      if (!durationSeconds || durationSeconds > 180) throw new Error("O vídeo deve ter até 3 minutos.");
+      const headers = await authHeaders();
+      headers["Content-Type"] = "application/json";
+      const ticketResponse = await fetch(API_BASE + "/api/reels/upload-url", {
+        method:"POST", headers,
+        body:JSON.stringify({contentType:file.type, sizeBytes:file.size})
+      });
+      const ticket = await ticketResponse.json().catch(() => ({}));
+      if (!ticketResponse.ok) throw new Error(ticket.error || "Não foi possível preparar o envio.");
+
+      setBusy($("publishBtn"), true, "A enviar…");
+      uploadMessage("A enviar o vídeo diretamente para o Cloudflare R2. Mantém esta página aberta.");
+      const uploadResponse = await fetch(ticket.uploadUrl, {
+        method:"PUT", headers:{"Content-Type":file.type}, body:file
+      });
+      if (!uploadResponse.ok) throw new Error("O armazenamento recusou o vídeo (HTTP " + uploadResponse.status + "). Verifica o CORS do bucket R2.");
+
+      uploadMessage("Vídeo enviado. A finalizar a publicação…");
+      const completeResponse = await fetch(API_BASE + "/api/reels/complete", {
+        method:"POST", headers,
+        body:JSON.stringify({key:ticket.key, caption:$("videoCaption").value.trim(), durationSeconds})
+      });
+      const result = await completeResponse.json().catch(() => ({}));
+      if (!completeResponse.ok) throw new Error(result.error || "Não foi possível finalizar a publicação.");
+      uploadMessage("Reel publicado com sucesso.", "success");
+      $("uploadForm").reset();
+      $("videoPreview").hidden = true;
+      $("videoPreview").removeAttribute("src");
+      if (result.reel) reels.unshift(result.reel);
+      closeModal("uploadModal");
+      renderReels();
+      $("apiStatus").textContent = "O teu Reel foi publicado.";
+    } catch (err) {
+      uploadMessage(err.message || "Não foi possível publicar o vídeo.", "error");
+    } finally { setBusy($("publishBtn"), false); }
+  });
+
+  // Inicialização: sessão Firebase existente + feed público.
+  updateSession();
+  loadReels();
+})();
+</script>
+</body>
+</html>
