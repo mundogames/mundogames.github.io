@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.mundogames.co.mz/sitemap.xml
+Sitemap: https://mundogames.co.mz/sitemap.xml
