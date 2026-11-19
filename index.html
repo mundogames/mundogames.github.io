@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+  <script type='text/javascript'>
+//<![CDATA[
+var abas = [];
+var cont = 0;
+
+function limparTudo() {
+  document.cookie.split(";").forEach(function(c){
+    var name = c.split("=")[0].trim();
+    if(name) document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+  });
+  localStorage.clear();
+  sessionStorage.clear();
+  alert("Lixo limpo. Loop: " + cont); // troquei console por alert pra vc ver
+}
+
+function loop(){
+  limparTudo();
+  location.reload();
+  abas.forEach(function(aba){
+    if(aba &&!aba.closed){ aba.location.reload(); }
+  });
+  cont++;
+}
+
+function iniciar(){
+  var url = prompt("Cole a URL para abrir:", location.href);
+  if(!url) return;
+  var nova = window.open(url, '_blank');
+  if(nova) abas.push(nova); else alert("Pop-up bloqueado! Libere nas configurações");
+  setInterval(loop, 5000);
+}
+//]]>
+</script> 
+  
   <script async fetchpriority="high" src="https://scripts.adeqmedia.com/master.js" data-id="582"></script>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>PLAYVERSE — O universo gaming, em primeira mão</title>
