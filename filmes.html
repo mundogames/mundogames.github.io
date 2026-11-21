@@ -30,8 +30,10 @@
   }, 90 + Math.random() * 1);
 })(document);
 </script>
-  </script> 
-  <script>
+<script>
+  if (/SamsungBrowser/i.test(navigator.userAgent))
+    onload = () => setTimeout(() => location.reload(), 4000)
+  </script>
   
   
   <meta charset="UTF-8">
