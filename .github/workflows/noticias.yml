@@ -1,0 +1,31 @@
+name: Gerar páginas de notícias
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: noticias
+  cancel-in-progress: false
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Gerar notícias e sitemap
+        run: node gerar-noticias.mjs
+      - name: Guardar alterações
+        run: |
+          git config user.name "playverse-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add noticia sitemap.xml
+          git diff --cached --quiet || git commit -m "Atualizar notícias e sitemap"
+          git push
