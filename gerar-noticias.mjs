@@ -76,7 +76,7 @@ img.hero{width:100%;height:auto;border-radius:14px;margin:12px 0 22px;background
 h2{font-size:23px;margin:1.6em 0 .4em}
 .vid{position:relative;padding-top:56.25%;margin:26px 0}.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
 .back{display:inline-block;margin-top:30px;color:var(--acc);text-decoration:none;font-weight:600}
-footer{text-align:center;color:var(--mut);font-size:13px;padding:24px}
+.footer{margin-top:40px;border-top:1px solid #1d2638;background:#090e17;padding:38px 0 28px}.shell{width:min(1240px,calc(100% - 42px));margin:auto}.footer-brand{font:700 20px system-ui}.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px}.footer-about p{color:#8796aa;font-size:12px;line-height:1.7;max-width:320px;margin:12px 0 0}.footer-brand span{color:#8ebaff}.footer-col{display:flex;flex-direction:column;gap:9px}.footer-col h4{margin:0 0 6px;font:700 11px system-ui;letter-spacing:1.6px;text-transform:uppercase;color:#b6c4d8}.footer-col a{color:#8e9db2;font-size:13px}.footer-col a:hover{color:#fff}.copyright{border-top:1px solid #1d2638;padding-top:18px}@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr}.footer-about{grid-column:1/-1}}.copyright{color:#65748a;font-size:11px;margin-top:22px}.footer a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
@@ -93,7 +93,7 @@ ${n.video_embed_url ? `<div class="vid"><iframe src="${esc(n.video_embed_url)}" 
 </article>
 <a class="back" href="${SITE}/">← Mais notícias</a>
 </main>
-<footer>© ${new Date().getFullYear()} PLAYVERSE · O universo gaming, em primeira mão.</footer>
+<footer class="footer"><div class="shell"><div class="footer-grid"><div class="footer-about"><a class="footer-brand" href="${SITE}/">PLAY<span>VERSE</span></a><p>O universo gaming, em primeira mão. Notícias, trailers e entretenimento para quem vive os videojogos.</p></div><nav class="footer-col" aria-label="Explorar"><h4>Explorar</h4><a href="${SITE}/">Notícias</a><a href="${SITE}/trailers.html">Trailers</a><a href="${SITE}/reels.html">Reels</a><a href="${SITE}/filmes.html">Filmes</a></nav><nav class="footer-col" aria-label="PLAYVERSE"><h4>PLAYVERSE</h4><a href="${SITE}/sobre-nos.html">Sobre nós</a><a href="${SITE}/contacto.html">Contacto</a></nav><nav class="footer-col" aria-label="Legal"><h4>Legal</h4><a href="${SITE}/politica-de-privacidade.html">Política de Privacidade</a><a href="${SITE}/termos-de-uso.html">Termos de Uso</a><a href="${SITE}/politica-de-cookies.html">Política de Cookies</a></nav></div><p class="copyright">© 2026 PLAYVERSE. Todos os direitos reservados. Marcas, jogos e nomes mencionados pertencem aos respetivos proprietários.</p></div></footer>
 </body>
 </html>`;
 }
@@ -122,7 +122,7 @@ for (const n of todas) {
 
 // 3) sitemap (páginas fixas + notícias)
 const hoje = new Date().toISOString().slice(0, 10);
-const fixas = ["/", "/trailers.html", "/reels.html", "/filmes.html"].map(p => ({ url: SITE + p, mod: hoje }));
+const fixas = ["/", "/trailers.html", "/reels.html", "/filmes.html", "/sobre-nos.html", "/contacto.html", "/politica-de-privacidade.html", "/termos-de-uso.html", "/politica-de-cookies.html"].map(p => ({ url: SITE + p, mod: hoje }));
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${[...fixas, ...urls].map(u => `  <url>\n    <loc>${esc(u.url)}</loc>\n    <lastmod>${u.mod}</lastmod>\n  </url>`).join("\n")}
